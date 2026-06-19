@@ -97,8 +97,8 @@ Audited: zero off-role accent usage in the current build. Keep it that way.
 
 ### 2.1 Faces (global.css `@theme` + base layer)
 
-- `--font-display`: `"Space Grotesk Variable"` (headings; base layer forces
-  `h1-h4` to display at `font-weight: 600; letter-spacing: -0.01em`).
+- `--font-display`: `"Space Grotesk Variable"` (headings; base layer sets
+  `h1-h4` to `font-weight: 500; letter-spacing: -0.01em`).
 - `--font-sans`: `"Space Grotesk Variable"` (body; same face as display).
 - `--font-mono`: `"JetBrains Mono Variable"` (the blueprint-annotation motif).
 
@@ -122,8 +122,11 @@ closing push). It matches the Hero h1 scale. Do not use the large scale elsewher
 | Small body (desc, tagline) | `text-sm leading-relaxed` |
 | Mono label / eyebrow / kicker | `font-mono text-xs (text-[0.7rem]) uppercase tracking-[0.18em]` |
 
-h2s inherit weight `600` from the base layer (no per-element weight class). Headlines
-carry tracking; body does not.
+**Headline weight (rule):** medium (`500`) by default. h2s inherit it from the base
+layer (no per-element weight class); Hero h1 and About h2 set `font-medium`
+explicitly. `font-semibold` (`600`) only when a specific headline explicitly opts
+in; **never** `font-bold` or `font-extrabold`. The display face stays Space Grotesk.
+Headlines carry tracking; body does not.
 
 ### 2.3 The mono annotation motif (the strongest cross-cutting signature)
 
