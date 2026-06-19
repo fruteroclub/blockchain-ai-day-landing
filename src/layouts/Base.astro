@@ -1,7 +1,8 @@
 ---
-// Self-hosted fonts go here once the design identity picks them, e.g.:
-//   import '@fontsource-variable/<face>';
-// (Do not link Google Fonts via <link> in production.)
+// Self-hosted display + mono faces (variable). Imported before global.css so
+// the @font-face rules are registered before the token + base layers apply.
+import '@fontsource-variable/space-grotesk';
+import '@fontsource-variable/jetbrains-mono';
 import '../styles/global.css';
 import { getLang, useTranslations } from '../i18n/utils';
 import { event } from '../i18n/ui';
@@ -18,7 +19,7 @@ const enHref = new URL('/en/', Astro.site).href;
 // than reference a missing file.
 const ogImage = undefined as string | undefined;
 
-// schema.org/Event — real, known facts. Great SEO/AEO for an event landing.
+// schema.org/Event: real, known facts. Great SEO/AEO for an event landing.
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Event',

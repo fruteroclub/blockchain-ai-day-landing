@@ -1,0 +1,73 @@
+---
+// About.astro
+// Section id="acerca": editorial manifesto.
+// Layout family: a single readable column carrying the page's air
+// (VISUAL_DENSITY 4). One small mono eyebrow, a large display headline,
+// then the body paragraphs at a comfortable measure. The only decoration
+// is a thin cyan hairline rule and a small mono coordinate annotation in
+// the Wyman blueprint-annotation spirit. Distinct from every other
+// section: no cards, no image, no split, no three-up grid.
+
+import { getLang, useTranslations } from '../i18n/utils';
+
+const lang = getLang(Astro);
+const t = useTranslations(lang);
+const about = t.about;
+
+// Lead paragraph reads larger; the rest sit at the baseline measure.
+const [lead, ...rest] = about.body;
+---
+
+<section id="acerca" class="bg-[var(--bg)] text-[var(--fg)]">
+  <div class="mx-auto max-w-[1200px] px-6 py-28 md:py-40">
+    <div class="manifesto">
+      <!-- mono eyebrow + hairline + coordinate annotation -->
+      <div
+        class="flex items-center gap-4 text-xs font-mono uppercase tracking-[0.22em] text-[var(--fg-muted)]"
+        data-reveal
+      >
+        <span class="text-[var(--accent)]">{about.eyebrow}</span>
+        <span class="h-px flex-1 bg-[var(--accent-fill)]/40" aria-hidden="true"></span>
+        <span class="hidden sm:inline">N 19.4326 / W 99.1332</span>
+      </div>
+
+      <!-- large display headline -->
+      <h2
+        class="mt-10 max-w-[18ch] text-balance text-4xl font-semibold leading-[1.06] tracking-[-0.02em] sm:text-5xl md:text-6xl"
+        data-reveal
+        style="transition-delay:80ms"
+      >
+        {about.head}
+      </h2>
+
+      <!-- single readable column -->
+      <div class="mt-14 max-w-[65ch] space-y-7">
+        <p
+          class="text-xl leading-relaxed text-[var(--fg)] sm:text-2xl sm:leading-relaxed"
+          data-reveal
+          style="transition-delay:160ms"
+        >
+          {lead}
+        </p>
+        {rest.map((para, i) => (
+          <p
+            class="text-base leading-relaxed text-[var(--fg-muted)] sm:text-lg sm:leading-relaxed"
+            data-reveal
+            style={`transition-delay:${240 + i * 80}ms`}
+          >
+            {para}
+          </p>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Keep the reveal stagger from feeling mechanical: the section carries
+     the air, so the column sits left-aligned on a wide canvas with a
+     comfortable measure. No grid, no cards. */
+  .manifesto {
+    max-width: 56rem;
+  }
+</style>

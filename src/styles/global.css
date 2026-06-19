@@ -1,50 +1,66 @@
 @import "tailwindcss";
 
 /* ════════════════════════════════════════════════════════════════════════
-   DESIGN IDENTITY: NOT YET DEFINED.
-
-   This is a NEUTRAL placeholder token set so the project builds and runs.
-   The real visual identity (palette, type, motion, shape) is produced in the
-   design phase via the design brief + the design-taste-frontend skill
-   (https://www.tasteskill.dev/guide). When that lands, REPLACE this @theme
-   block and the base layer below with the chosen system.
-
-   Deliberately avoided here (so we don't pre-bake an identity to undo later):
-   no brand palette, no serif-by-default, system fonts only.
+   BLOCKCHAIN + AI DAY - design tokens (Foundation contract).
+   ONE navy-tinted neutral ramp + two fixed-hue accent ramps (cyan + rosa).
+   Light and dark are the SAME palette remapped through semantic tokens.
+   The page is LOCKED to dark; flipping data-theme="light" is a token remap.
+   Accent roles are locked: cyan = AI / system / structure / links,
+   rosa mexicana = the primary Register CTA and the brand "+" mark.
    ════════════════════════════════════════════════════════════════════════ */
-@theme {
-  /* Neutral grayscale placeholder. Replace with the brand palette. */
-  --color-ink: #111114;
-  --color-muted: #5b5b66;
-  --color-line: #e3e3e8;
-  --color-surface: #f7f7f9;
-  --color-paper: #ffffff;
-  --color-accent: #2b59ff; /* PLACEHOLDER accent, not a brand decision */
 
-  /* System fonts until the identity picks self-hosted faces (via @fontsource). */
-  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+@theme {
+  --color-n-950:#0A0F16; --color-n-900:#0E141D; --color-n-850:#141D28; --color-n-800:#1C2836;
+  --color-n-700:#283747; --color-n-500:#5C7080; --color-n-400:#8198A4; --color-n-300:#A9BBC4;
+  --color-n-200:#C9D6DC; --color-n-100:#E9EFF1; --color-n-50:#F2F6F7; --color-n-0:#F8FBFB;
+  --color-cyan-400:#5FE3DA; --color-cyan-500:#34C9C0; --color-cyan-700:#0B6863;
+  --color-rosa-400:#FF2E9A; --color-rosa-500:#E6007E; --color-rosa-600:#C7006B;
+  --font-display:"Space Grotesk Variable", system-ui, sans-serif;
+  --font-sans:"Space Grotesk Variable", system-ui, sans-serif;
+  --font-mono:"JetBrains Mono Variable", ui-monospace, "SF Mono", monospace;
 }
 
+/* DARK is the default + locked theme */
 :root {
-  --background: var(--color-paper);
-  --foreground: var(--color-ink);
-  --muted-foreground: var(--color-muted);
-  --border: var(--color-line);
-  --accent: var(--color-accent);
+  --bg:var(--color-n-900); --surface:var(--color-n-850); --surface-2:var(--color-n-800);
+  --border:var(--color-n-700); --fg:var(--color-n-50); --fg-muted:var(--color-n-400);
+  --accent:var(--color-cyan-400); --accent-fill:var(--color-cyan-500);
+  --cta:var(--color-rosa-500); --cta-label:var(--color-n-0); --cta-press:var(--color-rosa-600);
+}
+/* Same single palette, remapped. Flip with data-theme="light". */
+[data-theme="light"] {
+  --bg:var(--color-n-50); --surface:var(--color-n-100); --surface-2:var(--color-n-200);
+  --border:var(--color-n-200); --fg:var(--color-n-900); --fg-muted:var(--color-n-500);
+  --accent:var(--color-cyan-700); --accent-fill:var(--color-cyan-500);
+  --cta:var(--color-rosa-500); --cta-label:var(--color-n-0); --cta-press:var(--color-rosa-600);
 }
 
 @layer base {
   html {
     font-family: var(--font-sans);
-    background-color: var(--background);
-    color: var(--foreground);
+    background: var(--bg);
+    color: var(--fg);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.01em;
   }
   :focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 2px;
   }
+  ::selection {
+    background: var(--cta);
+    color: var(--cta-label);
+  }
+}
+
+/* Blueprint annotation motif: mono for coordinates, node IDs, labels. */
+.font-mono {
+  font-family: var(--font-mono);
 }
 
 /* ─── Reusable motion primitive (architecture, not identity) ──────────────

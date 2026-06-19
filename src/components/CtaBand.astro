@@ -1,0 +1,75 @@
+---
+// CtaBand.astro
+// Final full-width CTA band. Layout family: full-width band (distinct from the
+// hero split and the card grids). A dark surface band carries a faint cyan
+// Blueprint backdrop (AI / system / structure layer) on the right; the single
+// rosa Register button is the one rosa moment in the section. The rosa CTA
+// (--cta fill, --cta-label near-white) is the high-contrast, AA-passing path
+// per the dark-band-with-large-rosa-CTA option.
+
+import { Icon } from 'astro-icon/components';
+import { getLang, useTranslations } from '../i18n/utils';
+import { event } from '../i18n/ui';
+import Blueprint from './primitives/Blueprint.astro';
+
+const lang = getLang(Astro);
+const t = useTranslations(lang);
+const cta = t.cta;
+---
+
+<section class="bg-[var(--bg)] py-20 sm:py-28">
+  <div class="mx-auto max-w-[1200px] px-6">
+    <div
+      data-reveal
+      class="cta-band relative overflow-hidden rounded-sm border border-[var(--border)] bg-[var(--surface)] px-6 py-14 sm:px-12 sm:py-20"
+    >
+      <!-- Cyan structural backdrop: AI / system layer, faint, non-interactive. -->
+      <Blueprint
+        class="absolute -right-16 -top-16 h-[26rem] w-[26rem] text-[var(--accent-fill)] opacity-[0.08] sm:-right-10 sm:h-[32rem] sm:w-[32rem]"
+      />
+
+      <div class="relative grid items-center gap-x-12 gap-y-8 md:grid-cols-[1fr_auto]">
+        <div class="max-w-2xl">
+          <h2 class="text-4xl leading-[1.05] sm:text-5xl lg:text-6xl">
+            {cta.head}
+          </h2>
+          <p class="mt-5 max-w-xl text-base leading-relaxed text-[var(--fg-muted)] sm:text-lg">
+            {cta.sub}
+          </p>
+        </div>
+
+        <div class="md:justify-self-end">
+          <a
+            href={event.registrationUrl}
+            target="_blank"
+            rel="noopener"
+            class="cta-button group inline-flex items-center gap-3 rounded-sm bg-[var(--cta)] px-8 py-4 text-base font-semibold text-[var(--cta-label)] transition-colors duration-150 hover:bg-[var(--cta-press)] active:bg-[var(--cta-press)]"
+          >
+            {cta.button}
+            <Icon
+              name="ph:arrow-up-right-bold"
+              class="h-5 w-5 transition-transform duration-150 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Tactile CTA press: a small, deliberate depress. Honors reduced motion. */
+  .cta-button {
+    will-change: transform;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .cta-button {
+      transition:
+        background-color 0.15s ease,
+        transform 0.12s ease;
+    }
+    .cta-button:active {
+      transform: translateY(1px);
+    }
+  }
+</style>

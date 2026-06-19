@@ -1,0 +1,89 @@
+---
+// Sponsors.astro
+// Section id="patrocinadores". Layout family: logo wall.
+// Real sponsor marks (Privy, Nebius) are NOT approved to display yet, so this
+// renders neutral placeholder slots only, plus a rosa "become a sponsor" CTA.
+// Honest, no fake brand marks.
+
+import { getLang, useTranslations } from '../i18n/utils';
+
+const lang = getLang(Astro);
+const t = useTranslations(lang);
+const s = t.sponsors;
+
+// Structural placeholder label (not body copy): the empty slot prompt. Picked
+// per-locale so the wall reads native in both /es and /en builds.
+const slotLabel = lang === 'en' ? 'Your logo' : 'Tu logo';
+
+// Five neutral slots. Odd count keeps the wall from reading as a tidy grid of
+// equal cards and lets the CTA sit as the sixth tile.
+const slots = [0, 1, 2, 3, 4];
+
+const contactMailto = 'mailto:hola@blockchainaiday.xyz';
+---
+
+<section id="patrocinadores" class="border-t border-[var(--border)] bg-[var(--bg)]">
+  <div class="mx-auto max-w-[1200px] px-6 py-24 md:py-32">
+    <header class="max-w-[44ch]" data-reveal>
+      <h2 class="text-3xl leading-[1.05] tracking-[-0.01em] text-[var(--fg)] md:text-4xl">
+        {s.head}
+      </h2>
+      <p class="mt-5 text-base leading-relaxed text-[var(--fg-muted)] md:text-lg">
+        {s.sub}
+      </p>
+    </header>
+
+    <ul
+      class="logo-wall mt-14 grid grid-cols-2 gap-px overflow-hidden rounded-md border border-[var(--border)] bg-[var(--border)] sm:grid-cols-3"
+      data-reveal
+    >
+      {
+        slots.map((i) => (
+          <li class="flex min-h-[112px] items-center justify-center bg-[var(--bg)] md:min-h-[128px]">
+            <span
+              class="slot font-mono text-xs uppercase tracking-[0.18em] text-[var(--fg-muted)]"
+              aria-label={`${slotLabel} ${i + 1}`}
+            >
+              {slotLabel}
+            </span>
+          </li>
+        ))
+      }
+
+      <li class="bg-[var(--bg)]">
+        <a
+          href={contactMailto}
+          class="cta-tile group flex min-h-[112px] w-full items-center justify-center gap-2 bg-[var(--cta)] px-4 text-center font-mono text-xs uppercase tracking-[0.14em] text-[var(--cta-label)] transition-colors duration-150 hover:bg-[var(--cta-press)] active:bg-[var(--cta-press)] md:min-h-[128px]"
+        >
+          {s.cta}
+        </a>
+      </li>
+    </ul>
+
+    <p class="mt-6 max-w-[60ch] font-mono text-xs leading-relaxed text-[var(--fg-muted)]" data-reveal>
+      {s.note}
+    </p>
+  </div>
+</section>
+
+<style>
+  /* Dashed outline on the empty slots only, drawn as an inset overlay so it
+     never fights the shared hairline grid (the gap-px + bg-border technique).
+     The CTA tile is solid rosa and gets no dashes. */
+  .logo-wall .slot {
+    position: relative;
+    display: flex;
+    min-width: 132px;
+    align-items: center;
+    justify-content: center;
+    height: 56px;
+    border: 1px dashed var(--border);
+    border-radius: 4px;
+    padding: 0 1.25rem;
+  }
+
+  /* Slight nudge so the CTA label optically centers with its own caps height. */
+  .cta-tile {
+    line-height: 1.1;
+  }
+</style>

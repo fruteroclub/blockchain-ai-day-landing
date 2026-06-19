@@ -1,0 +1,126 @@
+---
+// Footer.astro
+// Multi-column footer in the blueprint / station-diagram spirit: a strong top
+// hairline, the event name with the rosa "+" brand mark, a tagline, a quick-link
+// column reusing the nav links, and a register + contact column. A mono blueprint
+// annotation row (CDMX coordinates + event date) runs across the foot as the brand
+// motif. Stacks to a single column under 768px.
+//
+// Accent roles honored: cyan = links / structure, rosa = the brand "+" mark and the
+// single Register CTA (one rosa moment). No fake version line, no social dots.
+
+import { getLang, useTranslations } from '../i18n/utils';
+import { event } from '../i18n/ui';
+import { Icon } from 'astro-icon/components';
+
+const lang = getLang(Astro);
+const t = useTranslations(lang);
+const f = t.footer;
+const links = t.nav.links;
+
+// Event date rendered from the locked single source, no invented strings.
+const start = new Date(event.dateISOStart);
+const dateAnnotation = new Intl.DateTimeFormat(lang === 'es' ? 'es-MX' : 'en-US', {
+  weekday: 'short',
+  day: '2-digit',
+  month: 'short',
+  year: 'numeric',
+  timeZone: 'America/Mexico_City',
+})
+  .format(start)
+  .toUpperCase();
+---
+
+<footer class="border-t border-[var(--border)] bg-[var(--bg)]">
+  <div class="mx-auto max-w-[1200px] px-6 py-16 md:py-20">
+    <div class="footer-grid" data-reveal>
+      <!-- Brand: event name with rosa "+" mark + tagline -->
+      <div class="footer-brand">
+        <p class="flex items-baseline gap-2 font-[var(--font-display)] text-xl font-semibold tracking-tight text-[var(--fg)]">
+          <span>Blockchain</span>
+          <span class="text-[var(--cta)]" aria-hidden="true">+</span>
+          <span>AI Day</span>
+        </p>
+        <p class="mt-4 max-w-[34ch] text-sm leading-relaxed text-[var(--fg-muted)]">
+          {f.tagline}
+        </p>
+      </div>
+
+      <!-- Quick links (reuse nav links) -->
+      <nav class="footer-col" aria-label={t.nav.menu}>
+        <p class="font-mono text-[0.7rem] uppercase tracking-[0.18em] text-[var(--fg-muted)]">
+          {t.nav.menu}
+        </p>
+        <ul class="mt-4 space-y-2.5">
+          {links.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class="text-sm text-[var(--fg)] transition-colors hover:text-[var(--accent)]"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <!-- Register + contact -->
+      <div class="footer-col">
+        <p class="font-mono text-[0.7rem] uppercase tracking-[0.18em] text-[var(--fg-muted)]">
+          {f.register}
+        </p>
+        <a
+          href={event.registrationUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-4 inline-flex items-center gap-2 rounded-sm bg-[var(--cta)] px-4 py-2.5 text-sm font-semibold text-[var(--cta-label)] transition-colors hover:bg-[var(--cta-press)] active:bg-[var(--cta-press)]"
+        >
+          {t.nav.register}
+          <Icon name="ph:arrow-up-right-bold" class="h-3.5 w-3.5" />
+        </a>
+
+        <p class="mt-8 font-mono text-[0.7rem] uppercase tracking-[0.18em] text-[var(--fg-muted)]">
+          {f.contact}
+        </p>
+        <a
+          href={event.registrationUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-3 inline-flex items-center gap-2 text-sm text-[var(--accent)] transition-colors hover:text-[var(--fg)]"
+        >
+          luma.com
+          <Icon name="ph:arrow-up-right-bold" class="h-3 w-3" />
+        </a>
+      </div>
+    </div>
+
+    <!-- Blueprint annotation row: CDMX coordinates + event date -->
+    <div
+      class="mt-14 flex flex-col gap-3 border-t border-[var(--border)] pt-6 font-mono text-[0.7rem] uppercase tracking-[0.16em] text-[var(--fg-muted)] sm:flex-row sm:items-center sm:justify-between"
+      data-reveal
+    >
+      <span class="inline-flex items-center gap-3">
+        <span class="h-1.5 w-1.5 shrink-0 border border-[var(--accent-fill)]" aria-hidden="true"></span>
+        {f.coords}
+      </span>
+      <span>{dateAnnotation}</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  @media (min-width: 768px) {
+    .footer-grid {
+      grid-template-columns: 1.6fr 1fr 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+  }
+</style>

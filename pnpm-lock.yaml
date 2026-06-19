@@ -11,6 +11,12 @@ importers:
       '@astrojs/sitemap':
         specifier: ^3.3.0
         version: 3.7.3
+      '@fontsource-variable/jetbrains-mono':
+        specifier: 5.2.8
+        version: 5.2.8
+      '@fontsource-variable/space-grotesk':
+        specifier: 5.2.10
+        version: 5.2.10
       '@iconify-json/ph':
         specifier: ^1.2.2
         version: 1.2.2
@@ -442,6 +448,12 @@ packages:
     engines: {node: '>=18'}
     cpu: [x64]
     os: [win32]
+
+  '@fontsource-variable/jetbrains-mono@5.2.8':
+    resolution: {integrity: sha512-WBA9elru6Jdp5df2mES55wuOO0WIrn3kpXnI4+W2ek5u3ZgLS9XS4gmIlcQhiZOWEKl95meYdvK7xI+ETLCq/Q==}
+
+  '@fontsource-variable/space-grotesk@5.2.10':
+    resolution: {integrity: sha512-yJQO/o35/hAP3CFnpdFTwQku2yzJOae2HIpBmqkOVoxhhXJaQP3g+b6Jrz7u+eI7A5ZdCIf88uMWpBJdFiGr5w==}
 
   '@iconify-json/ph@1.2.2':
     resolution: {integrity: sha512-PgkEZNtqa8hBGjHXQa4pMwZa93hmfu8FUSjs/nv4oUU6yLsgv+gh9nu28Kqi8Fz9CCVu4hj1MZs9/60J57IzFw==}
@@ -2659,6 +2671,10 @@ snapshots:
 
   '@esbuild/win32-x64@0.27.7':
     optional: true
+
+  '@fontsource-variable/jetbrains-mono@5.2.8': {}
+
+  '@fontsource-variable/space-grotesk@5.2.10': {}
 
   '@iconify-json/ph@1.2.2':
     dependencies:

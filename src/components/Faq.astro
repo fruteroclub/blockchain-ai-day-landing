@@ -1,0 +1,101 @@
+---
+// Faq.astro
+// Accordion section (layout family: accordion). Native <details>/<summary>
+// so it works with zero JS. One hairline between items (no per-row border
+// spam). Summary = question (display) with a ph:plus-bold marker that flips
+// to ph:minus-bold via the [open] state. Answer is muted, max-w-[65ch].
+// Each row carries a mono index annotation in the blueprint spirit.
+import { Icon } from 'astro-icon/components';
+import { getLang, useTranslations } from '../i18n/utils';
+
+const lang = getLang(Astro);
+const t = useTranslations(lang);
+const faq = t.faq;
+---
+
+<section id="faq" class="border-t border-[var(--border)] bg-[var(--bg)]">
+  <div class="mx-auto max-w-[1200px] px-6 py-24 md:py-32">
+    <!-- Header: headline alone, no eyebrow. Asymmetric two-column on wide,
+         single column under 768px. -->
+    <div class="grid gap-12 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.4fr)] md:gap-16">
+      <header class="md:pt-2" data-reveal>
+        <h2 class="text-3xl leading-[1.05] text-balance sm:text-4xl md:text-[2.75rem]">
+          {faq.head}
+        </h2>
+      </header>
+
+      <!-- Accordion column -->
+      <div class="faq-list border-t border-[var(--border)]" data-reveal>
+        {
+          faq.items.map((item, i) => (
+            <details class="faq-item group border-b border-[var(--border)]">
+              <summary class="flex cursor-pointer list-none items-start gap-4 py-6 md:gap-6">
+                <span class="mt-1 shrink-0 font-mono text-xs tabular-nums text-[var(--fg-muted)]">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <span class="flex-1 font-display text-lg font-medium leading-snug text-[var(--fg)] sm:text-xl">
+                  {item.q}
+                </span>
+                <span class="faq-marker mt-0.5 shrink-0 text-[var(--accent)]" aria-hidden="true">
+                  <Icon name="ph:plus-bold" class="faq-icon-plus h-5 w-5" />
+                  <Icon name="ph:minus-bold" class="faq-icon-minus h-5 w-5" />
+                </span>
+              </summary>
+              <div class="faq-body pb-7 pl-[calc(2rem+1rem)] pr-2 md:pl-[calc(2rem+1.5rem)]">
+                <p class="max-w-[65ch] text-[var(--fg-muted)] leading-relaxed">
+                  {item.a}
+                </p>
+              </div>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Remove the native disclosure triangle across engines. */
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+  .faq-item summary::marker {
+    content: '';
+  }
+
+  /* Marker: show plus when closed, minus when open. */
+  .faq-icon-minus {
+    display: none;
+  }
+  .faq-item[open] .faq-icon-plus {
+    display: none;
+  }
+  .faq-item[open] .faq-icon-minus {
+    display: block;
+  }
+
+  /* Tactile, restrained hover/open affordance on the question. */
+  .faq-item summary {
+    transition: color 0.2s ease;
+  }
+  .faq-item summary:hover .font-display {
+    color: var(--accent);
+  }
+
+  /* Gentle reveal of the answer body when opened. Honors reduced motion. */
+  @media (prefers-reduced-motion: no-preference) {
+    .faq-item[open] .faq-body {
+      animation: faq-open 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes faq-open {
+      from {
+        opacity: 0;
+        transform: translateY(-6px);
+      }
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  }
+</style>

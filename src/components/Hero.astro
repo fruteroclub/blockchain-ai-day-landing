@@ -1,0 +1,114 @@
+---
+// Hero.astro
+// Blueprint hero: full-bleed, left-anchored content over the radial
+// "inference blueprint" backdrop (Lance Wyman / Mexico 68 lineage).
+// Cyan = AI/system/structure (the blueprint line-work + secondary outline CTA),
+// rosa mexicana = the single primary Register CTA. One rosa moment per section.
+//
+// Content order (max 4 text elements): mono kicker, two-line display headline,
+// short subtext, two CTAs. CTAs sit above the fold.
+
+import Blueprint from './primitives/Blueprint.astro';
+import { Icon } from 'astro-icon/components';
+import { getLang, useTranslations } from '../i18n/utils';
+import { event } from '../i18n/ui';
+
+const lang = getLang(Astro);
+const t = useTranslations(lang);
+const hero = t.hero;
+---
+
+<section
+  id="inicio"
+  class="hero relative isolate flex min-h-[100dvh] flex-col justify-center overflow-hidden bg-[var(--bg)] px-6 pt-24 pb-16"
+>
+  <!-- Radial blueprint backdrop: cyan line-work, low opacity, fades in. -->
+  <div class="blueprint-layer pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
+    <Blueprint
+      class="absolute top-1/2 left-1/2 h-[140vmin] w-[140vmin] -translate-y-1/2 text-[var(--accent)] md:left-auto md:right-[-18vmin] md:translate-x-0"
+    />
+    <!-- Hairline grid datum, anchoring the composition to a drafting plane. -->
+    <div
+      class="absolute inset-x-0 top-1/2 hidden h-px bg-[var(--border)] opacity-50 md:block"
+    >
+    </div>
+  </div>
+
+  <div class="mx-auto w-full max-w-[1200px]">
+    <div class="max-w-[60ch]">
+      <p
+        data-reveal
+        class="font-mono text-xs tracking-[0.18em] text-[var(--accent)] uppercase sm:text-sm"
+      >
+        {hero.kicker}
+      </p>
+
+      <h1
+        data-reveal
+        class="mt-6 font-display text-4xl leading-[1.04] font-semibold tracking-tight text-[var(--fg)] sm:text-5xl lg:text-6xl"
+      >
+        <span class="block">{hero.head2[0]}</span>
+        <span class="block text-[var(--accent)]">{hero.head2[1]}</span>
+      </h1>
+
+      <p
+        data-reveal
+        class="mt-6 max-w-[60ch] text-base leading-relaxed text-balance text-[var(--fg-muted)] sm:text-lg"
+      >
+        {hero.sub}
+      </p>
+
+      <div data-reveal class="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
+        <a
+          href={event.registrationUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="cta-primary inline-flex items-center justify-center gap-2 rounded-sm bg-[var(--cta)] px-6 py-3 font-mono text-sm font-medium tracking-wide text-[var(--cta-label)] uppercase transition-colors duration-150 hover:bg-[var(--cta-press)] active:bg-[var(--cta-press)]"
+        >
+          {hero.ctaPrimary}
+          <Icon name="ph:arrow-up-right-bold" class="h-4 w-4" />
+        </a>
+
+        <a
+          href="#programa"
+          class="cta-secondary inline-flex items-center justify-center gap-2 rounded-sm border border-[var(--accent-fill)] px-6 py-3 font-mono text-sm font-medium tracking-wide text-[var(--accent)] uppercase transition-colors duration-150 hover:bg-[var(--accent-fill)]/10"
+        >
+          {hero.ctaSecondary}
+          <Icon name="ph:arrow-down-bold" class="h-4 w-4" />
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Brand wordmark sits in the nav; the hero leads with the thesis headline
+     (head2) so the two display lines stay the dominant moment. head1 is the
+     accessible page name, carried by the nav wordmark and document title. */
+
+  /* Line-draw / fade-in of the blueprint backdrop, reduced-motion safe. */
+  @media (prefers-reduced-motion: no-preference) {
+    .blueprint-layer {
+      opacity: 0;
+      animation: blueprint-in 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+    }
+  }
+
+  @keyframes blueprint-in {
+    from {
+      opacity: 0;
+      transform: scale(0.96);
+    }
+    to {
+      opacity: 0.22;
+      transform: scale(1);
+    }
+  }
+
+  /* Reduced-motion / no-JS fallback: backdrop simply present at rest opacity. */
+  @media (prefers-reduced-motion: reduce) {
+    .blueprint-layer {
+      opacity: 0.18;
+    }
+  }
+</style>

@@ -1,0 +1,198 @@
+---
+import { Icon } from 'astro-icon/components';
+import { getLang, useTranslations } from '../i18n/utils';
+import { event } from '../i18n/ui';
+
+const lang = getLang(Astro);
+const t = useTranslations(lang);
+const nav = t.nav;
+---
+
+<header class="fixed inset-x-0 top-0 z-50 border-b border-[var(--border)] bg-[var(--bg)]/85 backdrop-blur-md">
+  <nav
+    aria-label={nav.menu}
+    class="mx-auto flex h-[72px] max-w-[1200px] items-center justify-between gap-6 px-6"
+  >
+    <!-- Wordmark: the brand "+" is the single rosa moment here -->
+    <a
+      href={lang === 'es' ? '/' : '/en/'}
+      class="shrink-0 font-display text-[15px] font-semibold tracking-tight text-[var(--fg)] sm:text-base"
+    >
+      Blockchain <span class="text-[var(--cta)]">+</span> AI Day
+    </a>
+
+    <!-- Desktop links -->
+    <ul class="hidden items-center gap-7 md:flex">
+      {
+        nav.links.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class="nav-link font-mono text-[13px] uppercase tracking-[0.08em] text-[var(--fg-muted)] transition-colors hover:text-[var(--accent)]"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <!-- Right cluster: language toggle + Register CTA -->
+    <div class="flex items-center gap-4">
+      <div
+        class="hidden items-center font-mono text-[12px] tracking-[0.08em] md:flex"
+        role="group"
+        aria-label={nav.language}
+      >
+        <a
+          href="/"
+          data-set-lang="es"
+          aria-current={lang === 'es' ? 'true' : undefined}
+          class:list={[
+            'px-1 transition-colors',
+            lang === 'es' ? 'text-[var(--fg)]' : 'text-[var(--fg-muted)] hover:text-[var(--accent)]',
+          ]}
+        >
+          ES
+        </a>
+        <span class="text-[var(--border)]" aria-hidden="true">/</span>
+        <a
+          href="/en/"
+          data-set-lang="en"
+          aria-current={lang === 'en' ? 'true' : undefined}
+          class:list={[
+            'px-1 transition-colors',
+            lang === 'en' ? 'text-[var(--fg)]' : 'text-[var(--fg-muted)] hover:text-[var(--accent)]',
+          ]}
+        >
+          EN
+        </a>
+      </div>
+
+      <a
+        href={event.registrationUrl}
+        target="_blank"
+        rel="noopener"
+        class="inline-flex items-center gap-1.5 rounded-sm bg-[var(--cta)] px-3.5 py-2 text-[13px] font-semibold text-[var(--cta-label)] transition-colors hover:bg-[var(--cta-press)] active:bg-[var(--cta-press)] sm:px-4"
+      >
+        {nav.register}
+        <Icon name="ph:arrow-up-right-bold" class="h-3.5 w-3.5" aria-hidden="true" />
+      </a>
+
+      <!-- Mobile disclosure trigger -->
+      <button
+        type="button"
+        id="nav-toggle"
+        aria-label={nav.menu}
+        aria-expanded="false"
+        aria-controls="nav-mobile"
+        class="flex h-9 w-9 items-center justify-center text-[var(--fg)] transition-colors hover:text-[var(--accent)] md:hidden"
+      >
+        <Icon name="ph:list-bold" class="icon-open h-5 w-5" aria-hidden="true" />
+        <Icon name="ph:x-bold" class="icon-close hidden h-5 w-5" aria-hidden="true" />
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile disclosure panel -->
+  <div
+    id="nav-mobile"
+    hidden
+    class="border-t border-[var(--border)] bg-[var(--bg)] px-6 py-5 md:hidden"
+  >
+    <ul class="flex flex-col gap-4">
+      {
+        nav.links.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              data-nav-mobile-link
+              class="block font-mono text-sm uppercase tracking-[0.08em] text-[var(--fg-muted)] transition-colors hover:text-[var(--accent)]"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div
+      class="mt-5 flex items-center gap-3 border-t border-[var(--border)] pt-5 font-mono text-xs tracking-[0.08em]"
+      role="group"
+      aria-label={nav.language}
+    >
+      <span class="text-[var(--fg-muted)]">{nav.language}</span>
+      <a
+        href="/"
+        data-set-lang="es"
+        aria-current={lang === 'es' ? 'true' : undefined}
+        class:list={[lang === 'es' ? 'text-[var(--fg)]' : 'text-[var(--fg-muted)] hover:text-[var(--accent)]']}
+      >
+        ES
+      </a>
+      <span class="text-[var(--border)]" aria-hidden="true">/</span>
+      <a
+        href="/en/"
+        data-set-lang="en"
+        aria-current={lang === 'en' ? 'true' : undefined}
+        class:list={[lang === 'en' ? 'text-[var(--fg)]' : 'text-[var(--fg-muted)] hover:text-[var(--accent)]']}
+      >
+        EN
+      </a>
+    </div>
+  </div>
+</header>
+
+<style>
+  /* Underline grows from the left on hover: cyan structural line-work. */
+  .nav-link {
+    position: relative;
+  }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    height: 1px;
+    width: 100%;
+    transform: scaleX(0);
+    transform-origin: left;
+    background: var(--accent-fill);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .nav-link:hover::after {
+    transform: scaleX(1);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .nav-link::after {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  const toggle = document.getElementById('nav-toggle');
+  const panel = document.getElementById('nav-mobile');
+
+  function setOpen(open: boolean) {
+    if (!toggle || !panel) return;
+    toggle.setAttribute('aria-expanded', String(open));
+    panel.hidden = !open;
+    toggle.querySelector('.icon-open')?.classList.toggle('hidden', open);
+    toggle.querySelector('.icon-close')?.classList.toggle('hidden', !open);
+  }
+
+  toggle?.addEventListener('click', () => {
+    setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+  });
+
+  // Close the panel after tapping an in-page anchor.
+  panel?.querySelectorAll('[data-nav-mobile-link]').forEach((el) => {
+    el.addEventListener('click', () => setOpen(false));
+  });
+
+  // Close on Escape for keyboard users.
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') setOpen(false);
+  });
+</script>
