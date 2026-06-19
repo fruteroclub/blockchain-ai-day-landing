@@ -67,8 +67,8 @@ These live in `src/i18n/ui.ts` (`event` export) and feed the JSON-LD in `Base.as
 
 ## Open decisions
 
-- **Production domain** — TBD (placeholder `blockchainaiday.xyz` in `astro.config.mjs`,
-  `robots.txt`). Update `site` + sitemap host once chosen.
+- **Production domain** — `https://bxai.frutero.club` (set as `site` in `astro.config.mjs`
+  and the `robots.txt` sitemap host). Attach the domain in the Vercel project + DNS.
 - **Sponsor/co-host logos on the page** pre-confirmation — needs Mel approval.
 - Whether to split this into its own git repo + Vercel project, or deploy the
   subdirectory from the `blockchain-ai-day` repo. Currently a subdirectory.

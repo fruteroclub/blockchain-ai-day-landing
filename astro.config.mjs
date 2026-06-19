@@ -6,9 +6,8 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  // TODO(open decision): set the real production domain once chosen.
-  // Used for canonical URLs, sitemap, OG image absolute URLs.
-  site: 'https://blockchainaiday.xyz',
+  // Production domain. Used for canonical URLs, sitemap, OG absolute URLs.
+  site: 'https://bxai.frutero.club',
   i18n: {
     // Spanish-first (CDMX / LATAM audience); English available at /en/.
     defaultLocale: 'es',
