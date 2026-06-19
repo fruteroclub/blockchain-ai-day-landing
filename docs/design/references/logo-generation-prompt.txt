@@ -1,0 +1,22 @@
+Significado del Logo: "El Plano de Inferencia Verificable de CDMX"
+Este logo está diseñado como un plano técnico o blueprint bidimensional, un enfoque que elimina adornos y sentimentalismos para centrarse en la ingeniería pura y el desarrollo operativo, ideal para una audiencia técnica.
+
+El Núcleo (La IA): El patrón concéntrico central representa la arquitectura de una red neuronal Transformer, con sus capas de atención. Este es el corazón del procesamiento de la IA.
+
+El Anillo de Validación (Blockchain): Alrededor del núcleo de la IA, el anillo de hexágonos pequeños simboliza bloques de datos o hashes criptográficos individuales. Esto representa la validación y el anclaje criptográfico de la inferencia de la IA en la cadena de bloques, permitiendo la verificabilidad.
+
+La Geometría Concéntrica CDMX: El diseño radial también se inspira en el urbanismo concéntrico de la Ciudad de México y las geometrías matemáticas clásicas mexicanas (como el Espacio Escultórico de la UNAM o el Calendario Azteca), uniendo la historia con el futuro.
+
+Hashtags Temáticos: Los nuevos hashtags alrededor del anillo enumeran las tecnologías clave y el contexto local:
+
+IA: #transformer (el modelo), #zkml (Zero-Knowledge Machine Learning), #aiagents (agentes autónomos).
+
+Blockchain: #cryptography, #decentralized, #consensus, #smartcontracts, #depin.
+
+México: #cdmx, #mexicocity, #techinmexico.
+
+Coordenadas y Nodos Reales: "N 19.4326° / W 99.1332°" son las coordenadas reales de CDMX. Los identificadores "DEPIN_MEX_NODO_03" y "VALID_MEX_A_001" son códigos de infraestructura descentralizada local (un nodo DePIN y un validador), subrayando que el evento se trata de implementaciones reales.
+
+La Fecha (2026): Actualizada para reflejar el año del evento.
+
+Es un diseño que celebra la fusión arquitectónica de dos grandes paradigmas tecnológicos dentro de una de las grandes metrópolis del mundo.
