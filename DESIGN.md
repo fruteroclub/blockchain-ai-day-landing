@@ -1,4 +1,4 @@
-# Blockchain x AI Day - Design System
+# AI x Blockchain Day - Design System
 
 Canonical reference for the landing page's design system, **as implemented**. Every
 value here is traceable to real code. The token source of truth is
