@@ -17,7 +17,7 @@ const t = useTranslations(lang);
 const cta = t.cta;
 ---
 
-<section class="bg-[var(--bg)] py-20 sm:py-28">
+<section class="bg-[var(--bg)] py-24 md:py-32">
   <div class="mx-auto max-w-[1200px] px-6">
     <div
       data-reveal
@@ -43,7 +43,7 @@ const cta = t.cta;
             href={event.registrationUrl}
             target="_blank"
             rel="noopener"
-            class="cta-button group inline-flex items-center gap-3 rounded-sm bg-[var(--cta)] px-8 py-4 text-base font-semibold text-[var(--cta-label)] transition-colors duration-150 hover:bg-[var(--cta-press)] active:bg-[var(--cta-press)]"
+            class="cta-button group inline-flex items-center gap-3 rounded-sm bg-[var(--cta)] px-8 py-4 font-mono text-sm font-medium uppercase tracking-wide text-[var(--cta-label)] transition-colors duration-150 hover:bg-[var(--cta-press)] active:bg-[var(--cta-press)]"
           >
             {cta.button}
             <Icon
