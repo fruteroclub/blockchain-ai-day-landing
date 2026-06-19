@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none" stroke="#5FE3DA" aria-hidden="true">
+  <!-- Blockchain + AI Day :: inference blueprint (Lance Wyman / Mexico 68 lineage) -->
+  <!-- concentric arcs -->
+  <circle cx="100" cy="100" r="28" stroke-width="0.75" opacity="0.5"/>
+  <circle cx="100" cy="100" r="46" stroke-width="0.75" opacity="0.5"/>
+  <circle cx="100" cy="100" r="64" stroke-width="0.75" opacity="0.5"/>
+  <circle cx="100" cy="100" r="82" stroke-width="0.75" opacity="0.5"/>
+  <circle cx="100" cy="100" r="96" stroke-width="1.25" opacity="0.9"/>
+  <!-- radiating spokes -->
+  <line x1="100.00" y1="70.00" x2="100.00" y2="8.00" stroke-width="0.5" opacity="0.4"/>
+  <line x1="107.76" y1="71.02" x2="123.81" y2="11.13" stroke-width="0.5" opacity="0.4"/>
+  <line x1="115.00" y1="74.02" x2="146.00" y2="20.33" stroke-width="0.5" opacity="0.4"/>
+  <line x1="121.21" y1="78.79" x2="165.05" y2="34.95" stroke-width="0.5" opacity="0.4"/>
+  <line x1="125.98" y1="85.00" x2="179.67" y2="54.00" stroke-width="0.5" opacity="0.4"/>
+  <line x1="128.98" y1="92.24" x2="188.87" y2="76.19" stroke-width="0.5" opacity="0.4"/>
+  <line x1="130.00" y1="100.00" x2="192.00" y2="100.00" stroke-width="0.5" opacity="0.4"/>
+  <line x1="128.98" y1="107.76" x2="188.87" y2="123.81" stroke-width="0.5" opacity="0.4"/>
+  <line x1="125.98" y1="115.00" x2="179.67" y2="146.00" stroke-width="0.5" opacity="0.4"/>
+  <line x1="121.21" y1="121.21" x2="165.05" y2="165.05" stroke-width="0.5" opacity="0.4"/>
+  <line x1="115.00" y1="125.98" x2="146.00" y2="179.67" stroke-width="0.5" opacity="0.4"/>
+  <line x1="107.76" y1="128.98" x2="123.81" y2="188.87" stroke-width="0.5" opacity="0.4"/>
+  <line x1="100.00" y1="130.00" x2="100.00" y2="192.00" stroke-width="0.5" opacity="0.4"/>
+  <line x1="92.24" y1="128.98" x2="76.19" y2="188.87" stroke-width="0.5" opacity="0.4"/>
+  <line x1="85.00" y1="125.98" x2="54.00" y2="179.67" stroke-width="0.5" opacity="0.4"/>
+  <line x1="78.79" y1="121.21" x2="34.95" y2="165.05" stroke-width="0.5" opacity="0.4"/>
+  <line x1="74.02" y1="115.00" x2="20.33" y2="146.00" stroke-width="0.5" opacity="0.4"/>
+  <line x1="71.02" y1="107.76" x2="11.13" y2="123.81" stroke-width="0.5" opacity="0.4"/>
+  <line x1="70.00" y1="100.00" x2="8.00" y2="100.00" stroke-width="0.5" opacity="0.4"/>
+  <line x1="71.02" y1="92.24" x2="11.13" y2="76.19" stroke-width="0.5" opacity="0.4"/>
+  <line x1="74.02" y1="85.00" x2="20.33" y2="54.00" stroke-width="0.5" opacity="0.4"/>
+  <line x1="78.79" y1="78.79" x2="34.95" y2="34.95" stroke-width="0.5" opacity="0.4"/>
+  <line x1="85.00" y1="74.02" x2="54.00" y2="20.33" stroke-width="0.5" opacity="0.4"/>
+  <line x1="92.24" y1="71.02" x2="76.19" y2="11.13" stroke-width="0.5" opacity="0.4"/>
+  <!-- hexagon validation ring -->
+  <path d="M 170.00,93.50 L 175.63,96.75 L 175.63,103.25 L 170.00,106.50 L 164.37,103.25 L 164.37,96.75 Z" stroke-width="1" opacity="0.85"/>
+  <path d="M 160.62,128.50 L 166.25,131.75 L 166.25,138.25 L 160.62,141.50 L 154.99,138.25 L 154.99,131.75 Z" stroke-width="1" opacity="0.85"/>
+  <path d="M 135.00,154.12 L 140.63,157.37 L 140.63,163.87 L 135.00,167.12 L 129.37,163.87 L 129.37,157.37 Z" stroke-width="1" opacity="0.85"/>
+  <path d="M 100.00,163.50 L 105.63,166.75 L 105.63,173.25 L 100.00,176.50 L 94.37,173.25 L 94.37,166.75 Z" stroke-width="1" opacity="0.85"/>
+  <path d="M 65.00,154.12 L 70.63,157.37 L 70.63,163.87 L 65.00,167.12 L 59.37,163.87 L 59.37,157.37 Z" stroke-width="1" opacity="0.85"/>
+  <path d="M 39.38,128.50 L 45.01,131.75 L 45.01,138.25 L 39.38,141.50 L 33.75,138.25 L 33.75,131.75 Z" stroke-width="1" opacity="0.85"/>
+  <path d="M 30.00,93.50 L 35.63,96.75 L 35.63,103.25 L 30.00,106.50 L 24.37,103.25 L 24.37,96.75 Z" stroke-width="1" opacity="0.85"/>
+  <path d="M 39.38,58.50 L 45.01,61.75 L 45.01,68.25 L 39.38,71.50 L 33.75,68.25 L 33.75,61.75 Z" stroke-width="1" opacity="0.85"/>
+  <path d="M 65.00,32.88 L 70.63,36.13 L 70.63,42.63 L 65.00,45.88 L 59.37,42.63 L 59.37,36.13 Z" stroke-width="1" opacity="0.85"/>
+  <path d="M 100.00,23.50 L 105.63,26.75 L 105.63,33.25 L 100.00,36.50 L 94.37,33.25 L 94.37,26.75 Z" stroke-width="1" opacity="0.85"/>
+  <path d="M 135.00,32.88 L 140.63,36.13 L 140.63,42.63 L 135.00,45.88 L 129.37,42.63 L 129.37,36.13 Z" stroke-width="1" opacity="0.85"/>
+  <path d="M 160.62,58.50 L 166.25,61.75 L 166.25,68.25 L 160.62,71.50 L 154.99,68.25 L 154.99,61.75 Z" stroke-width="1" opacity="0.85"/>
+  <!-- transformer core -->
+  <circle cx="100" cy="100" r="10" stroke-width="1.5" opacity="0.95"/>
+  <circle cx="100" cy="100" r="2.5" fill="#5FE3DA" stroke="none" opacity="0.95"/>
+</svg>
