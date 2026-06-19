@@ -13,12 +13,14 @@ const nav = t.nav;
     aria-label={nav.menu}
     class="mx-auto flex h-[72px] max-w-[1200px] items-center justify-between gap-6 px-6"
   >
-    <!-- Wordmark: the brand "+" is the single rosa moment here -->
+    <!-- Wordmark: logo mark + the brand "+" is the single rosa moment here -->
     <a
       href={lang === 'es' ? '/' : '/en/'}
-      class="shrink-0 font-display text-[15px] font-semibold tracking-tight text-[var(--fg)] sm:text-base"
+      aria-label="Blockchain + AI Day"
+      class="flex shrink-0 items-center gap-2.5 font-display text-xl font-semibold tracking-tight text-[var(--fg)] sm:text-2xl"
     >
-      Blockchain <span class="text-[var(--cta)]">+</span> AI Day
+      <img src="/logo/blockchain-ai-day.svg" alt="" width="40" height="40" class="h-10 w-10" />
+      <span class="hidden sm:inline">Blockchain <span class="text-[var(--cta)]">+</span> AI Day</span>
     </a>
 
     <!-- Desktop links -->
