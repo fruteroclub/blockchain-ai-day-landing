@@ -1,4 +1,4 @@
-# Blockchain + AI Day - Design System
+# Blockchain x AI Day - Design System
 
 Canonical reference for the landing page's design system, **as implemented**. Every
 value here is traceable to real code. The token source of truth is
@@ -63,7 +63,7 @@ utilities: `bg-[var(--surface)]`, `text-[var(--fg-muted)]`, `border-[var(--borde
 | `--fg-muted` | secondary text | `n-300` | `n-500` |
 | `--accent` | cyan text / links / icons / eyebrows | `cyan-400` | `cyan-700` |
 | `--accent-fill` | cyan drawn lines / borders / fills | `cyan-500` | `cyan-500` |
-| `--cta` | primary Register CTA fill + brand `+` | `rosa-500` | `rosa-500` |
+| `--cta` | Register CTA fill + brand mark (`x` in name, `+` on eyebrows) | `rosa-500` | `rosa-500` |
 | `--cta-label` | text on the rosa CTA | `n-0` | `n-0` |
 | `--cta-press` | CTA hover / active | `rosa-600` | `rosa-600` |
 
@@ -85,9 +85,9 @@ Two accents, fixed jobs, never swapped. No third accent. Neutrals stay mono.
     (cyan-500) for actually drawn lines / borders / fills.
 - **Rosa mexicana (`--cta` / `--cta-press`) = the action + the brand mark.** The
   primary Register CTA fill (everywhere), the "become a sponsor" tile, the
-  `::selection` highlight, and the brand `+` glyph (Nav wordmark, Program eyebrow,
-  Footer brand). Rosa appears nowhere else. Format and Venue intentionally have no
-  rosa moment.
+  `::selection` highlight, and the brand mark: the rosa `x` in the Nav / Footer
+  wordmark and the rosa `+` on section eyebrows (Program). Rosa appears nowhere
+  else. Format and Venue intentionally have no rosa moment.
 
 Audited: zero off-role accent usage in the current build. Keep it that way.
 
@@ -305,8 +305,8 @@ to every section.
   `dateISOStart/End`, `registrationUrl`, `venue`). The Register buttons and the
   schema.org `Event` JSON-LD in `Base.astro` both read it. Do not hard-code the date,
   venue, or Luma URL.
-- **The brand `+`** is the only non-CTA rosa, rendered `text-[var(--cta)]` in the Nav
-  wordmark, Program eyebrow, and Footer brand.
+- **The brand mark** is the only non-CTA rosa, rendered `text-[var(--cta)]`: the `x`
+  in the Nav / Footer wordmark and the `+` on section eyebrows (Program).
 - **Image strategy:** the page is geometry-first. One real image (Venue map) as a
   `picsum.photos` placeholder with a `TODO` for a real embed. OG image and favicons
   are still neutral placeholders. No div-based fake screenshots, no decorative

@@ -1,6 +1,6 @@
-# Blockchain + AI Day — Landing Page
+# Blockchain x AI Day — Landing Page
 
-Marketing site for **Blockchain + AI Day**, a one-day event at the intersection
+Marketing site for **Blockchain x AI Day**, a one-day event at the intersection
 of Blockchain and AI. Thursday, July 9, 2026, Centro Histórico, Mexico City.
 
 Part of the `blockchain-ai-day` internOS project, owned by the

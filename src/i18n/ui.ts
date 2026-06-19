@@ -11,7 +11,7 @@ export const localeNames = { es: 'ES', en: 'EN' } as const;
 
 // Shared, locale-independent event facts (single source of truth).
 export const event = {
-  name: 'Blockchain + AI Day',
+  name: 'Blockchain x AI Day',
   dateISOStart: '2026-07-09T11:00:00-06:00',
   dateISOEnd: '2026-07-09T19:00:00-06:00',
   registrationUrl: 'https://luma.com/3rzgnv6f',
@@ -28,7 +28,7 @@ export const event = {
 export const ui = {
   es: {
     meta: {
-      title: 'Blockchain + AI Day · 9 de julio, CDMX',
+      title: 'Blockchain x AI Day · 9 de julio, CDMX',
       description:
         'Un día completo en la intersección de Blockchain e IA para builders, startups, empresas y comunidades. Jueves 9 de julio de 2026, Centro Histórico, Ciudad de México.',
     },
@@ -45,7 +45,7 @@ export const ui = {
     },
     hero: {
       kicker: 'JUE 09 JUL 2026 · 11:00 a 19:00 · CDMX',
-      head1: 'Blockchain + AI Day',
+      head1: 'Blockchain x AI Day',
       head2: ['Donde la inferencia', 'se vuelve verificable.'],
       sub: 'Un día para builders en la intersección de Blockchain e IA. Centro Histórico, Ciudad de México.',
       ctaPrimary: 'Registrarme',
@@ -55,7 +55,7 @@ export const ui = {
       eyebrow: 'Qué es',
       head: 'Un día en la frontera de dos sistemas que ya convergen.',
       body: [
-        'Blockchain + AI Day reúne a quienes construyen en serio: ingenieros de cripto e IA, fundadores, gente de protocolo e infraestructura, y comunidades técnicas de CDMX y LATAM.',
+        'Blockchain x AI Day reúne a quienes construyen en serio: ingenieros de cripto e IA, fundadores, gente de protocolo e infraestructura, y comunidades técnicas de CDMX y LATAM.',
         'IA da capacidad. Blockchain da verificación. La pregunta no es si convergen, sino qué se puede construir cuando la inferencia, la procedencia y la coordinación viven en la misma capa.',
         'Sin hype y sin paneles de relleno. Charlas densas, talleres con código y tiempo real para construir y conocer gente.',
       ],
@@ -134,7 +134,7 @@ export const ui = {
       head: 'Preguntas frecuentes',
       items: [
         {
-          q: '¿Qué es Blockchain + AI Day?',
+          q: '¿Qué es Blockchain x AI Day?',
           a: 'Un evento de un día en la intersección de Blockchain e IA, hecho para builders. Charlas, talleres con código, demos, cinema y cowork en una sola sede.',
         },
         {
@@ -170,7 +170,7 @@ export const ui = {
 
   en: {
     meta: {
-      title: 'Blockchain + AI Day · July 9, Mexico City',
+      title: 'Blockchain x AI Day · July 9, Mexico City',
       description:
         'A full day at the intersection of Blockchain and AI for builders, startups, companies, and communities. Thursday, July 9, 2026, Centro Histórico, Mexico City.',
     },
@@ -187,7 +187,7 @@ export const ui = {
     },
     hero: {
       kicker: 'THU 09 JUL 2026 · 11:00 to 19:00 · CDMX',
-      head1: 'Blockchain + AI Day',
+      head1: 'Blockchain x AI Day',
       head2: ['Where inference', 'becomes verifiable.'],
       sub: 'A day for builders at the intersection of Blockchain and AI. Centro Histórico, Mexico City.',
       ctaPrimary: 'Register',
@@ -197,7 +197,7 @@ export const ui = {
       eyebrow: 'What it is',
       head: 'A day on the frontier of two systems already converging.',
       body: [
-        'Blockchain + AI Day brings together people who build for real: crypto and AI engineers, founders, protocol and infra people, and technical communities from CDMX and LATAM.',
+        'Blockchain x AI Day brings together people who build for real: crypto and AI engineers, founders, protocol and infra people, and technical communities from CDMX and LATAM.',
         'AI gives capability. Blockchain gives verification. The question is not whether they converge, but what you can build once inference, provenance, and coordination live in the same layer.',
         'No hype and no filler panels. Dense talks, hands-on workshops with code, and real time to build and meet people.',
       ],
@@ -276,7 +276,7 @@ export const ui = {
       head: 'Frequently asked questions',
       items: [
         {
-          q: 'What is Blockchain + AI Day?',
+          q: 'What is Blockchain x AI Day?',
           a: 'A one-day event at the intersection of Blockchain and AI, made for builders. Talks, hands-on workshops with code, demos, cinema, and cowork in one venue.',
         },
         {
