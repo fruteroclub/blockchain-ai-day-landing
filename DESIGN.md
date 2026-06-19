@@ -60,7 +60,7 @@ utilities: `bg-[var(--surface)]`, `text-[var(--fg-muted)]`, `border-[var(--borde
 | `--surface-2` | raised / feature cells | `n-800` | `n-200` |
 | `--border` | hairlines, rules | `n-700` | `n-200` |
 | `--fg` | primary text | `n-50` | `n-900` |
-| `--fg-muted` | secondary text | `n-400` | `n-500` |
+| `--fg-muted` | secondary text | `n-300` | `n-500` |
 | `--accent` | cyan text / links / icons / eyebrows | `cyan-400` | `cyan-700` |
 | `--accent-fill` | cyan drawn lines / borders / fills | `cyan-500` | `cyan-500` |
 | `--cta` | primary Register CTA fill + brand `+` | `rosa-500` | `rosa-500` |

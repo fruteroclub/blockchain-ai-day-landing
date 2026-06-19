@@ -23,7 +23,7 @@
 /* DARK is the default + locked theme */
 :root {
   --bg:var(--color-n-900); --surface:var(--color-n-850); --surface-2:var(--color-n-800);
-  --border:var(--color-n-700); --fg:var(--color-n-50); --fg-muted:var(--color-n-400);
+  --border:var(--color-n-700); --fg:var(--color-n-50); --fg-muted:var(--color-n-300);
   --accent:var(--color-cyan-400); --accent-fill:var(--color-cyan-500);
   --cta:var(--color-rosa-500); --cta-label:var(--color-n-0); --cta-press:var(--color-rosa-600);
 }
