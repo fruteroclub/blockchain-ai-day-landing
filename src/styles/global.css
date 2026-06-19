@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+/* ════════════════════════════════════════════════════════════════════════
+   DESIGN IDENTITY: NOT YET DEFINED.
+
+   This is a NEUTRAL placeholder token set so the project builds and runs.
+   The real visual identity (palette, type, motion, shape) is produced in the
+   design phase via the design brief + the design-taste-frontend skill
+   (https://www.tasteskill.dev/guide). When that lands, REPLACE this @theme
+   block and the base layer below with the chosen system.
+
+   Deliberately avoided here (so we don't pre-bake an identity to undo later):
+   no brand palette, no serif-by-default, system fonts only.
+   ════════════════════════════════════════════════════════════════════════ */
+@theme {
+  /* Neutral grayscale placeholder. Replace with the brand palette. */
+  --color-ink: #111114;
+  --color-muted: #5b5b66;
+  --color-line: #e3e3e8;
+  --color-surface: #f7f7f9;
+  --color-paper: #ffffff;
+  --color-accent: #2b59ff; /* PLACEHOLDER accent, not a brand decision */
+
+  /* System fonts until the identity picks self-hosted faces (via @fontsource). */
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+:root {
+  --background: var(--color-paper);
+  --foreground: var(--color-ink);
+  --muted-foreground: var(--color-muted);
+  --border: var(--color-line);
+  --accent: var(--color-accent);
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    background-color: var(--background);
+    color: var(--foreground);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}
+
+/* ─── Reusable motion primitive (architecture, not identity) ──────────────
+   Gentle fade-up on scroll-enter, driven by [data-reveal] + the
+   IntersectionObserver in Base.astro. Honors prefers-reduced-motion. */
+@media (prefers-reduced-motion: no-preference) {
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+      opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
