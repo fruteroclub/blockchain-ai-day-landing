@@ -7,7 +7,7 @@ import tailwindcss from '@tailwindcss/vite';
 // https://astro.build/config
 export default defineConfig({
   // Production domain. Used for canonical URLs, sitemap, OG absolute URLs.
-  site: 'https://bxai.frutero.club',
+  site: 'https://aixb.frutero.club',
   i18n: {
     // Spanish-first (CDMX / LATAM audience); English available at /en/.
     defaultLocale: 'es',
