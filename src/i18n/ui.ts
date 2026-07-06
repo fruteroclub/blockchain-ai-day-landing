@@ -12,8 +12,8 @@ export const localeNames = { es: 'ES', en: 'EN' } as const;
 // Shared, locale-independent event facts (single source of truth).
 export const event = {
   name: 'AI x Blockchain Day',
-  dateISOStart: '2026-07-09T11:00:00-06:00',
-  dateISOEnd: '2026-07-09T19:00:00-06:00',
+  dateISOStart: '2026-07-09T10:00:00-06:00',
+  dateISOEnd: '2026-07-09T17:00:00-06:00',
   registrationUrl: 'https://luma.com/3rzgnv6f',
   venue: {
     name: 'Centro Histórico (CDMX)',
@@ -44,7 +44,7 @@ export const ui = {
       menu: 'Menú',
     },
     hero: {
-      kicker: 'JUE 09 JUL 2026 · 11:00 a 19:00 · CDMX',
+      kicker: 'JUE 09 JUL 2026 · 10:00 a 17:00 · CDMX',
       head1: 'AI x Blockchain Day',
       head2: ['Donde la inferencia', 'se vuelve verificable.'],
       sub: 'Un día para builders en la intersección de IA y Blockchain. Centro Histórico, Ciudad de México.',
@@ -62,32 +62,120 @@ export const ui = {
     },
     program: {
       eyebrow: 'Programa',
-      head: 'Cuatro zonas, un solo día.',
-      sub: 'El espacio se organiza como un mapa de líneas: cada zona con su aforo y su ritmo. Te mueves entre ellas a lo largo del día.',
-      zones: [
+      head: 'La agenda del día.',
+      sub: 'Abrimos con coworking a las 10:00. Desde las 12:00 corren charlas y talleres en paralelo. Después seguimos con paneles, presentaciones de comunidad, networking y cierre.',
+      facts: [
+        { label: 'Horario', value: '10:00 - 17:00' },
+        { label: 'Tracks', value: 'Main Stage + Workshops' },
+        { label: 'Formato', value: 'Charlas, talleres, paneles y networking' },
+      ],
+      tracks: {
+        main: 'Main Stage',
+        workshop: 'Workshops',
+        cowork: 'Coworking',
+      },
+      timeline: [
         {
-          key: 'main',
-          name: 'Escenario principal',
-          capacity: '80',
-          desc: 'Charlas técnicas sobre la convergencia de IA y blockchain: inferencia verificable, agentes, infraestructura y casos reales.',
+          time: '10:00',
+          sessions: [
+            { track: 'cowork', title: 'Coworking abierto' },
+          ],
         },
         {
-          key: 'workshop',
-          name: 'Taller',
-          capacity: '20',
-          desc: 'Sesiones prácticas con código. Cupo reducido para que de verdad construyas algo y te lleves un repo funcionando.',
+          time: '12:00',
+          sessions: [
+            {
+              track: 'main',
+              title: 'Cómo prepararse para el trabajo del futuro',
+              desc: 'Qué están buscando las empresas en la intersección IA x Blockchain',
+            },
+            {
+              track: 'workshop',
+              title: 'Fundamentos IA x Blockchain',
+              desc: 'Aprende cómo funcionan estas tecnologías de frontera sin conocimiento técnico',
+            },
+          ],
         },
         {
-          key: 'cinema',
-          name: 'Cinema',
-          capacity: '20',
-          desc: 'Proyecciones y sesiones de formato largo: deep dives, demos comentadas y conversaciones sin reloj.',
+          time: '12:30',
+          sessions: [
+            {
+              track: 'main',
+              title: 'Infraestructura para el Comercio Agéntico',
+              desc: 'Cómo se integran los sistemas de IA y Blockchain para habilitar pagos',
+            },
+            {
+              track: 'workshop',
+              title: 'Lanza tu propio Agente Mentor',
+              desc: 'Empieza a construir con una IA que te explica mientras construye lo que le pides',
+            },
+          ],
         },
         {
-          key: 'cowork',
-          name: 'Cowork',
-          capacity: '40-60',
-          desc: 'Mesa larga para trabajar, hacer pair y conocer gente. El hilo de networking que conecta todas las zonas.',
+          time: '13:00',
+          sessions: [
+            {
+              track: 'main',
+              title: 'IA para acelerar la educación Blockchain',
+              desc: 'Desarrollando el ecosistema con herramientas y contenido',
+            },
+            {
+              track: 'workshop',
+              title: 'Dale un trabajo a tu Agente',
+              desc: 'Aprende con tu Agente a construir servicios web',
+            },
+          ],
+        },
+        {
+          time: '13:30',
+          sessions: [
+            {
+              track: 'main',
+              title: 'Más allá de la frontera IA x Blockchain',
+              desc: 'Cómo se desarrollará el ecosistema en los próximos años',
+            },
+            {
+              track: 'workshop',
+              title: 'Un Agente que cobra por trabajo',
+              desc: 'Habilita pagos para que tu Agente pueda vender sus servicios en un marketplace',
+            },
+          ],
+        },
+        {
+          time: '14:00',
+          sessions: [
+            { track: 'main', title: 'Identidad después de la explosión de IA' },
+          ],
+        },
+        {
+          time: '14:40',
+          sessions: [
+            { track: 'main', title: 'Cuando los Agentes tienen dinero' },
+          ],
+        },
+        {
+          time: '15:20',
+          sessions: [
+            { track: 'main', title: 'Community presentations' },
+          ],
+        },
+        {
+          time: '16:00',
+          sessions: [
+            { track: 'main', title: 'Networking' },
+          ],
+        },
+        {
+          time: '16:30',
+          sessions: [
+            { track: 'main', title: 'Networking' },
+          ],
+        },
+        {
+          time: '17:00',
+          sessions: [
+            { track: 'main', title: 'Fin del evento' },
+          ],
         },
       ],
     },
@@ -126,7 +214,7 @@ export const ui = {
     venue: {
       head: 'Sede',
       addressLines: ['José María Izazaga 8, Primer Piso', 'Centro Histórico, Alcaldía Cuauhtémoc', 'CP 06080, Ciudad de México'],
-      when: 'Jueves 9 de julio de 2026, de 11:00 a 19:00.',
+      when: 'Jueves 9 de julio de 2026, de 10:00 a 17:00.',
       arrive: 'Centro Histórico. Metro más cercano: Isabel la Católica (Línea 1), a unas dos cuadras.',
       mapAlt: 'Mapa del Centro Histórico de la Ciudad de México con la ubicación de la sede.',
     },
@@ -151,7 +239,7 @@ export const ui = {
         },
         {
           q: '¿Cuál es el horario?',
-          a: 'Jueves 9 de julio de 2026, de 11:00 a 19:00, hora de la Ciudad de México.',
+          a: 'Jueves 9 de julio de 2026, de 10:00 a 17:00, hora de la Ciudad de México.',
         },
       ],
     },
@@ -186,7 +274,7 @@ export const ui = {
       menu: 'Menu',
     },
     hero: {
-      kicker: 'THU 09 JUL 2026 · 11:00 to 19:00 · CDMX',
+      kicker: 'THU 09 JUL 2026 · 10:00 to 17:00 · CDMX',
       head1: 'AI x Blockchain Day',
       head2: ['Where inference', 'becomes verifiable.'],
       sub: 'A day for builders at the intersection of AI and Blockchain. Centro Histórico, Mexico City.',
@@ -204,32 +292,120 @@ export const ui = {
     },
     program: {
       eyebrow: 'Program',
-      head: 'Four zones, one day.',
-      sub: 'The space is laid out like a line map: each zone has its own capacity and pace. You move between them through the day.',
-      zones: [
+      head: "The day's agenda.",
+      sub: 'We open with coworking at 10:00. From 12:00, talks and workshops run in parallel. Then panels, community presentations, networking, and close.',
+      facts: [
+        { label: 'Hours', value: '10:00 - 17:00' },
+        { label: 'Tracks', value: 'Main Stage + Workshops' },
+        { label: 'Format', value: 'Talks, workshops, panels, and networking' },
+      ],
+      tracks: {
+        main: 'Main Stage',
+        workshop: 'Workshops',
+        cowork: 'Coworking',
+      },
+      timeline: [
         {
-          key: 'main',
-          name: 'Main stage',
-          capacity: '80',
-          desc: 'Technical talks on the convergence of AI and blockchain: verifiable inference, agents, infrastructure, and real cases.',
+          time: '10:00',
+          sessions: [
+            { track: 'cowork', title: 'Coworking opens' },
+          ],
         },
         {
-          key: 'workshop',
-          name: 'Workshop',
-          capacity: '20',
-          desc: 'Hands-on sessions with code. Small capacity so you actually build something and leave with a working repo.',
+          time: '12:00',
+          sessions: [
+            {
+              track: 'main',
+              title: 'How to prepare for the future of work',
+              desc: 'What companies are looking for at the AI x Blockchain intersection',
+            },
+            {
+              track: 'workshop',
+              title: 'AI x Blockchain Fundamentals',
+              desc: 'Learn how these frontier technologies work without technical knowledge',
+            },
+          ],
         },
         {
-          key: 'cinema',
-          name: 'Cinema',
-          capacity: '20',
-          desc: 'Screenings and long-form sessions: deep dives, narrated demos, and conversations off the clock.',
+          time: '12:30',
+          sessions: [
+            {
+              track: 'main',
+              title: 'Infrastructure for Agentic Commerce',
+              desc: 'How AI and Blockchain systems integrate to enable payments',
+            },
+            {
+              track: 'workshop',
+              title: 'Launch Your Own Mentor Agent',
+              desc: 'Start building with an AI that explains while it builds what you ask for',
+            },
+          ],
         },
         {
-          key: 'cowork',
-          name: 'Cowork',
-          capacity: '40-60',
-          desc: 'A long table to work, pair, and meet people. The networking thread that connects every zone.',
+          time: '13:00',
+          sessions: [
+            {
+              track: 'main',
+              title: 'AI to accelerate Blockchain education',
+              desc: 'Developing the ecosystem with tools and content',
+            },
+            {
+              track: 'workshop',
+              title: 'Give Your Agent a Job',
+              desc: 'Learn with your Agent to build web services',
+            },
+          ],
+        },
+        {
+          time: '13:30',
+          sessions: [
+            {
+              track: 'main',
+              title: 'Beyond the AI x Blockchain frontier',
+              desc: 'How the ecosystem will develop over the coming years',
+            },
+            {
+              track: 'workshop',
+              title: 'An Agent That Charges for Work',
+              desc: 'Enable payments so your Agent can sell its services in a marketplace',
+            },
+          ],
+        },
+        {
+          time: '14:00',
+          sessions: [
+            { track: 'main', title: 'Identity after the AI explosion' },
+          ],
+        },
+        {
+          time: '14:40',
+          sessions: [
+            { track: 'main', title: 'When Agents have money' },
+          ],
+        },
+        {
+          time: '15:20',
+          sessions: [
+            { track: 'main', title: 'Community presentations' },
+          ],
+        },
+        {
+          time: '16:00',
+          sessions: [
+            { track: 'main', title: 'Networking' },
+          ],
+        },
+        {
+          time: '16:30',
+          sessions: [
+            { track: 'main', title: 'Networking' },
+          ],
+        },
+        {
+          time: '17:00',
+          sessions: [
+            { track: 'main', title: 'Event closes' },
+          ],
         },
       ],
     },
@@ -268,7 +444,7 @@ export const ui = {
     venue: {
       head: 'Venue',
       addressLines: ['José María Izazaga 8, First Floor', 'Centro Histórico, Alcaldía Cuauhtémoc', 'CP 06080, Mexico City'],
-      when: 'Thursday, July 9, 2026, from 11:00 to 19:00.',
+      when: 'Thursday, July 9, 2026, from 10:00 to 17:00.',
       arrive: 'Centro Histórico. Nearest Metro: Isabel la Católica (Line 1), about two blocks away.',
       mapAlt: 'Map of the Centro Histórico in Mexico City with the venue location.',
     },
@@ -293,7 +469,7 @@ export const ui = {
         },
         {
           q: 'What are the hours?',
-          a: 'Thursday, July 9, 2026, from 11:00 to 19:00, Mexico City time.',
+          a: 'Thursday, July 9, 2026, from 10:00 to 17:00, Mexico City time.',
         },
       ],
     },
