@@ -1,0 +1,813 @@
+---
+import '@fontsource-variable/space-grotesk';
+import '@fontsource-variable/jetbrains-mono';
+import '../styles/global.css';
+import { Icon } from 'astro-icon/components';
+import Analytics from '../components/Analytics.astro';
+import Blueprint from '../components/primitives/Blueprint.astro';
+import { event, ui } from '../i18n/ui';
+
+const title = 'Sponsor AI x Blockchain Day';
+const description =
+  'A commercial one-pager for AI x Blockchain Day, a July 9 builder event in Mexico City for teams working on agents, payments, identity, wallets, and decentralized infrastructure.';
+const canonical = new URL('/one-pager/', Astro.site);
+
+const facts = [
+  { label: 'Date', value: 'Thursday, July 9, 2026' },
+  { label: 'Hours', value: 'Coworking 10:00 to 12:00. Main program 12:00 to 17:00.' },
+  { label: 'Venue', value: 'José María Izazaga 8, First Floor, Centro Histórico, CDMX' },
+  { label: 'Audience', value: 'Builders, founders, operators, protocol teams, and technical communities' },
+];
+
+const programData = ui.en.program;
+
+type Track = keyof typeof programData.tracks;
+type Session = {
+  track: Track;
+  title: string;
+  desc?: string;
+};
+type ProgramSlot = {
+  time: string;
+  sessions: readonly Session[];
+};
+
+const programTimeline = programData.timeline as readonly ProgramSlot[];
+const isSingleTrack = (slot: ProgramSlot) => slot.sessions.length === 1;
+const hasDescription = (session: Session) => Boolean(session.desc);
+
+const programStats = [
+  { label: 'Main-stage sessions', value: '4' },
+  { label: 'Hands-on workshops', value: '4' },
+  { label: 'Panels', value: '2' },
+  { label: 'Community block', value: '15:20' },
+];
+
+const sponsorReasons = [
+  {
+    title: 'Enter a qualified technical room',
+    body: 'The audience is already working with agents, wallets, payments, infrastructure, content, and community tooling.',
+  },
+  {
+    title: 'Show up through useful content',
+    body: 'The strongest sponsor moments are talks, workshops, demos, and focused activations that help attendees build or decide.',
+  },
+  {
+    title: 'Stay visible around the event',
+    body: 'Sponsor presence can extend across Luma, printed materials, relevant event publications, and the post-event recap.',
+  },
+  {
+    title: 'Support the CDMX builder network',
+    body: 'Sponsorship helps cover food, coffee, signage, operations, community programming, and recap assets.',
+  },
+];
+
+const activationPaths = [
+  {
+    type: 'Developer tooling / infrastructure',
+    body: 'Bring a workshop and technical demo for builders who want to leave with something running.',
+    cta: 'Plan a workshop',
+  },
+  {
+    type: 'Wallets / identity / payments',
+    body: 'Lead a main-stage conversation with founders and operators working where agents meet transaction rails.',
+    cta: 'Shape a main-stage session',
+  },
+  {
+    type: 'AI infrastructure',
+    body: 'Run a builder-facing session that positions the team with startups, engineers, and protocol operators.',
+    cta: 'Design the builder session',
+  },
+  {
+    type: 'Community / ecosystem partner',
+    body: 'Support the room with ecosystem recognition, community presence, and recap visibility.',
+    cta: 'Join as ecosystem partner',
+  },
+];
+
+const nextSteps = [
+  'Sponsor objective: brand, hiring, developer adoption, founder relationships, or ecosystem support.',
+  'Best-fit activation path.',
+  'Proposed topic and speaker.',
+  'Logo and material deadlines.',
+  'Payment and confirmation process.',
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href={canonical} />
+
+    <link rel="icon" href="/favicon/favicon.ico" sizes="any" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+    <meta name="theme-color" content="#0E141D" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={event.name} />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL('/social/ai-x-blockchain-day-program-social-en-1200x675.png', Astro.site)} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="675" />
+    <meta property="og:image:alt" content="AI x Blockchain Day program overview." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL('/social/ai-x-blockchain-day-program-social-en-1200x675.png', Astro.site)} />
+  </head>
+  <body class="min-h-[100dvh] bg-[var(--bg)] text-[var(--fg)]">
+    <header class="fixed inset-x-0 top-0 z-50 border-b border-[var(--border)] bg-[var(--bg)]/85 backdrop-blur-md">
+      <nav
+        aria-label="One-pager navigation"
+        class="mx-auto flex h-[72px] max-w-[1200px] items-center justify-between gap-6 px-6"
+      >
+        <a
+          href="/"
+          aria-label="AI x Blockchain Day home"
+          class="flex shrink-0 items-center gap-2.5 font-display text-xl font-semibold tracking-tight text-[var(--fg)] sm:text-2xl"
+        >
+          <img src="/logo/blockchain-ai-day.svg" alt="" width="40" height="40" class="h-10 w-10" />
+          <span class="hidden sm:inline">AI <span class="font-bold text-[var(--cta)]">x</span> Blockchain Day</span>
+        </a>
+
+        <ul class="hidden items-center gap-7 md:flex">
+          <li>
+            <a href="#program" class="nav-link font-mono text-[13px] uppercase tracking-[0.08em] text-[var(--fg-muted)] transition-colors hover:text-[var(--accent)]">Program</a>
+          </li>
+          <li>
+            <a href="#why-sponsor" class="nav-link font-mono text-[13px] uppercase tracking-[0.08em] text-[var(--fg-muted)] transition-colors hover:text-[var(--accent)]">Why sponsor</a>
+          </li>
+          <li>
+            <a href="#activation-fit" class="nav-link font-mono text-[13px] uppercase tracking-[0.08em] text-[var(--fg-muted)] transition-colors hover:text-[var(--accent)]">Activation fit</a>
+          </li>
+        </ul>
+
+        <a
+          href="#next-step"
+          class="inline-flex items-center gap-1.5 rounded-sm bg-[var(--cta)] px-3.5 py-2 font-mono text-xs font-medium uppercase tracking-wide text-[var(--cta-label)] transition-colors hover:bg-[var(--cta-press)] active:bg-[var(--cta-press)] sm:px-4"
+        >
+          Next step
+          <Icon name="ph:arrow-down-bold" class="h-3.5 w-3.5" aria-hidden="true" />
+        </a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="relative isolate overflow-hidden bg-[var(--bg)] px-6 pt-[calc(72px+4rem)] pb-24 md:pb-32 lg:pt-[calc(72px+6rem)]">
+        <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
+          <Blueprint
+            class="absolute top-1/2 left-1/2 h-[140vmin] w-[140vmin] -translate-y-1/2 text-[var(--accent)] opacity-[0.2] md:left-auto md:right-[-18vmin] md:translate-x-0"
+          />
+          <div class="absolute inset-x-0 top-1/2 hidden h-px bg-[var(--border)] opacity-50 md:block"></div>
+        </div>
+
+        <div class="mx-auto w-full max-w-[1200px]">
+          <div class="max-w-[64ch]">
+            <p data-reveal class="font-mono text-xs uppercase tracking-[0.18em] text-[var(--accent)] sm:text-sm">
+              Commercial one-pager / CDMX / July 9, 2026
+            </p>
+
+            <h1
+              data-reveal
+              class="mt-6 font-display text-4xl leading-[1.04] font-medium tracking-tight text-[var(--fg)] sm:text-5xl lg:text-6xl"
+            >
+              Sponsor the AI x Blockchain builder room in Mexico City.
+            </h1>
+
+            <p
+              data-reveal
+              class="mt-6 max-w-[60ch] text-base leading-relaxed text-balance text-[var(--fg-muted)] sm:text-lg"
+            >
+              The program is already locked: main-stage sessions, hands-on workshops, panels, and community presentations for teams building agents, payments, wallets, identity, developer tooling, and decentralized infrastructure.
+            </p>
+
+            <div data-reveal class="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <a
+                href="#program"
+                class="inline-flex items-center justify-center gap-2 rounded-sm bg-[var(--cta)] px-6 py-3 font-mono text-sm font-medium uppercase tracking-wide text-[var(--cta-label)] transition-colors duration-150 hover:bg-[var(--cta-press)] active:bg-[var(--cta-press)]"
+              >
+                See confirmed program
+                <Icon name="ph:arrow-down-bold" class="h-4 w-4" />
+              </a>
+
+              <a
+                href="#activation-fit"
+                class="inline-flex items-center justify-center gap-2 rounded-sm border border-[var(--accent-fill)] bg-[var(--bg)] px-6 py-3 font-mono text-sm font-medium uppercase tracking-wide text-[var(--accent)] transition-colors duration-150 hover:bg-[var(--accent-fill)]/10"
+              >
+                Find the activation fit
+                <Icon name="ph:arrow-down-bold" class="h-4 w-4" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="border-t border-[var(--border)] bg-[var(--bg)]">
+        <div class="mx-auto max-w-[1200px] px-6 py-14 md:py-16">
+          <dl class="fact-grid" aria-label="Event facts" data-reveal>
+            {facts.map((fact) => (
+              <div class="fact-row">
+                <dt class="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-[var(--accent)]">
+                  {fact.label}
+                </dt>
+                <dd class="mt-2 text-sm leading-snug text-[var(--fg)] sm:text-base">
+                  {fact.value}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </section>
+
+      <section id="program" class="relative border-t border-[var(--border)] bg-[var(--bg)] py-24 md:py-32">
+        <div class="mx-auto max-w-[1200px] px-6">
+          <header class="program-header gap-10" data-reveal>
+            <div class="max-w-2xl">
+              <p class="mb-5 font-mono text-xs uppercase tracking-[0.18em] text-[var(--accent)]">
+                <span class="text-[var(--cta)]">+</span> Confirmed program
+              </p>
+              <h2 class="text-balance text-3xl leading-[1.05] tracking-tight sm:text-4xl md:text-5xl">
+                A full builder agenda partners want to be next to.
+              </h2>
+              <p class="mt-5 max-w-xl text-base leading-relaxed text-[var(--fg-muted)]">
+                Four main-stage sessions, four hands-on workshops, two panels, and community presentations are already confirmed, giving partners a program with real momentum to join.
+              </p>
+            </div>
+
+            <dl class="program-kpis" aria-label="Program summary">
+              {programStats.map((stat) => (
+                <div class="program-kpi">
+                  <dt class="font-mono text-[0.68rem] uppercase tracking-[0.16em] text-[var(--fg-muted)]">
+                    {stat.label}
+                  </dt>
+                  <dd class="mt-1 text-3xl leading-none text-[var(--fg)]">
+                    {stat.value}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </header>
+
+          <div class="agenda mt-14 md:mt-16" role="list" aria-label="Confirmed AI x Blockchain Day program">
+            {programTimeline.map((slot, i) => (
+              <article
+                class:list={['agenda-slot', isSingleTrack(slot) && 'single-track']}
+                role="listitem"
+                data-reveal
+                style={`--reveal-delay:${i * 55}ms`}
+              >
+                <time class="slot-time" datetime={`2026-07-09T${slot.time}:00-06:00`}>
+                  {slot.time}
+                </time>
+
+                <div class="session-grid">
+                  {slot.sessions.map((session) => (
+                    <div class:list={['session-card', `track-${session.track}`]}>
+                      <div class="session-track">
+                        <span>{programData.tracks[session.track]}</span>
+                      </div>
+
+                      <h3 class="mt-4 text-xl leading-snug text-[var(--fg)] sm:text-2xl">
+                        {session.title}
+                      </h3>
+
+                      {hasDescription(session) && (
+                        <p class="session-desc">
+                          {session.desc}
+                        </p>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="why-sponsor" class="border-t border-[var(--border)] bg-[var(--bg)]">
+        <div class="mx-auto max-w-[1200px] px-6 py-24 md:py-32">
+          <div
+            class="flex items-center gap-4 font-mono text-xs uppercase tracking-[0.22em] text-[var(--fg-muted)]"
+            data-reveal
+          >
+            <span class="text-[var(--accent)]">Why sponsor</span>
+            <span class="h-px flex-1 bg-[var(--accent-fill)]/40" aria-hidden="true"></span>
+            <span class="hidden sm:inline">N 19.4326 / W 99.1332</span>
+          </div>
+
+          <div class="mt-10 grid gap-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:items-start">
+            <div data-reveal>
+              <h2 class="max-w-[14ch] text-balance text-4xl font-medium leading-[1.06] tracking-tight sm:text-5xl lg:text-6xl">
+                Useful visibility in a technical room.
+              </h2>
+              <p class="mt-6 max-w-[45ch] text-base leading-relaxed text-[var(--fg-muted)] sm:text-lg">
+                Sponsor value comes from participation that helps attendees build, decide, hire, and connect.
+              </p>
+            </div>
+
+            <div class="reason-grid" data-reveal>
+              {sponsorReasons.map((item) => (
+                <article class="reason-card">
+                  <h3 class="text-xl leading-tight tracking-tight text-[var(--fg)] md:text-2xl">
+                    {item.title}
+                  </h3>
+                  <p class="mt-3 text-[15px] leading-relaxed text-[var(--fg-muted)]">
+                    {item.body}
+                  </p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="activation-fit" class="border-t border-[var(--border)] bg-[var(--bg)]">
+        <div class="mx-auto max-w-[1200px] px-6 py-24 md:py-32">
+          <header class="max-w-[48rem]" data-reveal>
+            <p class="mb-5 font-mono text-xs uppercase tracking-[0.18em] text-[var(--accent)]">
+              <span class="text-[var(--cta)]">+</span> Activation fit
+            </p>
+            <h2 class="max-w-[16ch] text-balance text-3xl leading-[1.05] tracking-tight sm:text-4xl md:text-5xl">
+              Match your team to the part of the day where it adds value.
+            </h2>
+            <p class="mt-5 max-w-[58ch] text-base leading-relaxed text-[var(--fg-muted)] md:text-lg">
+              Start with the audience need, then confirm topic, speaker, materials, and process.
+            </p>
+          </header>
+
+          <div class="activation-grid mt-14 md:mt-16" data-reveal>
+            {activationPaths.map((path) => (
+              <article class="activation-card">
+                <h3 class="text-xl tracking-tight text-[var(--fg)] md:text-2xl">
+                  {path.type}
+                </h3>
+                <p class="mt-4 max-w-[44ch] text-[15px] leading-relaxed text-[var(--fg-muted)]">
+                  {path.body}
+                </p>
+                <a
+                  href="#next-step"
+                  class="mt-7 inline-flex items-center gap-2 rounded-sm border border-[var(--accent-fill)] px-4 py-2.5 font-mono text-xs font-medium uppercase tracking-wide text-[var(--accent)] transition-colors hover:bg-[var(--accent-fill)]/10"
+                >
+                  {path.cta}
+                  <Icon name="ph:arrow-down-bold" class="h-3.5 w-3.5" aria-hidden="true" />
+                </a>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="next-step" class="bg-[var(--bg)] py-24 md:py-32">
+        <div class="mx-auto max-w-[1200px] px-6">
+          <div
+            data-reveal
+            class="relative overflow-hidden rounded-sm border border-[var(--border)] bg-[var(--surface)] px-6 py-14 sm:px-12 sm:py-20"
+          >
+            <Blueprint
+              class="absolute -right-16 -top-16 h-[26rem] w-[26rem] text-[var(--accent-fill)] opacity-[0.08] sm:-right-10 sm:h-[32rem] sm:w-[32rem]"
+            />
+
+            <div class="relative grid items-start gap-x-12 gap-y-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+              <div class="max-w-2xl">
+                <p class="mb-5 font-mono text-xs uppercase tracking-[0.18em] text-[var(--accent)]">
+                  Next step
+                </p>
+                <h2 class="text-4xl leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
+                  Confirm the best activation fit.
+                </h2>
+                <p class="mt-5 max-w-xl text-base leading-relaxed text-[var(--fg-muted)] sm:text-lg">
+                  Use the alignment call to choose the right path, confirm the content, and lock the material and payment process.
+                </p>
+                <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+                  <a
+                    href="#activation-fit"
+                    class="inline-flex items-center justify-center gap-2 rounded-sm bg-[var(--cta)] px-6 py-3 font-mono text-sm font-medium uppercase tracking-wide text-[var(--cta-label)] transition-colors duration-150 hover:bg-[var(--cta-press)] active:bg-[var(--cta-press)]"
+                  >
+                    Review activation paths
+                    <Icon name="ph:arrow-up-bold" class="h-4 w-4" aria-hidden="true" />
+                  </a>
+                  <a
+                    href={event.registrationUrl}
+                    target="_blank"
+                    rel="noopener"
+                    class="inline-flex items-center justify-center gap-2 rounded-sm border border-[var(--accent-fill)] bg-[var(--surface)] px-6 py-3 font-mono text-sm font-medium uppercase tracking-wide text-[var(--accent)] transition-colors duration-150 hover:bg-[var(--accent-fill)]/10"
+                  >
+                    Event on Luma
+                    <Icon name="ph:arrow-up-right-bold" class="h-4 w-4" />
+                  </a>
+                </div>
+              </div>
+
+              <ol class="alignment-list">
+                {nextSteps.map((step, i) => (
+                  <li>
+                    <span class="step-index">{String(i + 1).padStart(2, '0')}</span>
+                    <span>{step}</span>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-[var(--border)] bg-[var(--bg)]">
+      <div class="mx-auto max-w-[1200px] px-6 py-16 md:py-20">
+        <div class="footer-grid" data-reveal>
+          <div>
+            <img src="/logo/blockchain-ai-day.svg" alt="" width="40" height="40" class="mb-4 h-10 w-10" />
+            <p class="flex items-baseline gap-2 font-[var(--font-display)] text-xl font-semibold tracking-tight text-[var(--fg)]">
+              <span>AI</span>
+              <span class="font-bold text-[var(--cta)]" aria-hidden="true">x</span>
+              <span>Blockchain Day</span>
+            </p>
+            <p class="mt-4 max-w-[34ch] text-sm leading-relaxed text-[var(--fg-muted)]">
+              A one-day event at the intersection of AI and Blockchain. Mexico City.
+            </p>
+          </div>
+
+          <nav aria-label="One-pager footer links">
+            <p class="font-mono text-[0.7rem] uppercase tracking-[0.18em] text-[var(--fg-muted)]">
+              Navigate
+            </p>
+            <ul class="mt-4 space-y-2.5">
+              <li><a href="#program" class="text-sm text-[var(--fg)] transition-colors hover:text-[var(--accent)]">Program</a></li>
+              <li><a href="#why-sponsor" class="text-sm text-[var(--fg)] transition-colors hover:text-[var(--accent)]">Why sponsor</a></li>
+              <li><a href="#activation-fit" class="text-sm text-[var(--fg)] transition-colors hover:text-[var(--accent)]">Activation fit</a></li>
+            </ul>
+          </nav>
+
+          <div>
+            <p class="font-mono text-[0.7rem] uppercase tracking-[0.18em] text-[var(--fg-muted)]">
+              Event page
+            </p>
+            <a
+              href={event.registrationUrl}
+              target="_blank"
+              rel="noopener"
+              class="mt-4 inline-flex items-center gap-2 rounded-sm bg-[var(--cta)] px-4 py-2.5 font-mono text-xs font-medium uppercase tracking-wide text-[var(--cta-label)] transition-colors hover:bg-[var(--cta-press)] active:bg-[var(--cta-press)]"
+            >
+              Open Luma
+              <Icon name="ph:arrow-up-right-bold" class="h-3.5 w-3.5" />
+            </a>
+          </div>
+        </div>
+
+        <div
+          class="mt-14 flex flex-col gap-3 border-t border-[var(--border)] pt-6 font-mono text-[0.7rem] uppercase tracking-[0.16em] text-[var(--fg-muted)] sm:flex-row sm:items-center sm:justify-between"
+          data-reveal
+        >
+          <span class="inline-flex items-center gap-3">
+            <span class="h-1.5 w-1.5 shrink-0 border border-[var(--accent-fill)]" aria-hidden="true"></span>
+            N 19.4326 / W 99.1332
+          </span>
+          <span>THU, JUL 09, 2026</span>
+        </div>
+      </div>
+    </footer>
+
+    <Analytics />
+
+    <script>
+      const els = document.querySelectorAll('[data-reveal]');
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!reduce && 'IntersectionObserver' in window) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                io.unobserve(entry.target);
+              }
+            }
+          },
+          { threshold: 0.15, rootMargin: '0px 0px -10% 0px' }
+        );
+        els.forEach((el) => io.observe(el));
+      } else {
+        els.forEach((el) => el.classList.add('is-visible'));
+      }
+    </script>
+  </body>
+</html>
+
+<style>
+  .nav-link {
+    position: relative;
+  }
+
+  .nav-link::after {
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    content: "";
+    background: var(--accent-fill);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .nav-link:hover::after {
+    transform: scaleX(1);
+  }
+
+  .fact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    border-top: 1px solid var(--border);
+  }
+
+  .fact-row {
+    display: grid;
+    gap: 0.125rem;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .reason-grid,
+  .activation-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .reason-card,
+  .activation-card,
+  .session-card,
+  .support-panel {
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    background: var(--surface);
+  }
+
+  .reason-card,
+  .activation-card {
+    padding: 1.5rem;
+  }
+
+  .activation-card:first-child,
+  .activation-card:last-child {
+    position: relative;
+    overflow: hidden;
+    border-color: color-mix(in srgb, var(--accent-fill) 30%, var(--border));
+    background: var(--surface-2);
+  }
+
+  .program-header {
+    display: grid;
+    align-items: end;
+  }
+
+  .program-kpis {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    background: var(--border);
+  }
+
+  .program-kpi {
+    min-height: 7rem;
+    padding: 1rem;
+    background: var(--surface);
+  }
+
+  .support-panel {
+    padding: 1.25rem;
+  }
+
+  .agenda {
+    position: relative;
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .agenda::before {
+    position: absolute;
+    top: 0.75rem;
+    bottom: 0.75rem;
+    left: 0.375rem;
+    width: 3px;
+    content: "";
+    background: var(--accent-fill);
+    border-radius: 2px;
+  }
+
+  .agenda-slot {
+    position: relative;
+    display: grid;
+    gap: 0.75rem;
+    padding-left: 1.75rem;
+  }
+
+  .agenda-slot::before {
+    position: absolute;
+    top: 0.72rem;
+    left: 0;
+    width: 0.8rem;
+    height: 0.8rem;
+    content: "";
+    background: var(--bg);
+    border: 3px solid var(--accent-fill);
+    border-radius: 9999px;
+  }
+
+  .slot-time {
+    align-self: start;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    line-height: 1;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .session-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .session-card {
+    min-height: 10.25rem;
+    padding: 1.15rem;
+    border-left: 3px solid var(--accent-fill);
+  }
+
+  .session-track {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--fg-muted);
+  }
+
+  .session-desc {
+    margin-top: 1rem;
+    max-width: 46ch;
+    font-size: 0.98rem;
+    line-height: 1.45;
+    color: var(--fg-muted);
+  }
+
+  .track-workshop {
+    border-left-color: var(--cta);
+  }
+
+  .track-workshop .session-track {
+    color: var(--cta);
+  }
+
+  .track-cowork {
+    border-left-color: var(--border);
+  }
+
+  .alignment-list {
+    display: grid;
+    gap: 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .alignment-list li {
+    display: grid;
+    grid-template-columns: 3rem minmax(0, 1fr);
+    gap: 1rem;
+    padding: 1.1rem 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--fg-muted);
+    line-height: 1.55;
+  }
+
+  .step-index {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  @media (min-width: 768px) {
+    .fact-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .fact-row {
+      padding: 1.25rem 1.5rem;
+      border-left: 1px solid var(--border);
+    }
+
+    .fact-row:first-child {
+      border-left: 0;
+    }
+
+    .reason-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .activation-grid {
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 1fr;
+      grid-template-areas:
+        "a1 a1 a2 a3"
+        "a4 a4 a4 a3";
+    }
+
+    .activation-card:nth-child(1) {
+      grid-area: a1;
+    }
+
+    .activation-card:nth-child(2) {
+      grid-area: a2;
+    }
+
+    .activation-card:nth-child(3) {
+      grid-area: a3;
+    }
+
+    .activation-card:nth-child(4) {
+      grid-area: a4;
+    }
+
+    .program-header {
+      grid-template-columns: minmax(0, 1fr) minmax(16rem, 24rem);
+    }
+
+    .program-kpi {
+      min-height: 8rem;
+    }
+
+    .agenda {
+      gap: 1rem;
+    }
+
+    .agenda::before {
+      left: 5.4rem;
+    }
+
+    .agenda-slot {
+      grid-template-columns: 4.5rem minmax(0, 1fr);
+      gap: 1.5rem;
+      padding-left: 0;
+    }
+
+    .agenda-slot::before {
+      left: 5.025rem;
+    }
+
+    .slot-time {
+      padding-top: 0.65rem;
+      text-align: right;
+    }
+
+    .session-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .single-track .session-card {
+      grid-column: 1 / -1;
+      min-height: 7.75rem;
+    }
+
+    .footer-grid {
+      grid-template-columns: 1.6fr 1fr 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .agenda-slot[data-reveal] {
+      transition-delay: var(--reveal-delay, 0ms);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .nav-link::after {
+      transition: none;
+    }
+  }
+</style>

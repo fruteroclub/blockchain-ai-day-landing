@@ -1,0 +1,79 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0A0F16"/>
+      <stop offset="0.58" stop-color="#0E141D"/>
+      <stop offset="1" stop-color="#141D28"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" stroke="#283747" stroke-width="1" opacity="0.4"/>
+    </pattern>
+    <clipPath id="frame">
+      <rect width="1200" height="630" rx="0"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#frame)">
+    <rect width="1200" height="630" fill="url(#bg)"/>
+    <rect width="1200" height="630" fill="url(#grid)" opacity="0.48"/>
+
+    <g transform="translate(760 -160) scale(3.35)" stroke="#5FE3DA" opacity="0.16">
+      <circle cx="100" cy="100" r="28" stroke-width="0.75"/>
+      <circle cx="100" cy="100" r="46" stroke-width="0.75"/>
+      <circle cx="100" cy="100" r="64" stroke-width="0.75"/>
+      <circle cx="100" cy="100" r="82" stroke-width="0.75"/>
+      <circle cx="100" cy="100" r="96" stroke-width="1.25"/>
+      <line x1="100" y1="70" x2="100" y2="8" stroke-width="0.5"/>
+      <line x1="130" y1="100" x2="192" y2="100" stroke-width="0.5"/>
+      <line x1="100" y1="130" x2="100" y2="192" stroke-width="0.5"/>
+      <line x1="70" y1="100" x2="8" y2="100" stroke-width="0.5"/>
+      <line x1="121.21" y1="78.79" x2="165.05" y2="34.95" stroke-width="0.5"/>
+      <line x1="121.21" y1="121.21" x2="165.05" y2="165.05" stroke-width="0.5"/>
+      <line x1="78.79" y1="121.21" x2="34.95" y2="165.05" stroke-width="0.5"/>
+      <line x1="78.79" y1="78.79" x2="34.95" y2="34.95" stroke-width="0.5"/>
+      <circle cx="100" cy="100" r="10" stroke-width="1.5"/>
+      <circle cx="100" cy="100" r="2.5" fill="#5FE3DA" stroke="none"/>
+    </g>
+
+    <g transform="translate(84 68)">
+      <text x="0" y="0" fill="#F2F6F7" font-family="Space Grotesk, Arial, sans-serif" font-size="30" font-weight="500" letter-spacing="0">
+        AI <tspan fill="#FF2E9A">x</tspan> Blockchain Day
+      </text>
+      <text x="0" y="38" fill="#5FE3DA" font-family="JetBrains Mono, Menlo, monospace" font-size="15" font-weight="500" letter-spacing="3">
+        THU 09 JUL 2026 / CDMX
+      </text>
+    </g>
+
+    <g transform="translate(84 178)">
+      <text x="0" y="0" fill="#5FE3DA" font-family="JetBrains Mono, Menlo, monospace" font-size="18" font-weight="500" letter-spacing="4">
+        COWORKING + NETWORKING
+      </text>
+      <text x="-4" y="98" fill="#F8FBFB" font-family="Space Grotesk, Arial, sans-serif" font-size="104" font-weight="500" letter-spacing="0">
+        Coworking
+      </text>
+      <text x="-6" y="220" fill="#F8FBFB" font-family="Space Grotesk, Arial, sans-serif" font-size="142" font-weight="500" letter-spacing="0">
+        8:00 AM
+      </text>
+      <text x="4" y="268" fill="#A9BBC4" font-family="Space Grotesk, Arial, sans-serif" font-size="27" font-weight="400" letter-spacing="0">
+        Workspace opens before the main programming begins.
+      </text>
+    </g>
+
+    <g transform="translate(84 546)">
+      <line x1="0" y1="0" x2="1032" y2="0" stroke="#34C9C0" stroke-width="3"/>
+      <circle cx="0" cy="0" r="12" fill="#0E141D" stroke="#34C9C0" stroke-width="4"/>
+      <circle cx="318" cy="0" r="12" fill="#0E141D" stroke="#34C9C0" stroke-width="4"/>
+      <text x="0" y="38" fill="#F2F6F7" font-family="JetBrains Mono, Menlo, monospace" font-size="15" font-weight="500" letter-spacing="2">
+        08:00 COWORKING OPENS
+      </text>
+      <text x="318" y="38" fill="#A9BBC4" font-family="JetBrains Mono, Menlo, monospace" font-size="15" font-weight="500" letter-spacing="2">
+        11:00 MAIN PROGRAM STARTS
+      </text>
+    </g>
+
+    <rect x="28" y="28" width="1144" height="574" stroke="#283747" stroke-width="1"/>
+    <path d="M28 78V28H78" stroke="#34C9C0" stroke-width="3"/>
+    <path d="M1172 552V602H1122" stroke="#34C9C0" stroke-width="3"/>
+    <path d="M1172 78V28H1122" stroke="#E6007E" stroke-width="3"/>
+  </g>
+</svg>

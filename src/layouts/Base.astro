@@ -15,9 +15,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
 const esHref = new URL('/', Astro.site).href;
 const enHref = new URL('/en/', Astro.site).href;
 
-// OG image is produced in the design phase. Until then we omit the tag rather
-// than reference a missing file.
-const ogImage = undefined as string | undefined;
+const ogImage = new URL('/social/coworking-8am-og.png', Astro.site).href;
 
 // schema.org/Event: real, known facts. Great SEO/AEO for an event landing.
 const jsonLd = {
@@ -100,12 +98,16 @@ const jsonLd = {
     <meta property="og:description" content={t.meta.description} />
     <meta property="og:url" content={canonical} />
     {ogImage && <meta property="og:image" content={ogImage} />}
+    {ogImage && <meta property="og:image:width" content="1200" />}
+    {ogImage && <meta property="og:image:height" content="630" />}
+    {ogImage && <meta property="og:image:alt" content="AI x Blockchain Day runs from 10:00 to 17:00 in Mexico City." />}
 
     <!-- Twitter -->
     <meta name="twitter:card" content={ogImage ? 'summary_large_image' : 'summary'} />
     <meta name="twitter:title" content={t.meta.title} />
     <meta name="twitter:description" content={t.meta.description} />
     {ogImage && <meta name="twitter:image" content={ogImage} />}
+    {ogImage && <meta name="twitter:image:alt" content="AI x Blockchain Day runs from 10:00 to 17:00 in Mexico City." />}
 
     <link rel="sitemap" href="/sitemap-index.xml" />
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

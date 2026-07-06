@@ -1,0 +1,186 @@
+<svg width="1200" height="675" viewBox="0 0 1200 675" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @font-face {
+        font-family: "Space Grotesk Variable";
+        src: url("../print/fonts/space-grotesk-latin-wght-normal.woff2") format("woff2");
+        font-weight: 300 700;
+      }
+      @font-face {
+        font-family: "JetBrains Mono Variable";
+        src: url("../print/fonts/jetbrains-mono-latin-wght-normal.woff2") format("woff2");
+        font-weight: 300 800;
+      }
+      .display { font-family: "Space Grotesk Variable", "Space Grotesk", Arial, sans-serif; }
+      .mono { font-family: "JetBrains Mono Variable", "JetBrains Mono", Menlo, monospace; }
+      .tiny { font-size: 10px; letter-spacing: 1.7px; }
+      .label { font-size: 11px; letter-spacing: 2.2px; }
+      .title { font-size: 18px; font-weight: 560; letter-spacing: 0; }
+      .desc { font-size: 11.5px; font-weight: 400; letter-spacing: 0; }
+    </style>
+
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="675" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0A0F16"/>
+      <stop offset="0.48" stop-color="#0E141D"/>
+      <stop offset="0.78" stop-color="#111B26"/>
+      <stop offset="1" stop-color="#0A0F16"/>
+    </linearGradient>
+    <radialGradient id="cyanGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(913 172) rotate(133) scale(566 318)">
+      <stop offset="0" stop-color="#5FE3DA" stop-opacity="0.26"/>
+      <stop offset="0.48" stop-color="#34C9C0" stop-opacity="0.08"/>
+      <stop offset="1" stop-color="#34C9C0" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="rosaGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(158 543) rotate(24) scale(430 236)">
+      <stop offset="0" stop-color="#FF2E9A" stop-opacity="0.24"/>
+      <stop offset="0.4" stop-color="#E6007E" stop-opacity="0.08"/>
+      <stop offset="1" stop-color="#E6007E" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" stroke="#283747" stroke-width="1" opacity="0.4"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <rect width="1200" height="675" fill="url(#grid)" opacity="0.42"/>
+  <rect width="1200" height="675" fill="url(#cyanGlow)"/>
+  <rect width="1200" height="675" fill="url(#rosaGlow)"/>
+
+  <g opacity="0.15" stroke="#5FE3DA" transform="translate(829 -128) scale(3.2)">
+    <circle cx="100" cy="100" r="28" stroke-width="0.75"/>
+    <circle cx="100" cy="100" r="46" stroke-width="0.75"/>
+    <circle cx="100" cy="100" r="64" stroke-width="0.75"/>
+    <circle cx="100" cy="100" r="82" stroke-width="0.75"/>
+    <circle cx="100" cy="100" r="96" stroke-width="1.3"/>
+    <line x1="100" y1="70" x2="100" y2="8" stroke-width="0.5"/>
+    <line x1="130" y1="100" x2="192" y2="100" stroke-width="0.5"/>
+    <line x1="100" y1="130" x2="100" y2="192" stroke-width="0.5"/>
+    <line x1="70" y1="100" x2="8" y2="100" stroke-width="0.5"/>
+    <line x1="121.21" y1="78.79" x2="165.05" y2="34.95" stroke-width="0.5"/>
+    <line x1="121.21" y1="121.21" x2="165.05" y2="165.05" stroke-width="0.5"/>
+    <line x1="78.79" y1="121.21" x2="34.95" y2="165.05" stroke-width="0.5"/>
+    <line x1="78.79" y1="78.79" x2="34.95" y2="34.95" stroke-width="0.5"/>
+    <circle cx="100" cy="100" r="10" stroke-width="1.5"/>
+    <circle cx="100" cy="100" r="2.5" fill="#5FE3DA" stroke="none"/>
+  </g>
+
+  <rect x="30" y="30" width="1140" height="615" stroke="#283747" stroke-width="1"/>
+  <path d="M30 84V30H84" stroke="#34C9C0" stroke-width="3"/>
+  <path d="M1170 84V30H1116" stroke="#E6007E" stroke-width="3"/>
+  <path d="M30 591V645H84" stroke="#E6007E" stroke-width="3"/>
+  <path d="M1170 591V645H1116" stroke="#34C9C0" stroke-width="3"/>
+
+  <g transform="translate(62 36)">
+    <image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGgAAABoCAYAAAAdHLWhAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAeGVYSWZNTQAqAAAACAAEARoABQAAAAEAAAA+ARsABQAAAAEAAABGASgAAwAAAAEAAgAAh2kABAAAAAEAAABOAAAAAAAAAEgAAAABAAAASAAAAAEAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAaKADAAQAAAABAAAAaAAAAABM3G8mAAAACXBIWXMAAAsTAAALEwEAmpwYAAABWWlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNi4wLjAiPgogICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgICAgICAgICB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iPgogICAgICAgICA8eG1wOkNyZWF0b3JUb29sPkZpZ21hPC94bXA6Q3JlYXRvclRvb2w+CiAgICAgIDwvcmRmOkRlc2NyaXB0aW9uPgogICA8L3JkZjpSREY+CjwveDp4bXBtZXRhPgoE/1zIAAAYOUlEQVR4Ae1dCXhUVZY+772qSmUBWcIWBImCdjd7dnZoEQV1WpuRz9ZPGWRcZmzcZlARhLC6jtqCX4+I4jLtZ2fQ0RFFFAkmELJUQER7tEGDIqAChiVbLe+9+c9LXlJJ6r16VRVSVX65H5VX9e695557zr3nnnvOuReirtRFgS4KdFGgiwJdFIgOBYToNNtxrR6gZxN60qkxMvnGKCSkMWSR1KMS2T6tph6fDqO73B3XWudDilsGHaAFCd2p5y1gxx0q0UgnSeiL3h2VGkhW8Wu/QvR8DZ18cRitjUtG6T3q/KERQYvf0ZKLnGTb4CBpqpcU8pFMYFKrxB2zkUR2zKcG8u3wkPzPg2nV160KxcGPuGPQYVoyDIx5P4FsQ+vIa4nESWCTm3wHwaRZg2jVAUuVYqRQXDHoB3oiWaWzHzvJnltvkTk6nRPBJNQpt5F4aV/Kr9Hfx/pTjHUE/fFT6OxdSeQImTkMgxmaTI4ciMM/+sOM9e9xM4O+pQd72sjxGdaU831Yd8JJmD1gk/J9Eokje1L+qXBgdHaduJlBNnJOgmIQNnOYsMxYhlFHNLmzCR1ue3HDIIGUPAkzINLEMBhWpHA6q37kPe4kTKFGD1bbKdOhN84wGFboNaNTI24YhHEvdRSJOhJWR+FkBCduGIRR/1NHaDQMg2EZESTW3scNgwQS9oKwESeGwbAiBtRJAOKGQSrZChvIe5aX+HAT12UYKnkLw4XR2fXihkFptORb7H42sUUg3NRUd1Marf42XBidXS9uGMSEkUhZCYvAT3Z8CzVxHa7rBoxQ60azfFwxqD+tqoLd+jYQzM1WAauJLdpch+sOAQyr9WKhnPVexgK2wGEgrXjHS/KNWOpPspUaC74hZpzHZVSU5Tpc17BwjGYY9y5GEdbR+pbyf5NItALr0tWJZHOwR0hpstGJmDESmFNPPg86+C6cd8suoJVf6HXj6dkhDJpaVej0nOnVvWT06E7fXxyhh8fayXYF2JMFFbo/Ex+d+kEg0eUl3wcDaWWnq9Tj9+3q6+juObMjfVpDpIMhYgblflY6S5WVpTCgDIJIeUZIEZ8vG5Z3JlLE4rF+7oHS7mqNcruqqvcA/+9Fm2N52ajs9yPpS9gMytlflkVe3xJVVX5HIpYyGSEbdqjAsu9vqmh7JLm6/o0d06b5IkEuXupOLSy01fZ0XE+KukiQbL9RvfD0Mk1UrH6i8A5m9uqKsRMqwulPyAzK/qziQsHnvV9V5LmCzeZU3K1jMfAOVjPE1ShqkWRzrCwdlb0tHMRCrZPp2jlYlITfErft9uxzZU/pFNEGekwn2bsEhJyiKgqpvtZjUkxIwDu5QbCJr6ii/fGKUdnfhNI3ywzKKSvrLSTIdyqyskCw21KVBjAGI8QoiQ4HqTIiayRpE8TfGoygT43KdsT7rNKi2bbzUjaRJJF86tSjFTlTFnUEXCMYOZ+XjVa98mJSlNmCKIqKx2NUFIsiVkQnGOX1ncCMWkce27ry3NyTxhVaciyp2VkVn8yiBKVUFcXlQChVqcfaZ8IcBs8IY0QBM+E6YLgz21W0hgoKQt9htuBq+g0xVrLS0ED8AXLWoklMIRpkog/Z5UVrVI+8C8S+DoPQnDkMBrTSaAbaYQDlMy0zy7ZfadBCq9eWGKS4PTMFh30oN8LT2HJixHimkZqM0XPj0JQUm+W6MVpwSG2tHWLsRqiKycGkSNsuMO2YhkxLMPaKtvmBfltikCAInrayNRAww3cKRCHbKX8pifsSykBt02+mpaAKJjKxpYIlBrUU7/rW2RToYlBnUzzE9n4xDFIFwV+EnjslIUQCR1o8bhbtrF3brocWmcaqe/tOi6ooe0epHD8PxQT/Jmbs/Ih38+22EVD7BUFRjromTH+jPZzYexMXDMqt3JkH3fF1yeEQYLkITEVYMvS9CDbLM2yJzhmBCgqCyOVUwDxUljmxNFCZWHoX+wxSMTlcRctFu0OQ6xByaCGxlmSmdWJ3L8huz3JMtZnYRBpw3EJDnVDE0hoE45+DTTjhJuy0IXoQ1BlGynIVXw2xNKOtSSkgKOzYedceLDEswWG7jGEHKxswH33R+hQwM/hLpiXTNHhJPoxmIUmOhLchFj4XnU7Y2UIwBmgmDieQUU4JdumFgzNnNi/ewwsKHJmud5PMmh9XUpIImZYfYClpV01MgGnJi5kDQyV/D5pgx2TY3IZZWVgNpozZu7eHXuZQcrJXtNvXY8RVMz2sDAi9LtOO6zAtpQSbJeehJQZV5Ez+2FGjjAel/w1W2iNiIhDjWWGS2EgoiJIXI2WjKlFeRdaUVf7iJPGCvndL9tTdMCP9gxEY2aHMFRIcYzTrsEEh2AV5Z06nS8roq3+5G597tO/8jvOMEsNk2LLDNzdQmayd2y/JdhX/RUhM2C55T9/bXGbOHLk8e9JqEmx5MAhvBNE93FfTBFoxzTDrjjANmZYV2dMsGZGDy4M2LU/4ck+ap6H+PvKpt4EA3TTRA7VJT5rLgX8Iwhay2VZVjMwp0fP0Z05Z8cWqqFYIDkd3JhRqbxIUIb8iZ2Kz1zPn/8p6KzXuPejU4EDrCYsY1Ke6Awfp2IZX6OSH6C9bLDhh5va6fDqlzZ9LSZcMJZXtglAi2iZN1CjKd2JKQkb5rxuNl7ml73f32ZLvAknvRV96scUAODYoom9EZdal7U7oZe8vH89uFzQ+k2d6q8HEEoSt2V7fWdEmrLc5E5/a9auMo23xMPsdMoN0YNmflg8XVO8idPx6jCIJ7gcMKs0fVInZtbp8zPj/0cu2fWZV7BqBtfkFECgPajPqSdwJOPnUPzXUC0/vnzSpGqN3JRiwRKmvb129qdPe4yfox9cL6MeCt0iuCXweS0pJpr5zZlP/G+aQvU8qtR1MDFhMTCS1wb0SUmJpVkXRbJi18sGYEdoMg38Lz2OKLD/p9Npe2DVx4tnWyLT8ytlbcg1mx2IYQ7NUH2aniD7Jsgza/FUR1Udcoyd83lLa+rewGaQ3kbd391QouPCo0gVgzJO2WvXl3ePHt6GqXrrlOfyLAkdSbf/5sHYvgjgapHrQKYglWKO/xIR8AYRahE+qv3GW1xY2UJ54bysd2/gaub8/0gwQRyLpehqr/X6D9vKRx5a8gWk04JabKPXKKzSzP4y/zXk8EyGqfsYLF/xYM1h0o10mLk/tjT6PZ83eCZd+21zB5AuvZ3KSNFdVfQvBrO8kQVpeOnbcDpMqQbMiZhC3wB7Fs4O7JVdelHU6aIttCozdszNNUuhBkORWzCinNqPgdFPAMHRSK82iCIykM7vL6cj6jVTz6WetoFxOv6J7ceQnlwZp78vpMD1FRbSVvmxVLmXMSBp42y3UfVyOJg6bRSczBbOYxRkv5HCw7RBkeWl57tTiVgAs/sj82nVet+/O1naER7lDGGQRb9NiGaWFeaIkLcfonQaxCVnZwpz6bw7RsRd5nflYI6IOKBMMuQ+MuYwu1kIZcUhYy+IgRV5xPqK/a4yqBMOaExjde8Z0GjD/Zkq8ML15v8SMwdQ5BOasSqlTXukI4ja3GcGXmGEQ94FnYk2yWI7RPJZVZlYCqrcVUtXyR1qtM+nUmxbQRLqORlEKQb1uYiaO22ukwCk67clxcTXkoU30GT1LO6mKWpyYvD6lL3uIek6fpikR7AFWvJ4trpyps7TKMfLHWA+NAoJ13aTLsbiO1EUPxzbUVx1qZk4q2DGfcugWyqZ++M4zhj/b6AC9Q5/j7wkN62GUSr+j4TQdMysBs2keZdEs+jW9ROX0Ij4nwDa5plaD3YtjGFCLzUQYEJfnVBZfVZ45aXMUuh+wyZhhEGaPs0ZRV8BUxtvsZmQ10dP0axVdQTdTBp2FCsBKAN+TsJA2azOkuQK+7KUjVED76B8xw56gq8AAO50HVi0Dy9KpF92BGpz8YWsvYFZCzMVy4LINIs7fOq5lR+NPzDCoNkW8GWImo9FFHpgULM5YjHEUKcdm/zuY8ybEF6ch6ek0afJk7XvxJ0V06FCVxjgWf3+m2aijaHUZhlFi1RrBHRm1kvcmlHnBqFxnvjc3B3QSJuO+KOkFOi7CAm3aIraMWj6r1KwA6My5bs4cKikto5dffln7lJSVEb/j9Cbt18pyHU46DO1HgD8aDrL6kIZTgPzOfhUTDPLWee8SnAlD9LUnGBFYs3kLaw4nnjl/WruOevXuTbUIyOAPf+d3Q4aka2W4rFVtiHFgXGTgpFWO8p+oMyijsnAoaHCP/+bRjCasmbGYO9ikEEyGWOvXtw95/OLS+Du/mzSlUeRxWa7Dda0kxgVq+j1NuFmpcs7KRJ1BguqA3BJatIIQu2pW0Ro7jBoMHycjiOG8jzqDKrMmfA0GPWPJRYAe8qLP+5yhUKU5sULw40/HyYF9jJ74O78rKirSXnFZrqPvl/RyRs9G67TwzJ7MaQeNynTW+6gziDtq90prYbA8pJl0LPScZ83vaYRWkrW1uxf8kX4+eZKSYdLnD3/nd4eqqrQyXNZspvk3yTioDQ2HGCf/99H6HhNqNoyrP3M4LSwI680UBT6lzYn3QGzemU0jNS3tvwsKqKK8onnNKcbM0ZkzG3shLst1eBbpMIwIrlnWZWUN42RUpjPfxwSDuMOpPQe8euLU0dth0c5ky3agxGYbJjKOM2ri6km6Wlv42ZTDM4k//qllo6pqjOG6DMMosTUdvqPK1J5prxqV6ez3McOgLcOGuXMrdi6Fz+1tGC1BqUahxNZtPS2hLVRFP8PUkwNTT7LGnOcg7K6FCHuHvmhj6hkBu8Ewbc7hhkb6kWrpaSrWTD06PH/Y2juEkguCbRnjopeJ9jNmGMSEqKk6ui0pvd8XMMGMYVHHXtDE9CEkpaRo9rgTIPJjtF0z4/gbS2fC3cAfI2PpX2D8CWQsZdi6p7XRWOrdimMr7zEusZIi00Q7sBfZ5Z9MhrNsOUBOxMhuHji8aIfqbuAZw/PO3N0wF+4GMAgDgRMbZvH3MCnyo9Un6l48OGtWTMyiiBl0lPJT4X/p7cOpJJmk0wO1A7z5Le5MrfvGf7STcewqFmgeZo6dPajs5VRgF9PFXKPDTmxy2L0UgcNuFBx28wI67ETW3jT3Oz99JbjVeSkHyxhj3j5HpXwbfLz9MTzOw+2QcHzLJ9Mov9HE3r64pTdhMYivp3SS8w9oYTbE9nCsFj3w4cDbWgRbHAJlP0Lk2SuDKd/QDz+upCDRa+9/O+o8gOia/prLGzEAiBvYDx/0enBpGZx3ll3eDigAfzByeZ8Pl/c8M5e3AkeRWkqidCVbuNEuMwuTUP0vxe1dWTmhfbCIP3WP0cPDcQX0XFgfZsD9PwR5HE6G02t0CmEjHAjzJlSTNwZRfsiaYcgMwoz5PeTPoyDIMLYQs20ZiGmJgfGNhixioNbW4P1aL51eOYiebhWjkFFZNApkeAkzI5ONk9rew+sF8srToq/22bK8WWdwIm+F4Eh4ONKgkX4IGukXLGjE415RkTV5WXb5jqtZzAp2x1gt8ANBMJjJxwVFflpUnM+V5bU+vX6Y7k2EI+NhCMcFoEcKa5dMjUb1pjHokO/uZpp4yHcAYuVBzKi3mshl6RESgzBS7reR7RFUEnX3slErvN/gy4vqyLcFUXQ3+F/imlFSOFS0iRUw7fdA7AFOLwqvC7K6ojx30t91eHwmVhEa9mBtQNhViyan57cPu4I00g9VYQb0RtjVAA67ungoInOMwq448gZhV6ozQz8zOmrr1mRHr8R/xTRaiADFPixy4YaoFwTviIrs6d/o7VdTfg84jF5PIttMvlG4hS16idbPpvuFFDBqEe5ueLx1rvEvyww6Qkvnw2S/oXHG6GPEGLCeg6uQsfdwv32MfpyTReubNzhZZTvuRZTlDaq7/uGKnGkf6OX9n5muojsku/3PZj4iLTgRDNECSv7zRa36wDvmN64zUNXZdW6U+GCv4pPvcGVOfL5tmezibReS07FESEi4Sa6rX1GZN3WlXsZFt9nTqP9f0bdra032VXp5/cmDlmcUGHrrIFq5QX9v9rTEoO8p/2JEcZQBUI8WgWYGtnUe35eDjizAyFmn53D8wff19ZKZtjS1qspZc/y7EohAxCg081YH0erJtjy5tlGSSsmJWMuMN6RckQMsocHtTekzePyO9HRD72lO2Y5xsuT9W2XWZc0RS8do6Z2QDuus3nzvjyiLOwzv0xg2OedTfrPE8C/j/90Sg47S0g0YLfNDGS3+jbCBBVciH06ixNE9aFG1f16w7xwaDAa9DSUiOK6YSVryc5kbwYfVAOFr6jWu7In/a1Qm0PvDlN8LMUP70Kfzw72/G5ezs7t+QxotvzVQG/7vghpLv6GH+qHCNbip0L9eSN+5IxhxgxrIjfDY0JLrvcLNCK39MGj8M4NlxlhgjgYLMF3vbdscGjbanXUz0ZewmcPtuTVaqtc20dYUhaAMSiRHJrSy3mz9ijRBPE4PGUZ+viKJ4jKovaqUhDvjYa0O+PFzN7BWGLAM6jIMDRZgEmCHig+ocGmoddqWZ1oyTZm2bfPa/m7esbfN0H9jn3OJDWtIMK1NL2/0xP6A7WLDjPLN3pdmTSrDEcgbfB5fmiB7240UhXAEUhJGIWxqHrQv1ro+lOvrt2D0tROLqmRHWLjvaOmE6bymhpy4D8E0NitAWex7yHsJyppethSUQehutwD9tIJDqzJNQxX/ewmO+4bhQQ12pjSjvPgKmyjO46tgyOfduWfiZc+0QqADfjDux2hZckcwiGnaSFtzxIKKOAzXGgh2cygWchkdpLpwmGMBPFiuYrvVnKB0dnxqwh196Iik+XdBW/NkgUECdsCRM4hvQETHDpqjEw+56tesKkeaWHHCIb8DweAEbclBCS7sfquDeSKDNcT5sAcUWikXy2Wwkm6PFD+mJdb0aqZtMFhBGdSHFh+DvHwX/+tVMFiG+bwgYvf8g0Re0wXREEAMZcAY/B76coz7FG5qouXmRtqaQ7HUCv47l8fZ+Bnu1GZLM8TbkwPokePm6MR+LrsP0Jf/0CNVQ8WYaci0hILwmJW6lhg0ADfmIpTvITb4hSrq2BaHXfMHNZTabOaxglioZQQVdy3iBLV28hqGnFDrh1Ke+1KLPnHfQklMO6YhzDyLmKZW6lpiEAMaRCvW4prjFTy1my4KN4XPyHAHIA52QOLefK7/w1kV1nG5oX6e3FA3D+bxAlPkIszkvnCfuG/cxyYN1RQq06xR1PtWDKR8y4M1ZI0RdrmbYJFdjXM3g9j/0aiN6FqegPEhAGUbL4Ju6CnrJapb3IceNzx8a9qrGM88Tvd381HSavT5NlgGEqBMgSJMi0Z6MOMaBzT7x+TDyF2cRiteC6VbITOIgf9E+f2hOMyFJn8tPpfg0x0o4XAh1WMRPYwi2xWSX8I0Duum21A6EAtl4SfLxqC9BZvx38JiMgi0SAQt4FEVzuDzFXB8q47o1XTK/yFUfMNikN4IGCOcpNVpQKqvTF4cw5Wq+1D3IwLd18qDqpf/pT9VeirxOJ0ZCL9qT/wfyD4M1p960+KjYFLjlAqDABExKIz2zlmVvH27cxVFWcoN4BjlyrLReaXnrLFOBBz3DMJBq6GyR30ArumbcKm4dicLLtVwI/DjNcnhfGz38My4tl7ELYMyv3KlirWeuxCHcCfc3r1a3SICc6x2BYvs+xlBIM85Fd/a4ozJcbkHizsGsRu87vQP/4QbtBYiROpC3DKPKK0mW3kb0aMFlvAtWD5fFQTfE8k90zbuMHFvt6keEz/jikE5lUWXk2hbBX0R9+HwpX3to30CUZVPLLATD5ctuWCjXFKeOX5roHKx+M7yRjUWkFfcvoVwymVxlI9V5jDeXJbraHU9DQtjoS9WcYgrBoHUnmDRPWYdb6yrmof7mAGIQl6cMSgKFIpyk10MijIDgjXfxaBgFIpyfheDosyAYM13MSgYhaKc38WgKDMgWPPxxiB4xyLYWzfWDc0NGoyC5zg/rhiEW4WLYOJxW4rTbkM4zTaHurBEFLfJiumfEQzH6PQrE24FUVGXwEh6VVOYryki2j3eCKiHXW6zKAqrSkePCyvk17SRc5gZdwzSaZG9r/xq7b/HFMUcPvyrn9bW89n2xudNYUgtx9lkMCbnXT0vnp5xyyAm8swDBxJO1J+4mbzyA3A5XMSWbU44lMz2t69hVH08NbnPK7F0MYWGYAh/4ppBej/5vxEQ3OqdiuK7m98JgvQsOcV1+nX/ermuZ5QpkOnadVHm/l0XRRmNrua7KNBFgS4KdFHAGgX+Hz1mT0WXlRIIAAAAAElFTkSuQmCC" x="0" y="-8" width="52" height="52" preserveAspectRatio="xMidYMid meet"/>
+    <text class="display" x="66" y="28" fill="#F8FBFB" font-size="31" font-weight="600">AI <tspan fill="#FF2E9A" font-weight="700">x</tspan><tspan dx="7">Blockchain Day</tspan></text>
+    <text class="mono label" x="1" y="58" fill="#5FE3DA">JUE 09 JUL 2026 / PROGRAMA PRINCIPAL 12:00 - 17:00 / CENTRO HISTÓRICO, CDMX</text>
+  </g>
+
+  <g transform="translate(62 151)">
+    <text class="display" x="-2" y="58" fill="#F8FBFB" font-size="60" font-weight="560">Programa</text>
+    <text class="display" x="-2" y="113" fill="#F8FBFB" font-size="60" font-weight="560">principal</text>
+
+    <g transform="translate(0 174)">
+      <rect x="0" y="0" width="255" height="112" fill="#0E141D" fill-opacity="0.74" stroke="#283747"/>
+      <line x1="0" y1="56" x2="255" y2="56" stroke="#283747"/>
+      <text class="display" x="20" y="25" fill="#F8FBFB" font-size="18" font-weight="540">Coworking:</text>
+      <text class="mono" x="20" y="47" fill="#5FE3DA" font-size="12" letter-spacing="0.5">10:00 am - 12:00 pm</text>
+      <text class="display" x="20" y="81" fill="#F8FBFB" font-size="18" font-weight="540">Evento principal:</text>
+      <text class="mono" x="20" y="103" fill="#5FE3DA" font-size="12" letter-spacing="0.5">12:00 pm - 5:00 pm</text>
+    </g>
+  </g>
+
+  <g transform="translate(350 108)">
+    <rect x="0" y="0" width="790" height="537" fill="#0E141D" fill-opacity="0.78" stroke="#283747"/>
+    <path d="M0 0H180" stroke="#34C9C0" stroke-width="4"/>
+    <path d="M790 0H610" stroke="#E6007E" stroke-width="4"/>
+
+    <g transform="translate(24 38)">
+      <text class="mono label" x="0" y="0" fill="#5FE3DA">MAIN STAGE</text>
+      <text class="mono label" x="388" y="0" fill="#5FE3DA">WORKSHOPS</text>
+    </g>
+
+    <g transform="translate(24 62)">
+      <line x1="0" y1="0" x2="742" y2="0" stroke="#283747"/>
+
+      <g transform="translate(0 23)">
+        <text class="mono label" x="0" y="5" fill="#5FE3DA">12:00</text>
+        <g transform="translate(70 0)">
+          <text class="display title" x="0" y="0" fill="#F8FBFB">Cómo prepararse para</text>
+          <text class="display title" x="0" y="23" fill="#F8FBFB">el trabajo del futuro</text>
+        </g>
+        <g transform="translate(388 0)">
+          <text class="display title" x="0" y="0" fill="#F8FBFB">Fundamentos IA x Blockchain</text>
+        </g>
+      </g>
+
+      <line x1="0" y1="68" x2="742" y2="68" stroke="#283747"/>
+
+      <g transform="translate(0 91)">
+        <text class="mono label" x="0" y="5" fill="#5FE3DA">12:30</text>
+        <g transform="translate(70 0)">
+          <text class="display title" x="0" y="0" fill="#F8FBFB">Infraestructura para el</text>
+          <text class="display title" x="0" y="23" fill="#F8FBFB">Comercio Agéntico</text>
+        </g>
+        <g transform="translate(388 0)">
+          <text class="display title" x="0" y="0" fill="#F8FBFB">Lanza tu propio Agente Mentor</text>
+        </g>
+      </g>
+
+      <line x1="0" y1="136" x2="742" y2="136" stroke="#283747"/>
+
+      <g transform="translate(0 159)">
+        <text class="mono label" x="0" y="5" fill="#5FE3DA">13:00</text>
+        <g transform="translate(70 0)">
+          <text class="display title" x="0" y="0" fill="#F8FBFB">IA para acelerar la</text>
+          <text class="display title" x="0" y="23" fill="#F8FBFB">educación Blockchain</text>
+        </g>
+        <g transform="translate(388 0)">
+          <text class="display title" x="0" y="0" fill="#F8FBFB">Dale un trabajo a tu Agente</text>
+        </g>
+      </g>
+
+      <line x1="0" y1="204" x2="742" y2="204" stroke="#283747"/>
+
+      <g transform="translate(0 227)">
+        <text class="mono label" x="0" y="5" fill="#5FE3DA">13:30</text>
+        <g transform="translate(70 0)">
+          <text class="display title" x="0" y="0" fill="#F8FBFB">Más allá de la frontera</text>
+          <text class="display title" x="0" y="23" fill="#F8FBFB">IA x Blockchain</text>
+        </g>
+        <g transform="translate(388 0)">
+          <text class="display title" x="0" y="0" fill="#F8FBFB">Un Agente que cobra por trabajo</text>
+        </g>
+      </g>
+
+      <line x1="0" y1="272" x2="742" y2="272" stroke="#283747"/>
+
+      <g transform="translate(0 299)">
+        <text class="mono label" x="0" y="5" fill="#5FE3DA">14:00</text>
+        <g transform="translate(70 0)">
+          <text class="mono tiny" x="0" y="-12" fill="#5FE3DA">PANEL</text>
+          <text class="display title" x="0" y="18" fill="#F8FBFB">Identidad después de la explosión de IA</text>
+        </g>
+      </g>
+
+      <line x1="0" y1="346" x2="742" y2="346" stroke="#283747"/>
+
+      <g transform="translate(0 373)">
+        <text class="mono label" x="0" y="5" fill="#5FE3DA">14:40</text>
+        <g transform="translate(70 0)">
+          <text class="mono tiny" x="0" y="-12" fill="#5FE3DA">PANEL</text>
+          <text class="display title" x="0" y="18" fill="#F8FBFB">Cuando los Agentes tienen dinero</text>
+        </g>
+      </g>
+
+      <line x1="0" y1="420" x2="742" y2="420" stroke="#283747"/>
+
+      <g transform="translate(0 447)">
+        <text class="mono label" x="0" y="5" fill="#5FE3DA">15:20 - 17:00</text>
+        <g transform="translate(134 0)">
+          <text class="mono tiny" x="0" y="-12" fill="#5FE3DA">COMMUNITY SHOWCASE</text>
+          <text class="display title" x="0" y="12" fill="#F8FBFB">Presentaciones de comunidad</text>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
