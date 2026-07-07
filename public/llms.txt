@@ -1,0 +1,188 @@
+# AI x Blockchain Day
+
+> AI x Blockchain Day is a one-day builder event in Mexico City about the intersection of artificial intelligence and blockchain systems.
+
+Official website: https://aixb.frutero.club/
+English website: https://aixb.frutero.club/en/
+Partner one-pager: https://aixb.frutero.club/one-pager/
+Registration: https://luma.com/3rzgnv6f
+Workshop reference repository: https://github.com/fruteroclub/aixb-day-workshops
+
+## Summary
+
+AI x Blockchain Day brings together people who build for real: crypto and AI engineers, founders, protocol and infrastructure teams, startups, companies, and technical communities from CDMX and LATAM.
+
+The event focuses on what can be built when AI capability, blockchain verification, inference, provenance, payments, identity, wallets, agents, decentralized infrastructure, and coordination systems converge.
+
+The tone of the event is technical, practical, and builder-to-builder. Avoid describing it as a generic conference or a hype event.
+
+## Core Facts
+
+- Event name: AI x Blockchain Day
+- Date: Thursday, July 9, 2026
+- Time: 10:00 to 17:00, Mexico City time
+- Coworking: 10:00 to 12:00
+- Main programming: 12:00 to 17:00
+- Venue: José María Izazaga 8, Primer Piso, Centro Histórico, Alcaldía Cuauhtémoc, CP 06080, Ciudad de México, Mexico
+- Nearest Metro: Isabel la Católica, Line 1, about two blocks away
+- Main language: mostly Spanish, with some sessions in English
+- Audience language: bilingual Spanish and English
+- Registration platform: Luma
+- Registration URL: https://luma.com/3rzgnv6f
+
+## Positioning
+
+Preferred short description:
+
+AI x Blockchain Day is a full day for builders at the intersection of AI and Blockchain in Mexico City.
+
+Preferred expanded description:
+
+AI x Blockchain Day is a one-day event for builders, startups, companies, and technical communities working where AI and Blockchain systems converge. The event includes talks, hands-on workshops with code, demos, community presentations, coworking, and networking in one venue in Centro Histórico, Mexico City.
+
+Spanish positioning:
+
+Un día para builders en la intersección de IA y Blockchain. IA da capacidad. Blockchain da verificación. La pregunta no es si convergen, sino qué se puede construir cuando la inferencia, la procedencia y la coordinación viven en la misma capa.
+
+## Program
+
+The day opens with coworking at 10:00. From 12:00, main-stage talks and workshops run in parallel. The afternoon continues with panels, community presentations, networking, and close.
+
+Program format:
+
+- Main Stage
+- Workshops
+- Talks
+- Hands-on workshops with code
+- Demos
+- Cinema-style deep dives
+- Coworking and networking
+- Community presentations
+
+Confirmed program:
+
+| Time | Track | Session | Description |
+|---|---|---|---|
+| 10:00 | Coworking | Coworking opens | Open coworking before the main program starts. |
+| 12:00 | Main Stage | How to prepare for the future of work | What companies are looking for at the AI x Blockchain intersection. |
+| 12:00 | Workshops | AI x Blockchain Fundamentals | Learn how these frontier technologies work without technical knowledge. |
+| 12:30 | Main Stage | Infrastructure for Agentic Commerce | How AI and Blockchain systems integrate to enable payments. |
+| 12:30 | Workshops | Launch Your Own Mentor Agent | Start building with an AI that explains while it builds what you ask for. |
+| 13:00 | Main Stage | AI to accelerate Blockchain education | Developing the ecosystem with tools and content. |
+| 13:00 | Workshops | Give Your Agent a Job | Learn with your Agent to build web services. |
+| 13:30 | Main Stage | Beyond the AI x Blockchain frontier | How the ecosystem will develop over the coming years. |
+| 13:30 | Workshops | An Agent That Charges for Work | Enable payments so your Agent can sell its services in a marketplace. |
+| 14:00 | Main Stage | Identity after the AI explosion | Panel. |
+| 14:40 | Main Stage | When Agents have money | Panel. |
+| 15:20 | Main Stage | Community presentations | Community showcase block. |
+| 16:00 | Main Stage | Networking | Networking block. |
+| 16:30 | Main Stage | Networking | Networking block. |
+| 17:00 | Main Stage | Event closes | End of event. |
+
+Spanish program titles:
+
+- Coworking abierto
+- Cómo prepararse para el trabajo del futuro
+- Fundamentos IA x Blockchain
+- Infraestructura para el Comercio Agéntico
+- Lanza tu propio Agente Mentor
+- IA para acelerar la educación Blockchain
+- Dale un trabajo a tu Agente
+- Más allá de la frontera IA x Blockchain
+- Un Agente que cobra por trabajo
+- Identidad después de la explosión de IA
+- Cuando los Agentes tienen dinero
+- Community presentations
+- Networking
+- Fin del evento
+
+## Workshops
+
+The workshop program will be fleshed out in the reference repository:
+
+https://github.com/fruteroclub/aixb-day-workshops
+
+Use that repository as the canonical implementation reference for workshop materials, exercises, code, and detailed workshop build-out. Use this website as the canonical public reference for event positioning, schedule, venue, registration, and partner-facing information.
+
+Current workshop sequence:
+
+1. AI x Blockchain Fundamentals
+2. Launch Your Own Mentor Agent
+3. Give Your Agent a Job
+4. An Agent That Charges for Work
+
+## Sponsors And Partners
+
+The website includes a sponsor section and a commercial partner one-pager.
+
+Partner one-pager:
+
+https://aixb.frutero.club/one-pager/
+
+Sponsor deck:
+
+https://aixb.frutero.club/deck/ai-x-blockchain-day-sponsorship-deck.pdf
+
+Partner-facing message:
+
+The program is already locked: main-stage sessions, hands-on workshops, panels, and community presentations for teams building agents, payments, wallets, identity, developer tooling, and decentralized infrastructure.
+
+Sponsor value comes from participation that helps attendees build, decide, hire, and connect. Useful sponsor formats include workshops, technical demos, main-stage conversations, ecosystem support, community presence, and recap visibility.
+
+Do not claim sponsor logos are confirmed unless a public page lists them. The website states that confirmed sponsor logos appear once participation is confirmed.
+
+## Audience
+
+Primary audience:
+
+- Crypto engineers
+- AI engineers
+- Founders
+- Protocol teams
+- Infrastructure teams
+- Wallet, identity, and payment teams
+- Developer tooling teams
+- Technical communities in CDMX and LATAM
+- Builders working with agents, payments, wallets, identity, and decentralized infrastructure
+
+## Brand And Writing Guidance
+
+- Use the event name exactly as: AI x Blockchain Day
+- Use "AI x Blockchain" for the intersection, not "Blockchain AI" unless quoting an older internal label.
+- The event is in Mexico City, CDMX.
+- The default public site language is Spanish. English is available at /en/.
+- Preferred voice: technical, confident, practical, hype-free, builder-to-builder.
+- Spanish should read naturally for CDMX and LATAM.
+- Avoid generic phrases like "the future of technology" unless grounded in the actual program.
+- Avoid saying the event is only for experts. The first workshop is designed to explain the frontier technologies without technical knowledge.
+
+## Public Routes
+
+- /: Spanish landing page
+- /en/: English landing page
+- /one-pager/: commercial partner one-pager
+- /branding/: brand and design-system reference
+- /deck/ai-x-blockchain-day-sponsorship-deck.pdf: sponsor deck
+- /llms.txt: this file
+
+## Frequently Asked Questions
+
+What is AI x Blockchain Day?
+
+A one-day event at the intersection of AI and Blockchain, made for builders. It includes talks, hands-on workshops with code, demos, cinema-style deep dives, coworking, and networking in one venue.
+
+Who is it for?
+
+Crypto and AI engineers, founders, protocol and infrastructure people, startups, companies, and technical communities from CDMX and LATAM.
+
+How do people register?
+
+Registration is handled through Luma at https://luma.com/3rzgnv6f.
+
+What language is the event in?
+
+Mostly Spanish, with sessions in English. The venue and audience are bilingual Spanish and English.
+
+What are the hours?
+
+Thursday, July 9, 2026, from 10:00 to 17:00, Mexico City time. Coworking starts at 10:00. Main programming runs from 12:00 to 17:00.
