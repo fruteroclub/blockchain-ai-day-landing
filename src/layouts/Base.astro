@@ -13,6 +13,10 @@ type Props = {
   description?: string;
   esHref?: string;
   enHref?: string;
+  ogImage?: string;
+  ogImageAlt?: string;
+  ogImageWidth?: number;
+  ogImageHeight?: number;
 };
 
 const {
@@ -20,6 +24,10 @@ const {
   description,
   esHref: esHrefProp = '/',
   enHref: enHrefProp = '/en/',
+  ogImage: ogImageProp = '/social/ai-x-blockchain-day-program-social-1200x675.png',
+  ogImageAlt = 'AI x Blockchain Day program overview.',
+  ogImageWidth = 1200,
+  ogImageHeight = 675,
 } = Astro.props as Props;
 
 const lang = getLang(Astro);
@@ -31,7 +39,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
 const esHref = new URL(esHrefProp, Astro.site).href;
 const enHref = new URL(enHrefProp, Astro.site).href;
 
-const ogImage = new URL('/social/coworking-8am-og.png', Astro.site).href;
+const ogImage = ogImageProp ? new URL(ogImageProp, Astro.site).href : undefined;
 
 // schema.org/Event: real, known facts. Great SEO/AEO for an event landing.
 const jsonLd = {
@@ -117,16 +125,16 @@ const jsonLd = {
     <meta property="og:description" content={pageDescription} />
     <meta property="og:url" content={canonical} />
     {ogImage && <meta property="og:image" content={ogImage} />}
-    {ogImage && <meta property="og:image:width" content="1200" />}
-    {ogImage && <meta property="og:image:height" content="630" />}
-    {ogImage && <meta property="og:image:alt" content="AI x Blockchain Day runs from 10:00 to 17:00 in Mexico City." />}
+    {ogImage && <meta property="og:image:width" content={String(ogImageWidth)} />}
+    {ogImage && <meta property="og:image:height" content={String(ogImageHeight)} />}
+    {ogImage && <meta property="og:image:alt" content={ogImageAlt} />}
 
     <!-- Twitter -->
     <meta name="twitter:card" content={ogImage ? 'summary_large_image' : 'summary'} />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={pageDescription} />
     {ogImage && <meta name="twitter:image" content={ogImage} />}
-    {ogImage && <meta name="twitter:image:alt" content="AI x Blockchain Day runs from 10:00 to 17:00 in Mexico City." />}
+    {ogImage && <meta name="twitter:image:alt" content={ogImageAlt} />}
 
     <link rel="sitemap" href="/sitemap-index.xml" />
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
