@@ -29,6 +29,10 @@ const copy = getWorkshopCopy(workshop, lang);
   lang={lang}
   title={`${copy.title} | AI x Blockchain Day`}
   description={`Modo presentación para ${copy.title}, workshop de ${workshop.time} en AI x Blockchain Day.`}
+  ogImage={`/social/workshop-${workshop.number}-presentation-og.png`}
+  ogImageAlt={`Presentación del workshop ${copy.title} de AI x Blockchain Day.`}
+  ogImageWidth={1200}
+  ogImageHeight={630}
 >
   <WorkshopPresentation workshop={workshop} lang={lang} />
 </PresentationLayout>

@@ -11,6 +11,8 @@ const title = 'Sponsor AI x Blockchain Day';
 const description =
   'A commercial one-pager for AI x Blockchain Day, a July 9 builder event in Mexico City for teams working on agents, payments, identity, wallets, and decentralized infrastructure.';
 const canonical = new URL('/one-pager/', Astro.site);
+const ogImage = new URL('/social/one-pager-og.png', Astro.site);
+const ogImageAlt = 'Sponsor AI x Blockchain Day commercial one-pager.';
 
 const facts = [
   { label: 'Date', value: 'Thursday, July 9, 2026' },
@@ -115,14 +117,15 @@ const nextSteps = [
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:image" content={new URL('/social/ai-x-blockchain-day-program-social-en-1200x675.png', Astro.site)} />
+    <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="675" />
-    <meta property="og:image:alt" content="AI x Blockchain Day program overview." />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={ogImageAlt} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={new URL('/social/ai-x-blockchain-day-program-social-en-1200x675.png', Astro.site)} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={ogImageAlt} />
   </head>
   <body class="min-h-[100dvh] bg-[var(--bg)] text-[var(--fg)]">
     <header class="fixed inset-x-0 top-0 z-50 border-b border-[var(--border)] bg-[var(--bg)]/85 backdrop-blur-md">
