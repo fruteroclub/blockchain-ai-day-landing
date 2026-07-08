@@ -8,12 +8,28 @@ import { getLang, useTranslations } from '../i18n/utils';
 import { event } from '../i18n/ui';
 import Analytics from '../components/Analytics.astro';
 
+type Props = {
+  title?: string;
+  description?: string;
+  esHref?: string;
+  enHref?: string;
+};
+
+const {
+  title,
+  description,
+  esHref: esHrefProp = '/',
+  enHref: enHrefProp = '/en/',
+} = Astro.props as Props;
+
 const lang = getLang(Astro);
 const t = useTranslations(lang);
+const pageTitle = title ?? t.meta.title;
+const pageDescription = description ?? t.meta.description;
 
 const canonical = new URL(Astro.url.pathname, Astro.site);
-const esHref = new URL('/', Astro.site).href;
-const enHref = new URL('/en/', Astro.site).href;
+const esHref = new URL(esHrefProp, Astro.site).href;
+const enHref = new URL(enHrefProp, Astro.site).href;
 
 const ogImage = new URL('/social/coworking-8am-og.png', Astro.site).href;
 
@@ -26,7 +42,7 @@ const jsonLd = {
   endDate: event.dateISOEnd,
   eventStatus: 'https://schema.org/EventScheduled',
   eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
-  description: t.meta.description,
+  description: pageDescription,
   url: canonical.href,
   location: {
     '@type': 'Place',
@@ -63,11 +79,14 @@ const jsonLd = {
         try {
           var KEY = 'baiday-lang';
           var p = location.pathname;
-          var onEn = p === '/en' || p === '/en/';
+          var onEn = p === '/en' || p.indexOf('/en/') === 0;
           var stored = localStorage.getItem(KEY);
           if (!stored && !onEn) {
             var nav = (navigator.language || '').toLowerCase();
-            if (nav.indexOf('en') === 0) location.replace('/en/');
+            if (nav.indexOf('en') === 0) {
+              var localized = p === '/recursos' || p === '/recursos/' ? '/en/resources/' : '/en/';
+              location.replace(localized + location.search + location.hash);
+            }
           }
         } catch (e) {}
       })();
@@ -87,15 +106,15 @@ const jsonLd = {
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="theme-color" content="#0E141D" />
 
-    <title>{t.meta.title}</title>
-    <meta name="description" content={t.meta.description} />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={event.name} />
     <meta property="og:locale" content={lang === 'es' ? 'es_MX' : 'en_US'} />
-    <meta property="og:title" content={t.meta.title} />
-    <meta property="og:description" content={t.meta.description} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
     <meta property="og:url" content={canonical} />
     {ogImage && <meta property="og:image" content={ogImage} />}
     {ogImage && <meta property="og:image:width" content="1200" />}
@@ -104,8 +123,8 @@ const jsonLd = {
 
     <!-- Twitter -->
     <meta name="twitter:card" content={ogImage ? 'summary_large_image' : 'summary'} />
-    <meta name="twitter:title" content={t.meta.title} />
-    <meta name="twitter:description" content={t.meta.description} />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
     {ogImage && <meta name="twitter:image" content={ogImage} />}
     {ogImage && <meta name="twitter:image:alt" content="AI x Blockchain Day runs from 10:00 to 17:00 in Mexico City." />}
 

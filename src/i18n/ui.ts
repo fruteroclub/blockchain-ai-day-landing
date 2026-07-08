@@ -34,10 +34,11 @@ export const ui = {
     },
     nav: {
       links: [
-        { href: '#programa', label: 'Programa' },
-        { href: '#sede', label: 'Sede' },
-        { href: '#patrocinadores', label: 'Patrocinadores' },
-        { href: '#faq', label: 'Preguntas' },
+        { href: '/#programa', label: 'Programa' },
+        { href: '/recursos', label: 'Recursos' },
+        { href: '/#sede', label: 'Sede' },
+        { href: '/#patrocinadores', label: 'Patrocinadores' },
+        { href: '/#faq', label: 'Preguntas' },
       ],
       register: 'Registrarme',
       language: 'Idioma',
@@ -178,6 +179,25 @@ export const ui = {
           ],
         },
       ],
+      },
+    resources: {
+      eyebrow: 'Recursos',
+      head: 'Materiales para workshops.',
+      sub: 'Presentaciones, guías escritas, grabaciones y enlaces técnicos para preparar y entregar los workshops de AI x Blockchain Day.',
+      labels: {
+        time: 'Horario',
+        artifact: 'Artefacto',
+        presentation: 'Presentación',
+        guide: 'Guía escrita',
+        video: 'Video grabado',
+        links: 'Links y recursos',
+      },
+      status: {
+        ready: 'Disponible',
+        planned: 'Próximamente',
+        afterEvent: 'Después del evento',
+      },
+      openPresentation: 'Abrir presentación',
     },
     format: {
       eyebrow: null,
@@ -264,10 +284,11 @@ export const ui = {
     },
     nav: {
       links: [
-        { href: '#programa', label: 'Program' },
-        { href: '#sede', label: 'Venue' },
-        { href: '#patrocinadores', label: 'Sponsors' },
-        { href: '#faq', label: 'FAQ' },
+        { href: '/en/#programa', label: 'Program' },
+        { href: '/en/resources/', label: 'Resources' },
+        { href: '/en/#sede', label: 'Venue' },
+        { href: '/en/#patrocinadores', label: 'Sponsors' },
+        { href: '/en/#faq', label: 'FAQ' },
       ],
       register: 'Register',
       language: 'Language',
@@ -408,6 +429,25 @@ export const ui = {
           ],
         },
       ],
+      },
+    resources: {
+      eyebrow: 'Resources',
+      head: 'Workshop materials.',
+      sub: 'Presentations, written guides, recordings, and technical links for preparing and delivering the AI x Blockchain Day workshops.',
+      labels: {
+        time: 'Time',
+        artifact: 'Artifact',
+        presentation: 'Presentation',
+        guide: 'Written guide',
+        video: 'Recorded video',
+        links: 'Links and resources',
+      },
+      status: {
+        ready: 'Available',
+        planned: 'Coming soon',
+        afterEvent: 'After the event',
+      },
+      openPresentation: 'Open presentation',
     },
     format: {
       eyebrow: null,

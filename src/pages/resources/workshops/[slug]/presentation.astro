@@ -1,0 +1,34 @@
+---
+import PresentationLayout from '../../../../layouts/PresentationLayout.astro';
+import WorkshopPresentation from '../../../../components/WorkshopPresentation.astro';
+import {
+  getWorkshopCopy,
+  getWorkshopSlides,
+  workshopResources,
+  type WorkshopResource,
+} from '../../../../data/workshops';
+
+const lang = 'es';
+
+export function getStaticPaths() {
+  const pathLang = 'es';
+
+  return workshopResources
+    .filter((workshop) => getWorkshopSlides(workshop, pathLang))
+    .map((workshop) => ({
+      params: { slug: workshop.slug },
+      props: { workshop },
+    }));
+}
+
+const { workshop } = Astro.props as { workshop: WorkshopResource };
+const copy = getWorkshopCopy(workshop, lang);
+---
+
+<PresentationLayout
+  lang={lang}
+  title={`${copy.title} | AI x Blockchain Day`}
+  description={`Modo presentación para ${copy.title}, workshop de ${workshop.time} en AI x Blockchain Day.`}
+>
+  <WorkshopPresentation workshop={workshop} lang={lang} />
+</PresentationLayout>

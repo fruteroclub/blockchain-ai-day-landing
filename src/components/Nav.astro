@@ -6,6 +6,10 @@ import { event } from '../i18n/ui';
 const lang = getLang(Astro);
 const t = useTranslations(lang);
 const nav = t.nav;
+const currentPath = Astro.url.pathname;
+const isResourcesPage = currentPath === '/recursos' || currentPath === '/recursos/' || currentPath === '/en/resources' || currentPath === '/en/resources/';
+const esLanguageHref = isResourcesPage ? '/recursos' : '/';
+const enLanguageHref = isResourcesPage ? '/en/resources/' : '/en/';
 ---
 
 <header class="fixed inset-x-0 top-0 z-50 border-b border-[var(--border)] bg-[var(--bg)]/85 backdrop-blur-md">
@@ -47,7 +51,7 @@ const nav = t.nav;
         aria-label={nav.language}
       >
         <a
-          href="/"
+          href={esLanguageHref}
           data-set-lang="es"
           aria-current={lang === 'es' ? 'true' : undefined}
           class:list={[
@@ -59,7 +63,7 @@ const nav = t.nav;
         </a>
         <span class="text-[var(--border)]" aria-hidden="true">/</span>
         <a
-          href="/en/"
+          href={enLanguageHref}
           data-set-lang="en"
           aria-current={lang === 'en' ? 'true' : undefined}
           class:list={[
@@ -125,7 +129,7 @@ const nav = t.nav;
     >
       <span class="text-[var(--fg-muted)]">{nav.language}</span>
       <a
-        href="/"
+        href={esLanguageHref}
         data-set-lang="es"
         aria-current={lang === 'es' ? 'true' : undefined}
         class:list={[lang === 'es' ? 'text-[var(--fg)]' : 'text-[var(--fg-muted)] hover:text-[var(--accent)]']}
@@ -134,7 +138,7 @@ const nav = t.nav;
       </a>
       <span class="text-[var(--border)]" aria-hidden="true">/</span>
       <a
-        href="/en/"
+        href={enLanguageHref}
         data-set-lang="en"
         aria-current={lang === 'en' ? 'true' : undefined}
         class:list={[lang === 'en' ? 'text-[var(--fg)]' : 'text-[var(--fg-muted)] hover:text-[var(--accent)]']}

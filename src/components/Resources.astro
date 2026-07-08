@@ -1,0 +1,504 @@
+---
+import { Icon } from 'astro-icon/components';
+import { getLang, useTranslations } from '../i18n/utils';
+import {
+  getWorkshopCopy,
+  getWorkshopGuidePath,
+  getWorkshopPresentationPath,
+  workshopResources,
+  type ResourceStatus,
+  type WorkshopLocale,
+} from '../data/workshops';
+
+type Props = {
+  standalone?: boolean;
+};
+
+const { standalone = false } = Astro.props as Props;
+const lang = getLang(Astro);
+const workshopLang = lang as WorkshopLocale;
+const t = useTranslations(lang);
+const r = t.resources;
+
+const labels = lang === 'es'
+  ? {
+      pageTitle: 'Recursos de workshops',
+      pageSub:
+        'Presentaciones, guías escritas, grabaciones y enlaces técnicos para preparar y entregar los talleres de AI x Blockchain Day.',
+      deck: 'Presentación',
+      guide: 'Guía escrita',
+      video: 'Video grabado',
+      links: 'Links y recursos',
+      openGuide: 'Abrir README',
+      openLinks: 'Ver links',
+      unavailable: 'Próximamente',
+      afterEvent: 'Después del evento',
+      modalTitle: 'Links y recursos',
+      modalClose: 'Cerrar',
+      opensNew: 'Abre en una pestaña nueva',
+    }
+  : {
+      pageTitle: 'Workshop resources',
+      pageSub:
+        'Presentations, written guides, recordings, and technical links for preparing and delivering the AI x Blockchain Day workshops.',
+      deck: 'Presentation',
+      guide: 'Written guide',
+      video: 'Recorded video',
+      links: 'Links and resources',
+      openGuide: 'Open README',
+      openLinks: 'View links',
+      unavailable: 'Coming soon',
+      afterEvent: 'After the event',
+      modalTitle: 'Links and resources',
+      modalClose: 'Close',
+      opensNew: 'Opens in a new tab',
+    };
+
+const statusLabel = (status: ResourceStatus) => {
+  if (status === 'ready') return r.status.ready;
+  if (status === 'after-event') return r.status.afterEvent;
+  return r.status.planned;
+};
+---
+
+<section
+  id="resources"
+  class:list={[
+    'resources-section relative border-t border-[var(--border)] bg-[var(--bg)]',
+    standalone ? 'is-standalone' : 'py-24 md:py-32',
+  ]}
+>
+  <div class="resources-field" aria-hidden="true"></div>
+
+  <div class="relative mx-auto max-w-[1200px] px-6">
+    <header class="resources-header" data-reveal>
+      <p class="font-mono text-xs uppercase tracking-[0.18em] text-[var(--accent)]">
+        <span class="text-[var(--cta)]">+</span> {r.eyebrow}
+      </p>
+      <div class="mt-6 grid gap-6 md:grid-cols-[minmax(0,0.95fr)_minmax(18rem,0.55fr)] md:items-end">
+        <h1 class="text-balance text-4xl leading-[1.03] sm:text-5xl lg:text-6xl">
+          {standalone ? labels.pageTitle : r.head}
+        </h1>
+        <p class="max-w-xl text-base leading-relaxed text-[var(--fg-muted)] md:justify-self-end">
+          {standalone ? labels.pageSub : r.sub}
+        </p>
+      </div>
+    </header>
+
+    <div class="resources-grid mt-9 md:mt-16">
+      {workshopResources.map((workshop) => {
+        const copy = getWorkshopCopy(workshop, workshopLang);
+        const guidePath = getWorkshopGuidePath(workshop, workshopLang);
+        const presentationEs = getWorkshopPresentationPath(workshop, 'es');
+        const presentationEn = getWorkshopPresentationPath(workshop, 'en');
+        const modalId = `workshop-resources-${workshop.slug}`;
+        const hasLinks = workshop.statuses.links === 'ready' && (workshop.resourceLinks?.length ?? 0) > 0;
+
+        return (
+          <article class="resource-card">
+            <div class="resource-card-top">
+              <p class="font-mono text-[0.68rem] uppercase tracking-[0.16em] text-[var(--accent)]">
+                {workshop.time} / WS-{workshop.number}
+              </p>
+              <h2 class="mt-4 text-2xl leading-tight text-[var(--fg)] md:text-3xl">
+                {copy.title}
+              </h2>
+              <p class="mt-4 max-w-[42rem] text-sm leading-relaxed text-[var(--fg-muted)] md:text-base">
+                {copy.summary}
+              </p>
+            </div>
+
+            <dl class="resource-artifact">
+              <dt>{r.labels.artifact}</dt>
+              <dd>{copy.artifact}</dd>
+            </dl>
+
+            <div class="resource-actions" aria-label={copy.title}>
+              <div class="resource-action">
+                <div class="resource-action-label">
+                  <Icon name="ph:monitor-play-bold" class="h-4 w-4" aria-hidden="true" />
+                  <span>{labels.deck}</span>
+                </div>
+                <div class="resource-action-controls" aria-label={labels.deck}>
+                  {presentationEs ? (
+                    <a href={presentationEs} class="resource-chip">ES</a>
+                  ) : (
+                    <span class="resource-chip is-disabled">ES</span>
+                  )}
+                  {presentationEn ? (
+                    <a href={presentationEn} class="resource-chip">EN</a>
+                  ) : (
+                    <span class="resource-chip is-disabled">EN</span>
+                  )}
+                </div>
+              </div>
+
+              <a
+                href={guidePath}
+                target="_blank"
+                rel="noopener"
+                class:list={[
+                  'resource-action resource-action-link',
+                  guidePath && workshop.statuses.guide === 'ready' ? 'is-ready' : 'is-disabled',
+                ]}
+                aria-disabled={!guidePath || workshop.statuses.guide !== 'ready' ? 'true' : undefined}
+              >
+                <div class="resource-action-label">
+                  <Icon name="ph:file-text-bold" class="h-4 w-4" aria-hidden="true" />
+                  <span>{labels.guide}</span>
+                </div>
+                <small>{guidePath && workshop.statuses.guide === 'ready' ? labels.openGuide : statusLabel(workshop.statuses.guide)}</small>
+              </a>
+
+              <div class="resource-action is-disabled" aria-disabled="true">
+                <div class="resource-action-label">
+                  <Icon name="ph:video-bold" class="h-4 w-4" aria-hidden="true" />
+                  <span>{labels.video}</span>
+                </div>
+                <small>{workshop.statuses.video === 'after-event' ? labels.afterEvent : statusLabel(workshop.statuses.video)}</small>
+              </div>
+
+              <button
+                type="button"
+                class:list={[
+                  'resource-action resource-action-link',
+                  hasLinks ? 'is-ready' : 'is-disabled',
+                ]}
+                data-resource-open={modalId}
+                disabled={!hasLinks}
+              >
+                <div class="resource-action-label">
+                  <Icon name="ph:link-bold" class="h-4 w-4" aria-hidden="true" />
+                  <span>{labels.links}</span>
+                </div>
+                <small>{hasLinks ? labels.openLinks : statusLabel(workshop.statuses.links)}</small>
+              </button>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+
+    {workshopResources.map((workshop) => {
+      const copy = getWorkshopCopy(workshop, workshopLang);
+      const links = workshop.resourceLinks ?? [];
+      const modalId = `workshop-resources-${workshop.slug}`;
+
+      return (
+        <dialog class="resource-modal" id={modalId} data-resource-modal>
+          <div class="resource-modal-panel">
+            <header class="resource-modal-head">
+              <div>
+                <p class="font-mono text-[0.68rem] uppercase tracking-[0.16em] text-[var(--accent)]">
+                  WS-{workshop.number} / {labels.modalTitle}
+                </p>
+                <h2 class="mt-3 text-2xl leading-tight text-[var(--fg)]">{copy.title}</h2>
+              </div>
+              <button type="button" class="resource-modal-close" data-resource-close aria-label={labels.modalClose}>
+                <Icon name="ph:x-bold" class="h-5 w-5" aria-hidden="true" />
+              </button>
+            </header>
+
+            <div class="resource-modal-links">
+              {links.map((link) => (
+                <a href={link.href} target="_blank" rel="noopener" class="resource-modal-link">
+                  <span>
+                    <b>{link.label[workshopLang]}</b>
+                    {link.description && <small>{link.description[workshopLang]}</small>}
+                  </span>
+                  <Icon name="ph:arrow-up-right-bold" class="h-4 w-4" aria-hidden="true" />
+                  <span class="sr-only">{labels.opensNew}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </dialog>
+      );
+    })}
+  </div>
+</section>
+
+<style>
+  .resources-section.is-standalone {
+    min-height: 100dvh;
+    padding-top: 7rem;
+    padding-bottom: 5rem;
+  }
+
+  .resources-field {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, color-mix(in srgb, var(--accent-fill) 5%, transparent) 1px, transparent 1px),
+      linear-gradient(0deg, color-mix(in srgb, var(--accent-fill) 4%, transparent) 1px, transparent 1px);
+    background-size: 4rem 4rem;
+    mask-image: linear-gradient(to bottom, black, transparent 68%);
+    opacity: 0.7;
+    pointer-events: none;
+  }
+
+  .resources-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .resource-card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent-fill);
+    border-radius: 2px;
+    background:
+      linear-gradient(135deg, color-mix(in srgb, var(--accent-fill) 8%, transparent), transparent 44%),
+      var(--surface);
+    padding: 1.25rem;
+  }
+
+  .resource-card-top {
+    min-height: 0;
+  }
+
+  .resource-artifact {
+    display: grid;
+    gap: 0.45rem;
+    margin-top: 1.35rem;
+    border-top: 1px solid var(--border);
+    padding-top: 1rem;
+  }
+
+  .resource-artifact dt {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--fg-muted);
+  }
+
+  .resource-artifact dd {
+    font-size: 0.92rem;
+    line-height: 1.4;
+    color: var(--fg);
+  }
+
+  .resource-actions {
+    display: grid;
+    gap: 0.6rem;
+    margin-top: auto;
+    padding-top: 1.35rem;
+  }
+
+  .resource-action {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.9rem;
+    min-height: 2.75rem;
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    background: color-mix(in srgb, var(--bg) 28%, transparent);
+    padding: 0.65rem 0.75rem;
+    color: var(--fg-muted);
+    text-align: left;
+  }
+
+  .resource-action-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    min-width: 0;
+    color: var(--fg);
+  }
+
+  .resource-action-label span {
+    min-width: 0;
+    font-size: 0.9rem;
+    line-height: 1.1;
+  }
+
+  .resource-action small,
+  .resource-chip {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+
+  .resource-action-link.is-ready,
+  .resource-chip:not(.is-disabled) {
+    border-color: color-mix(in srgb, var(--accent-fill) 55%, var(--border));
+    color: var(--accent);
+    transition:
+      border-color 0.2s ease,
+      background-color 0.2s ease,
+      color 0.2s ease;
+  }
+
+  .resource-action-link.is-ready:hover,
+  .resource-chip:not(.is-disabled):hover {
+    border-color: var(--accent-fill);
+    background: color-mix(in srgb, var(--accent-fill) 10%, transparent);
+  }
+
+  .resource-action.is-disabled,
+  .resource-action-link.is-disabled {
+    opacity: 0.58;
+  }
+
+  .resource-action-controls {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    flex-shrink: 0;
+  }
+
+  .resource-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.3rem;
+    min-height: 1.65rem;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    color: var(--fg-muted);
+  }
+
+  .resource-chip.is-disabled {
+    opacity: 0.45;
+  }
+
+  .resource-modal {
+    width: min(44rem, calc(100vw - 2rem));
+    max-height: calc(100dvh - 2rem);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: transparent;
+    color: var(--fg);
+    margin: auto;
+    padding: 0;
+  }
+
+  .resource-modal::backdrop {
+    background: color-mix(in srgb, var(--bg) 76%, black);
+    backdrop-filter: blur(10px);
+  }
+
+  .resource-modal-panel {
+    background:
+      linear-gradient(135deg, color-mix(in srgb, var(--accent-fill) 10%, transparent), transparent 45%),
+      var(--surface);
+    padding: 1rem;
+  }
+
+  .resource-modal-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1rem;
+  }
+
+  .resource-modal-close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    flex-shrink: 0;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    color: var(--accent);
+    transition:
+      border-color 0.2s ease,
+      background-color 0.2s ease;
+  }
+
+  .resource-modal-close:hover {
+    border-color: var(--accent-fill);
+    background: color-mix(in srgb, var(--accent-fill) 10%, transparent);
+  }
+
+  .resource-modal-links {
+    display: grid;
+    gap: 0.65rem;
+    padding-top: 1rem;
+  }
+
+  .resource-modal-link {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 1rem;
+    align-items: center;
+    gap: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 0.85rem;
+    color: var(--accent);
+    transition:
+      border-color 0.2s ease,
+      background-color 0.2s ease;
+  }
+
+  .resource-modal-link:hover {
+    border-color: var(--accent-fill);
+    background: color-mix(in srgb, var(--accent-fill) 10%, transparent);
+  }
+
+  .resource-modal-link b {
+    display: block;
+    color: var(--fg);
+    font-weight: 500;
+  }
+
+  .resource-modal-link small {
+    display: block;
+    margin-top: 0.25rem;
+    color: var(--fg-muted);
+    font-size: 0.82rem;
+    line-height: 1.35;
+  }
+
+  @media (min-width: 820px) {
+    .resources-section.is-standalone {
+      padding-top: 8.5rem;
+      padding-bottom: 6rem;
+    }
+
+    .resources-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .resource-card {
+      min-height: 31rem;
+    }
+
+    .resource-card-top {
+      min-height: 12.75rem;
+    }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('[data-resource-open]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const id = button.getAttribute('data-resource-open');
+      const dialog = id ? document.getElementById(id) : null;
+      if (dialog instanceof HTMLDialogElement && !dialog.open) {
+        dialog.showModal();
+      }
+    });
+  });
+
+  document.querySelectorAll<HTMLDialogElement>('[data-resource-modal]').forEach((dialog) => {
+    dialog.querySelectorAll('[data-resource-close]').forEach((button) => {
+      button.addEventListener('click', () => dialog.close());
+    });
+
+    dialog.addEventListener('click', (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+  });
+</script>

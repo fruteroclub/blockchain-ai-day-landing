@@ -1,0 +1,19 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Resources from '../components/Resources.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Base
+  title="Recursos de workshops | AI x Blockchain Day"
+  description="Presentaciones, guías escritas, grabaciones y enlaces técnicos de los workshops de AI x Blockchain Day."
+  esHref="/recursos"
+  enHref="/en/resources/"
+>
+  <Nav />
+  <main>
+    <Resources standalone />
+  </main>
+  <Footer />
+</Base>
