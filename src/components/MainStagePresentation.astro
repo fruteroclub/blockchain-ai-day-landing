@@ -1,0 +1,919 @@
+---
+import { Icon } from 'astro-icon/components';
+import Blueprint from './primitives/Blueprint.astro';
+import type { PresentationSlide } from '../data/workshops';
+import type { StandalonePresentation, TalkLocale } from '../data/futureOfWorkPresentation';
+
+type Props = {
+  presentation: StandalonePresentation;
+  lang?: TalkLocale;
+};
+
+const { presentation, lang = 'es' } = Astro.props as Props;
+const slides = presentation.slides[lang] ?? [];
+const copy = presentation.copy[lang];
+const homeHref = lang === 'en' ? '/en/' : '/';
+const spanishPath = presentation.paths.es;
+const englishPath = presentation.paths.en;
+
+const slideLabel = (index: number) => String(index + 1).padStart(2, '0');
+---
+
+<div class="deck-shell" data-deck data-slide-count={slides.length}>
+  <div class="deck-blueprint" aria-hidden="true">
+    <Blueprint />
+  </div>
+
+  <header class="deck-topbar" aria-label="Presentation controls">
+    <a href={homeHref} class="deck-brand" aria-label={copy.backLabel}>
+      <img src="/logo/blockchain-ai-day.svg" alt="" width="40" height="40" />
+      <span>AI <b>x</b> Blockchain Day</span>
+    </a>
+
+    <div class="deck-meta">
+      <span>{copy.sessionLabel}</span>
+      <span>{copy.timeLabel}</span>
+      <a href={spanishPath} data-locale-link data-set-lang="es" aria-current={lang === 'es' ? 'true' : undefined}>ES</a>
+      <a href={englishPath} data-locale-link data-set-lang="en" aria-current={lang === 'en' ? 'true' : undefined}>EN</a>
+      <span data-counter>{slideLabel(0)} / {slideLabel(slides.length - 1)}</span>
+    </div>
+  </header>
+
+  <main class="deck-stage" aria-live="polite">
+    {slides.map((slide: PresentationSlide, index: number) => (
+      <section
+        class:list={['deck-slide', `slide-kind-${slide.kind}`, index === 0 && 'is-active']}
+        data-slide
+        data-slide-index={index}
+        aria-hidden={index === 0 ? 'false' : 'true'}
+        hidden={index !== 0}
+      >
+        <div class="slide-inner">
+          {slide.eyebrow && (
+            <p class="slide-eyebrow">
+              <span>+</span> {slide.eyebrow}
+            </p>
+          )}
+
+          {slide.kind === 'cover' && (
+            <div class="cover-layout">
+              <p class="cover-code">{copy.sessionLabel} / {copy.eventLabel}</p>
+              <h1>{slide.title}</h1>
+              {slide.subtitle && <p class="slide-subtitle">{slide.subtitle}</p>}
+              {slide.body && <p class="slide-body">{slide.body}</p>}
+            </div>
+          )}
+
+          {slide.kind === 'statement' && (
+            <div class="statement-layout">
+              <h1>{slide.title}</h1>
+              {slide.subtitle && <p class="slide-subtitle">{slide.subtitle}</p>}
+              {slide.lines && (
+                <div class="statement-lines">
+                  {slide.lines.map((line) => <p>{line}</p>)}
+                </div>
+              )}
+            </div>
+          )}
+
+          {slide.kind === 'sequence' && (
+            <div class="sequence-layout">
+              <h1>{slide.title}</h1>
+              <div class="sequence-grid">
+                {slide.steps?.map((step) => (
+                  <div class:list={['sequence-step', step.active && 'is-active']}>
+                    <span class="step-code">{step.code}</span>
+                    <h2>{step.title}</h2>
+                    {step.body && <p>{step.body}</p>}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {slide.kind === 'list' && (
+            <div class="list-layout">
+              <h1>{slide.title}</h1>
+              {slide.body && <p class="slide-body">{slide.body}</p>}
+              <ul class="slide-list">
+                {slide.items?.map((item, itemIndex) => (
+                  <li>
+                    <span>{slideLabel(itemIndex)}</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {slide.kind === 'split' && (
+            <div class="split-layout">
+              <h1>{slide.title}</h1>
+              <div class="split-grid">
+                {slide.columns?.map((column) => (
+                  <div class="split-column">
+                    <p>{column.label}</p>
+                    <ul>
+                      {column.items.map((item) => <li>{item}</li>)}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+              {slide.body && <p class="split-close">{slide.body}</p>}
+            </div>
+          )}
+
+          {slide.kind === 'diagram' && (
+            <div class="diagram-layout">
+              <h1>{slide.title}</h1>
+              <div class="diagram-chain">
+                {slide.nodes?.map((node) => (
+                  <div class="diagram-node">
+                    <span>{node.label}</span>
+                    {node.detail && <small>{node.detail}</small>}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {slide.kind === 'checklist' && (
+            <div class="checklist-layout">
+              <h1>{slide.title}</h1>
+              {slide.body && <p class="slide-body">{slide.body}</p>}
+              <ol class="checklist">
+                {slide.items?.map((item, itemIndex) => (
+                  <li>
+                    <span>{slideLabel(itemIndex)}</span>
+                    {item}
+                  </li>
+                ))}
+              </ol>
+            </div>
+          )}
+
+          {slide.kind === 'journey' && (
+            <div class="journey-layout">
+              <h1>{slide.title}</h1>
+              <div class="journey-table">
+                {slide.rows?.map((row) => (
+                  <div class:list={['journey-row', row.active && 'is-active']}>
+                    <span>{row.left}</span>
+                    <p>{row.right}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {slide.kind === 'closing' && (
+            <div class="closing-layout">
+              <p class="cover-code">{copy.sessionLabel} / {copy.locationLabel}</p>
+              <h1>{slide.title}</h1>
+              {slide.subtitle && <p class="slide-subtitle">{slide.subtitle}</p>}
+            </div>
+          )}
+        </div>
+      </section>
+    ))}
+  </main>
+
+  <footer class="deck-controls" aria-label="Slide navigation">
+    <button type="button" data-action="prev" aria-label="Previous slide">
+      <Icon name="ph:caret-left-bold" class="h-5 w-5" aria-hidden="true" />
+    </button>
+    <button type="button" data-action="next" aria-label="Next slide">
+      <Icon name="ph:caret-right-bold" class="h-5 w-5" aria-hidden="true" />
+    </button>
+    <button type="button" data-action="fullscreen" aria-label="Enter fullscreen">
+      <Icon name="ph:corners-out-bold" class="h-5 w-5" aria-hidden="true" />
+    </button>
+  </footer>
+</div>
+
+<style>
+  .deck-shell {
+    --deck-body: var(--color-n-100);
+    --deck-muted: var(--color-n-200);
+
+    position: relative;
+    min-height: 100dvh;
+    overflow: hidden;
+    background:
+      linear-gradient(90deg, color-mix(in srgb, var(--accent-fill) 5%, transparent) 1px, transparent 1px),
+      linear-gradient(0deg, color-mix(in srgb, var(--accent-fill) 4%, transparent) 1px, transparent 1px),
+      radial-gradient(circle at 12% 18%, color-mix(in srgb, var(--cta) 14%, transparent), transparent 24rem),
+      var(--bg);
+    background-size: 4rem 4rem, 4rem 4rem, auto, auto;
+  }
+
+  .deck-blueprint {
+    position: absolute;
+    top: 3.5rem;
+    right: -9rem;
+    width: min(40rem, 58vw);
+    color: var(--accent-fill);
+    opacity: 0.09;
+    pointer-events: none;
+  }
+
+  .deck-blueprint :global(svg) {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .deck-topbar,
+  .deck-controls {
+    position: fixed;
+    z-index: 30;
+  }
+
+  .deck-topbar {
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: 4.5rem;
+    border-bottom: 1px solid var(--border);
+    background: color-mix(in srgb, var(--bg) 90%, transparent);
+    padding: 0 1.25rem;
+    backdrop-filter: blur(14px);
+  }
+
+  .deck-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    min-width: 0;
+    color: var(--fg);
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-decoration: none;
+  }
+
+  .deck-brand img {
+    height: 2.5rem;
+    width: 2.5rem;
+  }
+
+  .deck-brand b {
+    color: var(--cta);
+    font-weight: 700;
+  }
+
+  .deck-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--fg-muted);
+  }
+
+  .deck-meta span,
+  .deck-meta a {
+    white-space: nowrap;
+  }
+
+  .deck-meta a {
+    color: var(--fg-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .deck-meta a:hover,
+  .deck-meta a[aria-current="true"] {
+    color: var(--accent);
+  }
+
+  .deck-stage {
+    position: relative;
+    min-height: 100dvh;
+  }
+
+  .deck-slide {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    min-height: 100dvh;
+    overflow-y: auto;
+    place-items: center;
+    padding: 6rem 1.25rem 5.5rem;
+  }
+
+  .deck-slide[hidden] {
+    display: none;
+  }
+
+  .slide-inner {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 78rem;
+  }
+
+  .slide-eyebrow,
+  .cover-code {
+    margin-bottom: 1.35rem;
+    font-family: var(--font-mono);
+    font-size: 0.84rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+  }
+
+  .slide-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+  }
+
+  .slide-eyebrow span {
+    display: inline-flex;
+    height: 1.45rem;
+    min-width: 2.3rem;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--accent-fill);
+    border-radius: 999px;
+    color: var(--cta);
+    line-height: 1;
+  }
+
+  .deck-slide h1 {
+    max-width: 17ch;
+    color: var(--fg);
+    font-size: 3rem;
+    line-height: 1.02;
+    letter-spacing: 0;
+  }
+
+  .cover-layout h1,
+  .closing-layout h1 {
+    max-width: 12ch;
+    font-size: 3.6rem;
+  }
+
+  .slide-subtitle {
+    margin-top: 1.35rem;
+    max-width: 44rem;
+    color: var(--deck-muted);
+    font-size: 1.38rem;
+    line-height: 1.35;
+  }
+
+  .cover-layout .slide-body {
+    margin-top: 1.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.84rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--fg-muted);
+  }
+
+  .statement-layout .slide-subtitle {
+    color: var(--accent);
+    font-size: 1.6rem;
+  }
+
+  .statement-lines {
+    display: grid;
+    gap: 0.9rem;
+    margin-top: 2rem;
+    max-width: 48rem;
+  }
+
+  .statement-lines p,
+  .slide-body,
+  .split-close {
+    color: var(--deck-muted);
+    font-size: 1.28rem;
+    line-height: 1.46;
+  }
+
+  .statement-lines p:last-child,
+  .split-close {
+    color: var(--fg);
+  }
+
+  .sequence-grid,
+  .split-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+    margin-top: 2rem;
+  }
+
+  .sequence-step,
+  .split-column {
+    min-height: 8.6rem;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    background: color-mix(in srgb, var(--surface) 80%, transparent);
+    padding: 1rem;
+  }
+
+  .sequence-step.is-active {
+    border-color: var(--accent-fill);
+    background: color-mix(in srgb, var(--accent-fill) 12%, var(--surface));
+  }
+
+  .step-code,
+  .slide-list span,
+  .checklist span {
+    display: inline-flex;
+    min-width: 2.3rem;
+    height: 1.45rem;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--accent-fill);
+    border-radius: 999px;
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    line-height: 1;
+  }
+
+  .sequence-step h2 {
+    margin-top: 1rem;
+    color: var(--fg);
+    font-size: 1.28rem;
+    line-height: 1.1;
+    letter-spacing: 0;
+  }
+
+  .sequence-step p {
+    margin-top: 0.65rem;
+    color: var(--deck-muted);
+    font-size: 0.98rem;
+    line-height: 1.42;
+  }
+
+  .slide-list,
+  .checklist {
+    display: grid;
+    gap: 0.62rem;
+    margin-top: 1.65rem;
+    max-width: 44rem;
+  }
+
+  .slide-list li,
+  .checklist li {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    border-bottom: 1px solid var(--border);
+    padding: 0.6rem 0;
+    color: var(--deck-body);
+    font-size: 1.16rem;
+    line-height: 1.28;
+  }
+
+  .split-column p {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--accent);
+  }
+
+  .split-column ul {
+    display: grid;
+    gap: 0.55rem;
+    margin-top: 1rem;
+    color: var(--fg);
+  }
+
+  .split-column li {
+    border-top: 1px solid var(--border);
+    padding-top: 0.55rem;
+    font-size: 1rem;
+    line-height: 1.3;
+  }
+
+  .split-close {
+    margin-top: 1.25rem;
+    max-width: 48rem;
+  }
+
+  .diagram-chain {
+    display: grid;
+    gap: 0.7rem;
+    margin-top: 2rem;
+    max-width: 34rem;
+  }
+
+  .diagram-node {
+    position: relative;
+    border: 1px solid var(--accent-fill);
+    border-radius: 2px;
+    background: color-mix(in srgb, var(--surface) 82%, transparent);
+    padding: 1rem 1.1rem;
+  }
+
+  .diagram-node:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: 1.2rem;
+    bottom: -0.72rem;
+    width: 1px;
+    height: 0.72rem;
+    background: var(--accent-fill);
+  }
+
+  .diagram-node span {
+    display: block;
+    color: var(--deck-body);
+    font-size: 1.25rem;
+    line-height: 1.15;
+  }
+
+  .diagram-node small {
+    display: block;
+    margin-top: 0.35rem;
+    color: var(--deck-muted);
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+
+  .journey-table {
+    display: grid;
+    gap: 0;
+    margin-top: 2rem;
+    max-width: 54rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .journey-row {
+    display: grid;
+    grid-template-columns: minmax(7rem, 12rem) minmax(0, 1fr);
+    gap: 1rem;
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 0;
+  }
+
+  .journey-row span {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+  }
+
+  .journey-row p {
+    color: var(--deck-body);
+    font-size: 1.18rem;
+    line-height: 1.35;
+  }
+
+  .journey-row.is-active p {
+    color: var(--accent);
+  }
+
+  .deck-controls {
+    right: 1.25rem;
+    bottom: 1.25rem;
+    display: flex;
+    gap: 0.55rem;
+  }
+
+  .deck-controls button {
+    display: inline-flex;
+    height: 2.8rem;
+    width: 2.8rem;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    color: var(--fg);
+    transition:
+      border-color 0.2s ease,
+      color 0.2s ease,
+      background-color 0.2s ease;
+  }
+
+  .deck-controls button:hover {
+    border-color: var(--accent-fill);
+    color: var(--accent);
+    background: color-mix(in srgb, var(--accent-fill) 10%, var(--bg));
+  }
+
+  @media (min-width: 720px) {
+    .deck-topbar {
+      padding: 0 2rem;
+    }
+
+    .deck-slide {
+      padding: 6.5rem 3rem 5.5rem;
+    }
+
+    .deck-slide h1 {
+      font-size: 3.8rem;
+    }
+
+    .cover-layout h1,
+    .closing-layout h1 {
+      font-size: 5rem;
+    }
+
+    .sequence-grid {
+      grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+    }
+
+    .split-grid {
+      grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    }
+  }
+
+  @media (min-width: 980px) {
+    .split-layout {
+      display: grid;
+      grid-template-columns: minmax(25rem, 0.9fr) minmax(30rem, 1fr);
+      column-gap: 4rem;
+      align-items: center;
+    }
+
+    .split-layout h1 {
+      grid-column: 1;
+      max-width: 14ch;
+    }
+
+    .split-layout .split-grid {
+      grid-column: 2;
+      grid-row: 1 / span 2;
+      align-self: center;
+      margin-top: 0;
+    }
+
+    .split-layout .split-close {
+      grid-column: 1;
+      align-self: start;
+      margin-top: 1.25rem;
+      max-width: 30rem;
+    }
+
+    .list-layout,
+    .diagram-layout,
+    .checklist-layout,
+    .journey-layout {
+      display: grid;
+      grid-template-columns: minmax(25rem, 0.9fr) minmax(30rem, 1fr);
+      column-gap: 4rem;
+      align-items: center;
+    }
+
+    .list-layout {
+      row-gap: 1.15rem;
+    }
+
+    .list-layout h1,
+    .list-layout .slide-body,
+    .diagram-layout h1,
+    .checklist-layout h1,
+    .checklist-layout .slide-body,
+    .journey-layout h1 {
+      grid-column: 1;
+      max-width: 17ch;
+    }
+
+    .list-layout h1,
+    .checklist-layout h1 {
+      align-self: end;
+    }
+
+    .list-layout .slide-body,
+    .checklist-layout .slide-body {
+      align-self: start;
+      max-width: 32rem;
+    }
+
+    .list-layout .slide-list,
+    .diagram-layout .diagram-chain,
+    .checklist-layout .checklist,
+    .journey-layout .journey-table {
+      grid-column: 2;
+      grid-row: 1 / span 2;
+      align-self: center;
+      margin-top: 0;
+      max-width: none;
+    }
+
+    .diagram-layout .diagram-chain,
+    .journey-layout .journey-table {
+      grid-row: 1;
+    }
+
+    .slide-list,
+    .checklist {
+      border-top: 1px solid color-mix(in srgb, var(--accent-fill) 72%, transparent);
+      padding-top: 0.35rem;
+    }
+
+    .journey-table {
+      border-top-color: color-mix(in srgb, var(--accent-fill) 72%, transparent);
+    }
+  }
+
+  @media (max-width: 719px) {
+    .deck-brand span {
+      display: none;
+    }
+
+    .deck-slide {
+      padding: 5.25rem 1.25rem 4.25rem;
+    }
+
+    .deck-slide h1 {
+      font-size: 2.25rem;
+    }
+
+    .cover-layout h1,
+    .closing-layout h1 {
+      font-size: 2.85rem;
+    }
+
+    .slide-subtitle,
+    .statement-lines p,
+    .slide-body,
+    .split-close {
+      font-size: 1.04rem;
+      line-height: 1.4;
+    }
+
+    .statement-lines {
+      gap: 0.6rem;
+      margin-top: 1.2rem;
+    }
+
+    .sequence-grid {
+      gap: 0.6rem;
+      margin-top: 1.25rem;
+    }
+
+    .sequence-step,
+    .split-column {
+      min-height: 0;
+      padding: 0.82rem;
+    }
+
+    .sequence-step h2 {
+      margin-top: 0.75rem;
+      font-size: 1.05rem;
+    }
+
+    .sequence-step p,
+    .split-column li {
+      margin-top: 0.45rem;
+      font-size: 0.86rem;
+      line-height: 1.32;
+    }
+
+    .slide-list li,
+    .checklist li {
+      font-size: 0.96rem;
+      line-height: 1.25;
+    }
+
+    .diagram-node span,
+    .journey-row p {
+      font-size: 1.04rem;
+    }
+
+    .deck-meta span:nth-child(1),
+    .deck-meta span:nth-child(2) {
+      display: none;
+    }
+
+    .journey-row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  function initMainStageDeck() {
+    const deck = document.querySelector<HTMLElement>('[data-deck]');
+    const slides = Array.from(document.querySelectorAll<HTMLElement>('[data-slide]'));
+    const counter = document.querySelector<HTMLElement>('[data-counter]');
+    const localeLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>('[data-locale-link]'));
+    const total = slides.length;
+    let current = 0;
+
+    function formatSlideNumber(value: number) {
+      return String(value).padStart(2, '0');
+    }
+
+    function setSlide(index: number, updateHash = true) {
+      if (!total) return;
+      current = Math.max(0, Math.min(index, total - 1));
+
+      slides.forEach((slide, i) => {
+        const active = i === current;
+        slide.hidden = !active;
+        slide.classList.toggle('is-active', active);
+        slide.setAttribute('aria-hidden', active ? 'false' : 'true');
+      });
+
+      if (counter) {
+        counter.textContent = `${formatSlideNumber(current + 1)} / ${formatSlideNumber(total)}`;
+      }
+
+      localeLinks.forEach((link) => {
+        link.hash = `#${current + 1}`;
+      });
+
+      if (updateHash) {
+        history.replaceState(null, '', `#${current + 1}`);
+      }
+    }
+
+    function go(delta: number) {
+      setSlide(current + delta);
+    }
+
+    document.querySelector('[data-action="prev"]')?.addEventListener('click', () => go(-1));
+    document.querySelector('[data-action="next"]')?.addEventListener('click', () => go(1));
+    document.querySelector('[data-action="fullscreen"]')?.addEventListener('click', async () => {
+      try {
+        if (!document.fullscreenElement) {
+          await document.documentElement.requestFullscreen();
+        } else {
+          await document.exitFullscreen();
+        }
+      } catch (error) {
+        console.warn('Fullscreen request failed', error);
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowRight' || event.key === 'PageDown' || event.key === ' ') {
+        event.preventDefault();
+        go(1);
+      }
+      if (event.key === 'ArrowLeft' || event.key === 'PageUp') {
+        event.preventDefault();
+        go(-1);
+      }
+      if (event.key === 'Home') {
+        event.preventDefault();
+        setSlide(0);
+      }
+      if (event.key === 'End') {
+        event.preventDefault();
+        setSlide(total - 1);
+      }
+    });
+
+    const hashIndex = Number.parseInt(location.hash.replace('#', ''), 10);
+    if (Number.isFinite(hashIndex)) {
+      setSlide(hashIndex - 1, false);
+    } else {
+      setSlide(0, false);
+    }
+
+    window.addEventListener('hashchange', () => {
+      const nextHashIndex = Number.parseInt(location.hash.replace('#', ''), 10);
+      if (Number.isFinite(nextHashIndex)) {
+        setSlide(nextHashIndex - 1, false);
+      }
+    });
+
+    document.querySelectorAll('[data-set-lang]').forEach((el) => {
+      el.addEventListener('click', () => {
+        try {
+          localStorage.setItem('baiday-lang', el.getAttribute('data-set-lang') || 'es');
+        } catch (e) {}
+      });
+    });
+
+    deck?.addEventListener('click', (event) => {
+      const target = event.target as HTMLElement;
+      if (target.closest('button, a')) return;
+      go(1);
+    });
+
+    (window as any).aiXbMainStageDeck = {
+      goTo: (slideNumber: number) => setSlide(slideNumber - 1),
+      next: () => go(1),
+      prev: () => go(-1),
+    };
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMainStageDeck, { once: true });
+  } else {
+    initMainStageDeck();
+  }
+</script>

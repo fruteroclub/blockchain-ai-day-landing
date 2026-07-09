@@ -1,0 +1,16 @@
+---
+import MainStagePresentation from '../../../../components/MainStagePresentation.astro';
+import PresentationLayout from '../../../../layouts/PresentationLayout.astro';
+import { futureOfWorkPresentation, getFutureOfWorkCopy } from '../../../../data/futureOfWorkPresentation';
+
+const lang = 'en';
+const copy = getFutureOfWorkCopy(lang);
+---
+
+<PresentationLayout
+  lang={lang}
+  title={`${copy.title} | AI x Blockchain Day`}
+  description={copy.description}
+>
+  <MainStagePresentation presentation={futureOfWorkPresentation} lang={lang} />
+</PresentationLayout>
