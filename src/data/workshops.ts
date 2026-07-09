@@ -915,6 +915,240 @@ const workshopThreeSlidesEn: PresentationSlide[] = [
   },
 ];
 
+const workshopFourSlidesEs: PresentationSlide[] = [
+  {
+    kind: 'cover',
+    eyebrow: 'Workshop 04',
+    title: 'Un Agente que cobra por trabajo',
+    subtitle: 'Habilita pagos para que tu Agente pueda vender servicios en un marketplace.',
+  },
+  {
+    kind: 'statement',
+    eyebrow: 'Continuidad',
+    title: 'Workshop 3 creó un servicio útil. Hoy lo volvemos cobrable.',
+    lines: [
+      'El Mentor Agent ya puede recibir un repo, razonar y devolver guía accionable.',
+      'Pero un servicio no es un negocio hasta que define precio, acceso, ejecución y entrega.',
+      'Hoy agregamos identidad ERC-8004 y autorización x402 antes de ejecutar trabajo.',
+    ],
+  },
+  {
+    kind: 'sequence',
+    eyebrow: 'Salto comercial',
+    title: 'De agente útil a servicio pagado.',
+    steps: [
+      { code: '01', title: 'Trabajo', body: 'Define qué tarea vende el agente.' },
+      { code: '02', title: 'Precio', body: 'Publica cuánto cuesta ejecutar esa tarea.' },
+      { code: '03', title: 'Gate', body: 'Exige autorización antes de correr.', active: true },
+      { code: '04', title: 'Entrega', body: 'Devuelve resultado, receipt y metadata.' },
+    ],
+  },
+  {
+    kind: 'split',
+    eyebrow: 'Separar conceptos',
+    title: 'ERC-8004 no cobra. x402 sí.',
+    columns: [
+      {
+        label: 'ERC-8004',
+        items: ['Identidad del agente', 'Servicios disponibles', 'Registro y discovery', 'Señales de confianza'],
+      },
+      {
+        label: 'x402',
+        items: ['Requisitos de pago', 'HTTP 402 Payment Required', 'Firma de pago', 'Receipt de ejecución'],
+      },
+    ],
+    body: 'Juntos permiten que otros sistemas encuentren, evalúen y paguen a un agente.',
+  },
+  {
+    kind: 'diagram',
+    eyebrow: 'Arquitectura',
+    title: 'El flujo pagado es una cadena explícita.',
+    nodes: [
+      { label: 'ERC-8004 registration', detail: '/.well-known/agent-registration.json' },
+      { label: 'UI payment gate', detail: 'Activar pagos x402' },
+      { label: 'x402 requirements', detail: 'price, network, payTo, resource' },
+      { label: 'POST /jobs', detail: '402 o ejecución' },
+      { label: 'Agent service', detail: 'summarize o mentor' },
+      { label: 'Receipt + feedback', detail: 'x402 + ERC-8004 metadata' },
+    ],
+  },
+  {
+    kind: 'list',
+    eyebrow: 'Lifecycle x402',
+    title: 'El pago vive en el ciclo de la request.',
+    body: 'El cliente intenta ejecutar, recibe requirements, paga, reintenta y entonces el agente trabaja.',
+    items: [
+      'Switch apagado: demo abierta',
+      'Switch encendido: request sin firma',
+      'Servidor responde 402',
+      'Cliente paga o usa fixture',
+      'Retry con PAYMENT-SIGNATURE',
+      'Agente ejecuta',
+      'Servidor devuelve receipt',
+    ],
+  },
+  {
+    kind: 'checklist',
+    eyebrow: 'Demo principal',
+    title: 'Tres pruebas muestran el gate completo.',
+    items: [
+      'Toggle OFF + sin PAYMENT-SIGNATURE -> 201, ejecuta como demo',
+      'Toggle ON + sin PAYMENT-SIGNATURE -> 402 Payment Required',
+      'Toggle ON + x402-fixture-paid -> 201, ejecuta con receipt',
+      'Opcional Base Sepolia -> paymentStatus settled',
+    ],
+  },
+  {
+    kind: 'split',
+    eyebrow: 'Producción vs demo',
+    title: 'La demo enseña el patrón. Producción reemplaza el fixture.',
+    columns: [
+      {
+        label: 'Hoy',
+        items: ['Firma fixture x402-fixture-paid', 'Jobs en memoria', 'Registro ERC-8004 local', 'Switch visible para aprender'],
+      },
+      {
+        label: 'Producción',
+        items: ['@x402/hono facilitator', 'Wallet receptora real', 'Registry ERC-8004', 'Persistencia, límites y auditoría'],
+      },
+    ],
+  },
+  {
+    kind: 'journey',
+    eyebrow: 'El camino',
+    title: 'El agente ya completa el ciclo de valor.',
+    rows: [
+      { left: 'Razonar', right: 'Workshop 1 - Dale cerebro a nuestra aplicación. ✅' },
+      { left: 'Actuar', right: 'Workshop 2 - Conviértela en agente. ✅' },
+      { left: 'Proveer valor', right: 'Workshop 3 - Dale un trabajo al agente. ✅' },
+      { left: 'Capturar valor', right: 'Workshop 4 - Ejecuta pagos con x402.', active: true },
+    ],
+  },
+  {
+    kind: 'closing',
+    eyebrow: 'Prueba final',
+    title: 'A cobrar por trabajo.',
+    subtitle: 'Publica identidad, enciende el gate, rechaza requests sin pago y ejecuta con receipt.',
+  },
+];
+
+const workshopFourSlidesEn: PresentationSlide[] = [
+  {
+    kind: 'cover',
+    eyebrow: 'Workshop 04',
+    title: 'An Agent That Charges for Work',
+    subtitle: 'Enable payments so your Agent can sell services in a marketplace.',
+  },
+  {
+    kind: 'statement',
+    eyebrow: 'Continuity',
+    title: 'Workshop 3 created a useful service. Today we make it chargeable.',
+    lines: [
+      'The Mentor Agent can already receive a repo, reason, and return actionable guidance.',
+      'But a service is not a business until it defines price, access, execution, and delivery.',
+      'Today we add ERC-8004 identity and x402 authorization before work runs.',
+    ],
+  },
+  {
+    kind: 'sequence',
+    eyebrow: 'Commercial jump',
+    title: 'From useful agent to paid service.',
+    steps: [
+      { code: '01', title: 'Work', body: 'Define the task the agent sells.' },
+      { code: '02', title: 'Price', body: 'Publish what it costs to run that task.' },
+      { code: '03', title: 'Gate', body: 'Require authorization before execution.', active: true },
+      { code: '04', title: 'Delivery', body: 'Return result, receipt, and metadata.' },
+    ],
+  },
+  {
+    kind: 'split',
+    eyebrow: 'Separate concepts',
+    title: 'ERC-8004 does not charge. x402 does.',
+    columns: [
+      {
+        label: 'ERC-8004',
+        items: ['Agent identity', 'Available services', 'Registry and discovery', 'Trust signals'],
+      },
+      {
+        label: 'x402',
+        items: ['Payment requirements', 'HTTP 402 Payment Required', 'Payment signature', 'Execution receipt'],
+      },
+    ],
+    body: 'Together, they let other systems find, evaluate, and pay an agent.',
+  },
+  {
+    kind: 'diagram',
+    eyebrow: 'Architecture',
+    title: 'The paid flow is an explicit chain.',
+    nodes: [
+      { label: 'ERC-8004 registration', detail: '/.well-known/agent-registration.json' },
+      { label: 'UI payment gate', detail: 'Enable x402 payments' },
+      { label: 'x402 requirements', detail: 'price, network, payTo, resource' },
+      { label: 'POST /jobs', detail: '402 or execution' },
+      { label: 'Agent service', detail: 'summarize or mentor' },
+      { label: 'Receipt + feedback', detail: 'x402 + ERC-8004 metadata' },
+    ],
+  },
+  {
+    kind: 'list',
+    eyebrow: 'x402 lifecycle',
+    title: 'Payment lives inside the request cycle.',
+    body: 'The client tries to execute, receives requirements, pays, retries, and then the agent works.',
+    items: [
+      'Toggle off: open demo',
+      'Toggle on: request without signature',
+      'Server returns 402',
+      'Client pays or uses fixture',
+      'Retry with PAYMENT-SIGNATURE',
+      'Agent executes',
+      'Server returns receipt',
+    ],
+  },
+  {
+    kind: 'checklist',
+    eyebrow: 'Main demo',
+    title: 'Three tests show the full gate.',
+    items: [
+      'Toggle OFF + no PAYMENT-SIGNATURE -> 201, executes as demo',
+      'Toggle ON + no PAYMENT-SIGNATURE -> 402 Payment Required',
+      'Toggle ON + x402-fixture-paid -> 201, executes with receipt',
+      'Optional Base Sepolia -> paymentStatus settled',
+    ],
+  },
+  {
+    kind: 'split',
+    eyebrow: 'Production vs demo',
+    title: 'The demo teaches the pattern. Production replaces the fixture.',
+    columns: [
+      {
+        label: 'Today',
+        items: ['Fixture signature x402-fixture-paid', 'In-memory jobs', 'Local ERC-8004 registration', 'Visible switch for learning'],
+      },
+      {
+        label: 'Production',
+        items: ['@x402/hono facilitator', 'Real receiver wallet', 'ERC-8004 registry', 'Persistence, limits, and audit logs'],
+      },
+    ],
+  },
+  {
+    kind: 'journey',
+    eyebrow: 'The journey',
+    title: 'The agent now completes the value cycle.',
+    rows: [
+      { left: 'Reason', right: 'Workshop 1 - Give our application a brain. ✅' },
+      { left: 'Act', right: 'Workshop 2 - Turn it into an agent. ✅' },
+      { left: 'Provide value', right: 'Workshop 3 - Give the agent a job. ✅' },
+      { left: 'Capture value', right: 'Workshop 4 - Execute payments with x402.', active: true },
+    ],
+  },
+  {
+    kind: 'closing',
+    eyebrow: 'Final proof',
+    title: 'Charge for work.',
+    subtitle: 'Publish identity, turn on the gate, reject unpaid requests, and execute with a receipt.',
+  },
+];
+
 const workshopRepoBase =
   'https://github.com/fruteroclub/aixb-day-workshops/blob/main/workshops';
 
@@ -1098,15 +1332,19 @@ export const workshopResources: WorkshopResource[] = [
       en: 'Add identity, payment authorization, execution, and receipts.',
     },
     artifact: {
-      es: 'Recursos para el flujo de agente pagado.',
-      en: 'Paid-agent flow resources.',
+      es: 'Presentación, guía escrita y flujo x402 con receipt.',
+      en: 'Presentation, written tutorial, and x402 flow with receipt.',
+    },
+    presentationPath: {
+      es: '/resources/workshops/04-agente-que-cobra/presentation/',
+      en: '/en/resources/workshops/04-agente-que-cobra/presentation/',
     },
     guidePath: {
       es: `${workshopRepoBase}/04-agente-que-cobra/README.md`,
       en: `${workshopRepoBase}/04-agente-que-cobra/README.md`,
     },
     statuses: {
-      presentation: 'planned',
+      presentation: 'ready',
       guide: 'ready',
       video: 'after-event',
       links: 'ready',
@@ -1115,19 +1353,33 @@ export const workshopResources: WorkshopResource[] = [
       {
         label: { es: 'Repositorio de workshops', en: 'Workshop repository' },
         href: 'https://github.com/fruteroclub/aixb-day-workshops',
-        description: { es: 'La guía del workshop 4 se completa cuando cierre la copy.', en: 'Workshop 4 guide will be completed when its copy is finalized.' },
+        description: { es: 'Fuente de guías, ejercicios y servidor local.', en: 'Source for guides, exercises, and the local server.' },
       },
       {
-        label: { es: 'Hono para Node.js', en: 'Hono for Node.js' },
-        href: 'https://hono.dev/docs/getting-started/nodejs',
-        description: { es: 'Base para el job API del agente.', en: 'Base for the agent job API.' },
+        label: { es: 'x402 seller quickstart', en: 'x402 seller quickstart' },
+        href: 'https://docs.x402.org/getting-started/quickstart-for-sellers',
+        description: { es: 'Referencia para proteger endpoints HTTP con pago.', en: 'Reference for protecting HTTP endpoints with payment.' },
       },
       {
-        label: { es: 'Ethereum JSON-RPC', en: 'Ethereum JSON-RPC' },
-        href: 'https://ethereum.org/en/developers/docs/apis/json-rpc/',
-        description: { es: 'Referencia para pagos, receipts y verificación si se activa testnet.', en: 'Reference for payments, receipts, and verification if testnet is enabled.' },
+        label: { es: 'x402 MCP y agentes', en: 'x402 MCP and agents' },
+        href: 'https://docs.x402.org/guides/mcp-server-with-x402',
+        description: { es: 'Flujo de pago pensado para clientes/agentes.', en: 'Payment flow for clients and agents.' },
+      },
+      {
+        label: { es: 'ERC-8004', en: 'ERC-8004' },
+        href: 'https://eips.ethereum.org/EIPS/eip-8004',
+        description: { es: 'Identidad, discovery y señales de confianza para agentes.', en: 'Identity, discovery, and trust signals for agents.' },
+      },
+      {
+        label: { es: 'Ethereum Wingman', en: 'Ethereum Wingman' },
+        href: 'https://ethwingman.com/',
+        description: { es: 'Marco para pensar quién llama, paga y verifica.', en: 'Framing for who calls, pays, and verifies.' },
       },
     ],
+    slides: {
+      es: workshopFourSlidesEs,
+      en: workshopFourSlidesEn,
+    },
   },
 ];
 
